@@ -1,0 +1,106 @@
+.headers{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+}
+
+h3{
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-block-start: 8px;
+  margin-block-end: 8px;
+  margin-inline: auto;
+  background-color: yellow;
+}
+
+h4{
+  font-size: 14px;
+  text-transform: uppercase; 
+  font-weight: normal;
+  margin-block-start: 8px;
+  margin-block-end: 8px;
+}
+
+h5{
+  font-size: 18px;
+  font-weight: normal;
+}
+
+p{
+  font-size: 14px;
+}
+
+.button-1{
+  background-color: yellow;
+  border-style: solid;
+  border-width: 2px;
+}
+
+/* ---------- PRODUCT GALLERY ------------------------------------------------------ */
+
+.all-products{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  align-items: center;
+}
+
+.product-thumbnail {
+  width: 300px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+.prod-detail-image{
+  width: 600px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+.product-name{
+  text-decoration: underline;
+  margin-block: 0;
+}
+
+.product-price{
+  margin-block: 0px;
+}
+
+/* ---------- PRODUCT DETAIL ------------------------------------------------------ */
+.product-detail{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  align-items: center;
+}
+
+.prod-detail-image{
+  width: 600px;
+}
+
+
+.product-detail-description{
+  display: flex;
+  max-width: 250px;
+  margin-block: 16px;
+  margin-inline: auto;
+}
+
+.product-detail-customization{
+  margin: auto;
+  max-width: 250px;
+}
+
+.total-container{
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  max-width: 150px;
+}
+
+a:hover {
+  background-color: yellow;
+}
