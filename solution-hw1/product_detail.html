@@ -15,8 +15,8 @@
   <body>
 
     <div class="headers">
-      <h3>Products</h3>
-      <h4>Cart</h4>
+    <h3 class="page-on">Products</h3>
+    <h3 class="page-off">Cart</h3>
     </div>
 
     <div class="product-detail"> 
@@ -33,33 +33,37 @@
     </div>
 
       <div class="product-detail-customization">
-        <div>
-          <p>
+        <div class="custom-block">
+          <p class="custom-title">
             Glazing:       
           </p>
 
+          <div class="custom-select">
           <select name="Glazing" id="glazing">
             <option value="original">Keep Original</option>
             <option value="Sugar milk">Sugar milk</option>
             <option value="Vanilla milk">Vanilla milk</option>
             <option value="Double chocolate">Double chocolate</option>
           </select>
+          </div>
         </div>
 
-        <div>
-          <p>
-            Pick size       
+        <div class="custom-block">
+          <p class="custom-title">
+            Pack size:
           </p>
 
+          <div class="custom-select">
           <select name="Size" id="size">
             <option value="1">1</option>
             <option value="3">3</option>
             <option value="6">6</option>
             <option value="12">12</option>
           </select>
+          </div>
         </div>
 
-        <div class="total-container">
+        <div class="product-detail-customization" id="total-container">
           <p class="product-price">
             $2.49
           </p>

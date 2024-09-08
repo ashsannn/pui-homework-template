@@ -11,15 +11,16 @@ h3{
   margin-block-start: 8px;
   margin-block-end: 8px;
   margin-inline: auto;
+}
+
+.page-on,
+h3{
   background-color: yellow;
 }
 
-h4{
-  font-size: 14px;
-  text-transform: uppercase; 
-  font-weight: normal;
-  margin-block-start: 8px;
-  margin-block-end: 8px;
+.page-off,
+h3{
+  background-color: #fff;
 }
 
 h5{
@@ -53,13 +54,6 @@ p{
   border-color: black;
 }
 
-.prod-detail-image{
-  width: 600px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: black;
-}
-
 .product-name{
   text-decoration: underline;
   margin-block: 0;
@@ -79,28 +73,59 @@ p{
 
 .prod-detail-image{
   width: 600px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
 }
-
 
 .product-detail-description{
   display: flex;
-  max-width: 250px;
+  max-width: 160px;
   margin-block: 16px;
   margin-inline: auto;
 }
 
 .product-detail-customization{
-  margin: auto;
-  max-width: 250px;
+  justify-content: center;
 }
 
-.total-container{
+.custom-block{
+  justify-content: flex-start;
+  max-width: 160px;
+  margin: auto;
+  padding-block: 8px;
+}
+
+.custom-title{
+  margin-block: 4px;
+}
+
+#total-container{
   display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  max-width: 150px;
+  gap: 20px;
+  padding: 40px;
+  margin: auto;
 }
 
 a:hover {
   background-color: yellow;
 }
+
+.custom-select,
+#glazing{
+  display: flex;
+  flex-grow: 1;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.custom-select,
+#size{
+  display: flex;
+  flex-grow: 1;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
