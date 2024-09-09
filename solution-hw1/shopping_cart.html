@@ -5,51 +5,70 @@
   
   <nav>
     <img src="../assets/logo/logo-01.svg" width="145" height="126" alt="Logo">
+    <hr width="100%" size="3px" color="black" shade>
   </nav>
-
   <link rel="stylesheet" href="css/style.css">
 
   <body>
+    
+    <div class="headers">
+      <h3 class="page-off">Products</h3>
+      <h3 class="page-on">Cart</h3>
+      <h5>
+        Shopping Cart
+      </h5>
 
-    <h3 class="page-off">Products</h3>
-    <h3 class="page-on">Cart</h3>
-
-    <p>
-      Shopping Cart
-    </p>
-
-    <div>
-      <img src="../assets/products/original-cinnamon-roll.jpg"  width="200" height="200" alt="original cinnamon roll">
-      <p>
-       Original cinnamon roll
-      </p>
-      <p>
-        Glazing: Keep original
-       </p>
-       <p>
-        Pack size: 1
-       </p>
     </div>
+
+    <div class="shopping-cart">
+
+      <div class="cart-item-container">
+        <img src="../assets/products/original-cinnamon-roll.jpg" class="cart-thumbnail" alt="original cinnamon roll">
+        <p class="cart-remove">
+          Remove
+        </p>
+        <p class="cart-description">
+        Original Cinnamon Roll
+        </p>
+        <p class="cart-description">
+          Glazing: Keep original
+        </p>
+        <p class="cart-description">
+          Pack size: 1
+        </p>
+        <p class="cart-price">
+          $2.49
+        </p>
+      </div>
   
-    <div>
-      <img src="../assets/products/double-chocolate-cinnamon-roll.jpg"  width="200" height="200" alt="double chocolate cinnamon roll">
-      <p>
-        Double-chocolate cinammon roll
-      </p>
-      <p>
-        Glazing: Sugar milk
-       </p>
-       <p>
-        Pack size: 6
-       </p>
-    </div>
+      <div class="cart-item-container">
+        <img src="../assets/products/double-chocolate-cinnamon-roll.jpg" class="cart-thumbnail"  alt="double chocolate cinnamon roll">
+        <p class="cart-remove">
+          Remove
+        </p>
+        <p class="cart-description">
+          Double-chocolate Cinammon Roll
+        </p>
+        <p class="cart-description">
+          Glazing: Sugar milk
+        </p>
+        <p class="cart-description">
+          Pack size: 6
+        </p>
+        <p class="cart-price">
+          $27.45
+        </p>
+      </div>
 
-    <div>
-      <p>
-        Total: $29.94
-      </p>
-      <button type="button">Checkout</button>
-    </div>
+      <hr width="50%" size="3px" color="black" shade>
+
+      <div class="checkout-total-container">
+        <p>
+          Total: $29.94
+        </p>
+        <button type="button" class="button-1">Checkout</button>
+      </div>
+  </div>
 
   </body>
 </html>

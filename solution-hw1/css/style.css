@@ -1,3 +1,9 @@
+/* ---------- PRODUCT GALLERY ------------------------------------------------------ */
+
+.body{
+  padding-bottom: 20%;
+}
+
 .headers{
   display: flex;
   flex-direction: column;
@@ -16,11 +22,13 @@ h3{
 .page-on,
 h3{
   background-color: yellow;
+  font-weight: 600;
 }
 
 .page-off,
 h3{
   background-color: #fff;
+  font-weight: normal;
 }
 
 h5{
@@ -30,12 +38,16 @@ h5{
 
 p{
   font-size: 14px;
+  padding-block: 0px;
+  margin-block: 4px;
 }
 
 .button-1{
   background-color: yellow;
   border-style: solid;
   border-width: 2px;
+  padding-block: 4px;
+  padding-inline: 12px;
 }
 
 /* ---------- PRODUCT GALLERY ------------------------------------------------------ */
@@ -43,8 +55,10 @@ p{
 .all-products{
   display: flex;
   flex-direction: column;
+  gap: 16px;
   font-size: 14px;
   align-items: center;
+  margin-bottom: 20%;
 }
 
 .product-thumbnail {
@@ -63,12 +77,16 @@ p{
   margin-block: 0px;
 }
 
+.product-box{
+  margin: 8px;
+}
+
 /* ---------- PRODUCT DETAIL ------------------------------------------------------ */
 .product-detail{
   display: flex;
   flex-direction: column;
-  font-size: 14px;
   align-items: center;
+  margin-bottom: 20%;
 }
 
 .prod-detail-image{
@@ -103,12 +121,14 @@ p{
 #total-container{
   display: flex;
   gap: 20px;
-  padding: 40px;
+  padding: 32px;
   margin: auto;
+  align-items: center;
 }
 
 a:hover {
   background-color: yellow;
+  cursor: pointer;
 }
 
 .custom-select,
@@ -129,3 +149,44 @@ a:hover {
   cursor: pointer;
 }
 
+/* ---------- CART ------------------------------------------------------ */
+.shopping-cart{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20%;
+}
+
+.cart-thumbnail{
+  width: 200px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+.cart-item-container{
+  margin: auto;
+  padding-bottom: 32px;
+  align-items: center;
+}
+
+.checkout-total-container{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 16px;
+}
+
+.cart-description{
+  text-align: center;
+}
+
+.cart-price{
+  text-align: center;
+}
+
+.cart-remove{
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 8px;
+}
