@@ -4,8 +4,8 @@
   background-color: initial;
 }
 
-.body{
-  padding-bottom: 20%;
+.body {
+  padding-bottom: 40%;
 }
 
 .headers{
@@ -69,7 +69,7 @@ p{
   gap: 16px;
   font-size: 14px;
   align-items: center;
-  margin-bottom: 20%;
+  margin-bottom: 30%;
 }
 
 .product-thumbnail {
@@ -93,11 +93,11 @@ p{
 }
 
 /* ---------- PRODUCT DETAIL ------------------------------------------------------ */
-.product-detail{
+.product-detail-container{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20%;
+  margin-bottom: 30%;
 }
 
 .prod-detail-image{
@@ -169,7 +169,7 @@ a.product-box:hover  .product-name {
   display: flex;
   flex-direction: column;
   padding-top: 5;
-  padding-bottom: 20%;
+  margin-bottom: 30%;
 }
 
 .cart-thumbnail{
@@ -181,7 +181,7 @@ a.product-box:hover  .product-name {
 
 .cart-item-container{
   margin: auto;
-  padding-bottom: 32px;
+  padding-block: 5%;
   align-items: center;
 }
 
