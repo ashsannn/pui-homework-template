@@ -197,7 +197,7 @@ a.product-box:hover  .product-name {
   display: flex;
   flex-direction: column;
   margin: auto;
-  padding-block: 3%;
+  padding-block: 2%;
   justify-content: center;
 }
 
@@ -227,5 +227,6 @@ a.product-box:hover  .product-name {
   width: 30%;
   border: none;
   background: #000;
-  height: 2px;
+  height: 3px;
+  margin-top: 8px;
 }
