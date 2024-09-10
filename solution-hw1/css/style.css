@@ -46,7 +46,7 @@ h5{
 p{
   font-size: 16px;
   padding-block: 0px;
-  margin-block: 4px;
+  margin-block: 2px;
 }
 
 .button-1{
@@ -189,13 +189,16 @@ a.product-box:hover  .product-name {
   border-width: 2px;
   border-style: solid;
   border-color: black;
-  align-self: center;
+  margin: auto;
+  justify-content: center;
 }
 
 .cart-item-container{
+  display: flex;
+  flex-direction: column;
   margin: auto;
   padding-block: 3%;
-  align-items: center;
+  justify-content: center;
 }
 
 .checkout-total-container{
@@ -208,17 +211,16 @@ a.product-box:hover  .product-name {
 
 .cart-description{
   text-align: center;
-  max-width: 200px;
 }
 
 .cart-price{
   text-align: center;
 }
 
-.cart-remove{
+.cart-remove-text{
   font-size: 14px;
   text-align: center;
-  padding-bottom: 8px;
+  padding-block: 8px;
 }
 
 .checkout-line{
