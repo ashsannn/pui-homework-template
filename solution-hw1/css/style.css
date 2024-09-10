@@ -61,6 +61,13 @@ p{
   width: 400px;
 }
 
+.nav-line{
+  width: 100%;
+  border: none;
+  height: 3px;
+  background: #000;
+}
+
 /* ---------- PRODUCT GALLERY ------------------------------------------------------ */
 
 /* largest div */
@@ -212,4 +219,11 @@ a.product-box:hover  .product-name {
   font-size: 14px;
   text-align: center;
   padding-bottom: 8px;
+}
+
+.checkout-line{
+  width: 30%;
+  border: none;
+  background: #000;
+  height: 2px;
 }
