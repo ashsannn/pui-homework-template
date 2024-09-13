@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Product Detail</title>
+
+  <nav>
+    <a href="product_gallery.html"> 
+      <img src="../assets/logo/logo-01.svg" class="logo" alt="Logo">
+    </a>
+    <hr class="nav-line">
+  </nav>
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <body>
+
+    <div class="headers">
+      <h3 class="page-on"> <a href="product_gallery.html"> Products</a></h3>
+      <h3 class="page-off"> <a href="shopping_cart.html">Cart</a></h3>
+    </div>
+
+    <div class="product-detail-container"> 
+      <h5>
+        Original Cinnamon Roll 
+      </h5>
+
+      <div>
+        <img src="../assets/products/original-cinnamon-roll.jpg" class="prod-detail-image" alt="original cinnamon roll">
+        <p class="product-detail-description">
+        Customize our delicious, hand-made cinnamon roll to your liking!
+        </p>
+      </div>
+
+      <div class="product-detail-customization">
+        <div class="custom-block">
+          <p class="custom-title">
+            Glazing:       
+          </p>
+
+          <div class="custom-select">
+          <select name="Glazing" id="glazing">
+            <option value="original">Keep Original</option>
+            <option value="Sugar milk">Sugar milk</option>
+            <option value="Vanilla milk">Vanilla milk</option>
+            <option value="Double chocolate">Double chocolate</option>
+          </select>
+          </div>
+        </div>
+
+        <div class="custom-block">
+          <p class="custom-title">
+            Pack size:
+          </p>
+
+          <div class="custom-select">
+          <select name="Size" id="size">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="12">12</option>
+          </select>
+          </div>
+        </div>
+
+        <div class="product-detail-customization" id="total-container">
+          <p class="product-price">
+            $2.49
+          </p>
+
+          <button type="button" class="button-1">Add to Cart</button>
+        </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>
