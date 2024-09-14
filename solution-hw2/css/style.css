@@ -1,61 +1,44 @@
 /* ---------- MASTER CSS ------------------------------------------------------ */
 
-/*
-.logo:hover {
-  background-color: initial;
-}
-*/
-
 #logo{
   width: 400px;
 }
 
-#logo-container{
+.all-nav-container{
   display: flex;
-  align-items:flex-start;
+  justify-content: space-between;
 }
 
-#all-nav-container{
-  display: flex;
-  justify-content: space-evenly;
-  max-height: fit-content;
-}
-
-#menu-and-line-container{
+.nav-line-menu-container{
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-height: fit-content;
-}
-
-#nav-menu-container{
-  display: inline-flex;
   align-items: center;
-  max-height: 35%;
+  border-width: 2px;
+  width: 100%;
+  padding-block: 2%;
 }
 
-.nav-menu-choice{
-  margin: 20%;
-}
-
-#nav-line-container{
-  display: block;
+.nav-menu-choice-container{
+  display: flex;
+  border-width: 2px;
+  padding-right: 25%;
+  column-gap: 30%;
+  align-self: flex-end;
 }
 
 .nav-line{
   width: 100%;
-  border: none;
   height: 4px;
+  margin-top: 3%;
   background: #000;
-  position: absolute;
 }
-
 
 h3{
   display: flex;
   font-size: 20px;
   text-transform: uppercase;
   align-items: center;
+  border-width: 2px;
 }
 
 .page-on,
@@ -73,11 +56,7 @@ h3{
 h5{
   font-size: 20px;
   font-weight: normal;
-  margin-inline: auto;
-}
-
-.body {
-  padding-bottom: 40%;
+  margin-bottom: 5%;
 }
 
 p{
@@ -87,9 +66,10 @@ p{
 }
 
 .headers{
-  display: flex;
+  padding-top: 8%;
+  align-self: flex-start;
+  margin-left: 2%;
 }
-
 
 .button-1{
   background-color: yellow;
@@ -104,15 +84,15 @@ p{
 /* largest div */
 .product-gallery-container{
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 2px;
   font-size: 14px;
   align-items: center;
   margin-bottom: 30%;
 }
 
 .product-thumbnail {
-  width: 300px;
+  width: 283px;
   border-width: 2px;
   border-style: solid;
   border-color: black;
