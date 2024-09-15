@@ -260,16 +260,15 @@ a.product-box:hover  .product-name {
 }
 
 .checkout-total-container{
-  margin: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   padding-block: 16px;
+  column-gap: 50%;
   border-style: dotted;
   border-color: dodgerblue;
-  width:fit-content;
-  margin-left: 10%;
-  
+  margin-left: 20%;
+  margin-right: 0%;
 }
 
 .cart-description{
@@ -300,7 +299,15 @@ a.product-box:hover  .product-name {
 .checkout-info-button-container{
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   border-style: dotted;
   border-color:darkorange;
-  display: flex;
+}
+
+#checkout-button{
+  /* width: fit-content; */
+  justify-self: flex-end;
+  margin-left: 75%;
+  padding-inline: 2%;
+  padding-block: 2%;
 }
