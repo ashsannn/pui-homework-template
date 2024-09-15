@@ -21,9 +21,9 @@
 .nav-menu-choice-container{
   display: flex;
   border-width: 2px;
-  padding-right: 25%;
   column-gap: 30%;
   align-self: flex-end;
+  padding-right: 20%;
 }
 
 .nav-line{
@@ -192,7 +192,24 @@ a.product-box:hover  .product-name {
   display: flex;
   flex-direction: column;
   padding-top: 5;
-  margin-bottom: 30%;
+}
+
+.all-cart-items-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-style:dotted;
+  border-color: blue;
+  padding-left: 40%;
+  padding-right: 6%;
+}
+
+.cart-item-container{
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* justify-content: flex-start; */
+  border-style: dotted;
+  border-color:yellowgreen;
 }
 
 .cart-thumbnail{
@@ -204,24 +221,59 @@ a.product-box:hover  .product-name {
   justify-content: center;
 }
 
-.cart-item-container{
+.image-and-remove-container{
   display: flex;
   flex-direction: column;
-  margin: auto;
-  padding-block: 2%;
-  justify-content: center;
+  justify-content: flex-start;
+  border-style:dotted;
+  border-color: aqua;
+  padding-right: 2%;
+}
+
+.cart-price-container{
+  border-style: dotted;
+  border-color:springgreen;
+}
+
+.cart-item-description-price-container{
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 5%;
+  border-style: dotted;
+  border-color: blue;
+}
+
+.cart-item-description-container{
+  display: flex;
+  flex-direction: column;
+  /* margin: auto; */
+  padding-top: 8%;
+  justify-content: flex-start;
+  /* padding-left: 5%; */
+  border-style: dotted;
+  border-color: red;
+  height: fit-content;
 }
 
 .checkout-total-container{
   margin: auto;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  justify-content: space-around;
   padding-block: 16px;
+  border-style: dotted;
+  border-color: dodgerblue;
+  width:fit-content;
+  margin-left: 10%;
+  
 }
 
 .cart-description{
-  text-align: center;
+  text-align: left;
 }
 
 .cart-price{
@@ -230,14 +282,25 @@ a.product-box:hover  .product-name {
 
 .cart-remove-text{
   font-size: 14px;
-  text-align: center;
+  text-align: left;
   padding-block: 8px;
+  margin-left: 5%;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .checkout-line{
-  width: 30%;
+  width: 100%;
   border: none;
   background: #000;
   height: 3px;
   margin-top: 8px;
+}
+
+.checkout-info-button-container{
+  display: flex;
+  flex-direction: column;
+  border-style: dotted;
+  border-color:darkorange;
+  display: flex;
 }
