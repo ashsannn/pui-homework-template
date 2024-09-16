@@ -85,10 +85,13 @@ p{
 .product-gallery-container{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2px;
   font-size: 14px;
   align-items: center;
   margin-bottom: 30%;
+  border-style: dashed;
+  border-color: blue;
 }
 
 .product-thumbnail {
@@ -117,26 +120,44 @@ p{
 .product-detail-container{
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 30%;
+  border-style: dotted;
+  border-color: aqua;
+}
+
+.product-detail-custom-container{
+  display: flex;
+  flex-direction: column;
+  border-style: dotted;
+  border-color: black;
 }
 
 .prod-detail-image{
   width: 600px;
   border-width: 2px;
-  border-style: solid;
-  border-color: black;
+  border-style: dotted;
+  border-color: blue;
 }
 
-.product-detail-description{
+.product-detail-image-description-container{
   display: flex;
-  max-width: 160px;
+  flex-direction: column;
   margin-block: 16px;
-  margin-inline: auto;
+  border-style:double;
+  border-color: orange;
+}
+
+.product-detail-description-container{
+  display: flex;
+  max-height: fit-content;
+  border-style:groove;
+  border-color:red;
 }
 
 .product-detail-customization{
   justify-content: center;
+  border-style: dotted;
+  border-color: yellowgreen;
 }
 
 .custom-block{
@@ -192,6 +213,9 @@ a.product-box:hover  .product-name {
   display: flex;
   flex-direction: column;
   padding-top: 5;
+  border-style:dotted;
+  border-color: red;
+  margin-right: 5%;
 }
 
 .all-cart-items-container{
@@ -200,8 +224,9 @@ a.product-box:hover  .product-name {
   flex-wrap: wrap;
   border-style:dotted;
   border-color: blue;
-  padding-left: 40%;
-  padding-right: 6%;
+  padding-left: 30%;
+  padding-right: 0%;
+  justify-content: center;
 }
 
 .cart-item-container{
@@ -243,6 +268,7 @@ a.product-box:hover  .product-name {
   justify-content: space-between;
   align-items: center;
   column-gap: 5%;
+  padding-top: 2%;
   border-style: dotted;
   border-color: blue;
 }
@@ -251,11 +277,11 @@ a.product-box:hover  .product-name {
   display: flex;
   flex-direction: column;
   /* margin: auto; */
-  padding-top: 8%;
+  padding-top: 0%;
   justify-content: flex-start;
   /* padding-left: 5%; */
   border-style: dotted;
-  border-color: red;
+  border-color: yellow;
   height: fit-content;
 }
 
@@ -267,8 +293,7 @@ a.product-box:hover  .product-name {
   column-gap: 50%;
   border-style: dotted;
   border-color: dodgerblue;
-  margin-left: 20%;
-  margin-right: 0%;
+  margin-left: 0%;
 }
 
 .cart-description{
@@ -293,7 +318,6 @@ a.product-box:hover  .product-name {
   border: none;
   background: #000;
   height: 3px;
-  margin-top: 8px;
 }
 
 .checkout-info-button-container{
