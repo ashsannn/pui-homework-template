@@ -231,6 +231,7 @@ a.product-box:hover  .product-name {
 
 .cart-item-container{
   display: flex;
+  margin-bottom: 3%;
 }
 
 .cart-thumbnail{
