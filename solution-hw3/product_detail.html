@@ -52,11 +52,7 @@
               </p>
     
               <div class="custom-select-container">
-                <select class="custom-select" id="glazing-select">
-                  <option value="0">Keep Original</option>
-                  <option value="1">Sugar milk</option>
-                  <option value="2">Vanilla milk</option>
-                  <option value="3">Double chocolate</option>
+                <select class="custom-select" id="glazing-options" onchange="glazingChange(this)">
                 </select>
               </div>
             </div>
@@ -67,11 +63,7 @@
               </p>
     
             <div class="custom-select-container">
-              <select class="custom-select" id="quantity-select">
-                <option value="1">1</option>
-                <option value="3">3</option>
-                <option value="6">6</option>
-                <option value="12">12</option>
+              <select class="custom-select" id="quantity-options" onchange="quantityChange(this)">
               </select>
             </div>
             </div>  
