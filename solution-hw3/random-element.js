@@ -2,7 +2,7 @@
 //we are going to make this 
 let allGlazings = [
     {
-      glazing: 'Keep Original',
+      glazing: 'original',
       price: '2.49',
     },
     {
@@ -20,14 +20,12 @@ let allGlazings = [
   ];
   
 
-
-function displayPrice(price) {
-    let glazingPriceElement = document.querySelector('#glazing-price-id');
+function displayPrice(item) {
+    let itemPriceElement = document.querySelector('#item-price-id');
   
-    glazingPriceElement.innerText = glazing.price;
+    itemPriceElement.innerText = item.price;
   }
   
-
 
 function onSelectValueChange() {
     // In this function, `this` corresponds to the select
@@ -45,7 +43,8 @@ function onSelectValueChange() {
     displayPrice(priceToDisplay);
   }
 
-  let selectElement = document.querySelector('#glazing-select');
+// When the page loads, find the select element.
+let selectElement = document.querySelector('#glazing-select');
 
   // Give it a listener for the 'change' event, which is a function that will run
 // when the selected option changes. You could also do this by setting the
