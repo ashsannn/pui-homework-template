@@ -3,19 +3,19 @@
 let allGlazings = [
     {
       glazing: 'Original',
-      glazePrice: '2.49',
+      glazePrice: '0.00',
     },
     {
       glazing: 'Sugar Milk',
-      glazePrice: '2.49',
+      glazePrice: '0.00',
     },
     {
       glazing: 'Vanilla Milk',
-      glazePrice: '3.00',
+      glazePrice: '0.50',
     },
     {
       glazing: 'Double Chocolate',
-      glazePrice: '4.00',
+      glazePrice: '01.50',
     }
   ];
   
@@ -42,11 +42,10 @@ let allGlazings = [
   function populateGlazingSelect() {
     const selectElement = document.getElementById('glazing-options');
 
-      // Use a traditional for loop to iterate over the allGlazings array
       for (let i = 0; i < allGlazings.length; i++) {
         const option = document.createElement('option');
-        option.value = allGlazings[i].glazing;  // The value attribute
-        option.text = `${allGlazings[i].glazing} - $${allGlazings[i].glazePrice}`;  // Display text
+        option.value = allGlazings[i].glazePrice; 
+        option.text = `${allGlazings[i].glazing}   +$${allGlazings[i].glazePrice}`;  //displayed in dropdown
         selectElement.appendChild(option);
       }
 
@@ -55,69 +54,40 @@ let allGlazings = [
   function populatePackSizeSelect() {
     const selectElement = document.getElementById('quantity-options');
     
-      // Use a traditional for loop to iterate over the allGlazings array
       for (let i = 0; i < packSizes.length; i++) {
         const option = document.createElement('option');
-        option.value = packSizes[i].packSize;  // The value attribute
-        option.text = packSizes[i].packSize;  // Display text
+        option.value = packSizes[i].packSize;
+        option.text = packSizes[i].packSize; //displayed in dropdown
         selectElement.appendChild(option);
       }
 
   }
 
+  const basePrice = 2.49;
+  let glazingPrice = 0; 
+  let packSize = 1; 
+  
+  function updateTotal() {
+      let totalPrice = (basePrice + glazingPrice) * packSize;
+      let totalPriceElement = document.querySelector('#item-price-id');
+      totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
+  }
+  
+  function glazingChange(element) {
+      glazingPrice = parseFloat(element.value); 
+      console.log('Glazing price change:', glazingPrice); //for debugging
+      updateTotal();
+  }
+  
+  function quantityChange(element) {
+      packSize = parseInt(element.value);
+      console.log('Quantity change:', packSize); //for debugging
+      updateTotal();
+  } 
+
   window.onload = function() {
     populateGlazingSelect();
     populatePackSizeSelect();
+    updateTotal();
   };
-
-
-  /*
-function calculateTotal(item){
-    const basePrice = 2.49;
-    let totalPrice = (basePrice + glazingPrice) * packPrice;
-}
-
-function glazingChange(element) {
-    //get value of selected glazing option
-    const priceChange = element.value;
-    
-    //code to change the value
-   
-}
-
-function displayPrice(item) {
-    let itemPriceElement = document.querySelector('#item-price-id');
   
-    itemPriceElement.innerText = item.priceTotal;
-  }
-
-
-/*
-function onSelectValueChange() {
-    // In this function, `this` corresponds to the select
-    // element. So `this.price` will contain the value of the
-    // selected option as a string.
-  
-    // We need to convert the string value to an integer
-    let itemIndex = parseInt(this.value);
-  
-    // Now retrieve the object at the index specified by the select's value
-    //
-  
-    // Update the UI
-    displayPrice(totalToDisplay);
-  }
-*/
-
-/*
-// When the page loads, find the select element.
-let selectElement = document.querySelector('#glazing-options');
-
-  // Give it a listener for the 'change' event, which is a function that will run
-// when the selected option changes. You could also do this by setting the
-// onchange property of selectElement, e.g. selectElement.onchange = ...
-selectElement.addEventListener('change', onSelectValueChange);
-
-// Initially, display the first car
-displayPrice(allGlazings[0]);
-*/
