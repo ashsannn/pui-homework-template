@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+  <head>
+    <html lang="en">
+      <meta charset="UTF-8">
+      <title>Product Detail</title>
+
+    <!----- In this JS file, we read the URL parameters and modify the page. ---->
+    <script defer src="js/rollsData.js"></script>
+  </head>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <nav class="all-nav-container">
+    <a href="product_gallery.html">
+      <img src="../assets/logo/logo-01.svg" id="logo" alt="Logo">
+    </a>
+    <div class="nav-line-menu-container">
+      <div class="nav-menu-choice-container">
+        <h3 class="page-on"> 
+          <a href="product_gallery.html"> Products</a>
+        </h3>
+        <h3 class="page-off"> 
+          <a href="shopping_cart.html">Cart</a>
+        </h3>
+      </div>
+      <hr class="nav-line">
+      <div class="headers">
+        <h5 id="product-name"> Placeholder product name <!-- WILL GET UPDATED --></h5>
+      </div>
+    </div>
+</nav>
+
+
+
+<!----------------- THIS IS THE BODY-----------> 
+<body>
+
+    <div class="product-detail-container"> 
+
+      <div class="product-detail-image-description-custom-container">
+        <img src="" id="prod-detail-image" alt="product image"> <!----WILL GET UPDATED-->
+
+        <div class="product-detail-description-custom-container">
+          <div class="product-detail-description-container">
+            <p id="product-detail-description"> 
+            Customize our delicious, hand-made cinnamon roll to your liking!
+            </p>
+          </div>
+
+        <!-------------------------------------------->
+
+          <div class="product-detail-customization">
+            <div class="custom-block">
+              <p class="custom-title">
+                Glazing:       
+              </p>
+    
+              <div class="custom-select-container">
+                <select class="custom-select" id="glazing-options" onchange="glazingChange(this)">
+                </select>
+              </div>
+            </div>
+    
+            <div class="custom-block">
+              <p class="custom-title">
+                Pack size:
+              </p>
+    
+            <div class="custom-select-container">
+              <select class="custom-select" id="quantity-options" onchange="quantityChange(this)">
+              </select>
+            </div>
+            </div>  
+          </div>
+          <div class="product-total-container" id="total-container">
+            <p class="item-price" id="item-price-id"> $0.00 </p> <!---------------------->
+            <button type="button" class="button-1" id="add-cart-button">Add to Cart</button>
+        </div>  
+        </div>
+
+    </div>
+  
+    </div>
+  </body>
+
+</html>
+
+</body>
