@@ -1,3 +1,5 @@
+
+const cart = [];
 // First, we get the query string from the URL. This is the list of parameters
 // that begins with a question mark. (These are known as "search parameters")
 const queryString = window.location.search;
@@ -13,7 +15,6 @@ const chosenRoll = params.get('rolls')
 //divider......
 
 const rollsData = rolls[chosenRoll];
-
     // Update the header text
     const headerElement = document.querySelector('#product-name');
     headerElement.innerText = chosenRoll;
@@ -26,10 +27,3 @@ const rollsData = rolls[chosenRoll];
     const priceElement = document.querySelector('#item-price-id');
     priceElement.innerText = `$${rollData.basePrice.toFixed(2)}`;
 
-
-/*
-  const cart = [];
-  const queryString = window.location.search;
-  const params = new URLSearchParams(queryString);
-  const rollType = params.get('roll');    
-*/

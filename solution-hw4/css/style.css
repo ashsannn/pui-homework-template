@@ -66,9 +66,10 @@ p{
 }
 
 .headers{
-  padding-top: 8%;
+  padding-top: 10%;
   align-self: flex-start;
   margin-left: 2%;
+  padding-bottom: 2%;
 }
 
 .button-1{
@@ -130,6 +131,11 @@ p{
 .product-detail-custom-container{
   display: flex;
   flex-direction: column;
+}
+
+#product-name {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 #prod-detail-image{

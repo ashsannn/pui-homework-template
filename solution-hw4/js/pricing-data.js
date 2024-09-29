@@ -1,20 +1,22 @@
 
+//THIS IS FOR THE PRICE + QUANTITY DYNAMIC
+
 let allGlazings = [
     {
       glazing: 'Original',
-      glazePrice: '0.00',
+      glazingPrice: '0.00',
     },
     {
       glazing: 'Sugar Milk',
-      glazePrice: '0.00',
+      glazingPrice: '0.00',
     },
     {
       glazing: 'Vanilla Milk',
-      glazePrice: '0.50',
+      glazingPrice: '0.50',
     },
     {
       glazing: 'Double Chocolate',
-      glazePrice: '01.50',
+      glazingPrice: '01.50',
     }
   ];
   
@@ -42,10 +44,13 @@ let allGlazings = [
     const selectElement = document.getElementById('glazing-options');
 
       for (let i = 0; i < allGlazings.length; i++) {
-        const option = document.createElement('option');
-        option.value = allGlazings[i].glazePrice; 
-        option.text = `${allGlazings[i].glazing}`;  //displayed in dropdown
-        selectElement.appendChild(option);
+        const glazingOption = document.createElement('option');
+        glazingOption.value = allGlazings[i].glazingPrice; 
+        glazingOption.text = `${allGlazings[i].glazing}`;  //displayed in dropdown
+
+        //glazingOption.setAttribute('glazing-price', allGlazings[i].glazingPrice); //data attribute for price
+
+        selectElement.appendChild(glazingOption);
       }
 
   }
@@ -71,7 +76,7 @@ let allGlazings = [
       let totalPrice = (basePrice + glazingPrice) * packSize;
       let totalPriceElement = document.querySelector('#item-price-id');
       totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-      console.log('total price:', totalPrice, 'base price', basePrice, 'glaze price', glazingPrice, 'pack size', packSize)
+      console.log('total price:', totalPrice, 'base price', basePrice, 'glazing price', glazingPrice, 'pack size', packSize)
   }
   
   function glazingChange(element) {
@@ -91,4 +96,3 @@ let allGlazings = [
     populatePackSizeSelect();
     updateTotal();
   };
-  

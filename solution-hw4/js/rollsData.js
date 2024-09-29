@@ -1,3 +1,4 @@
+//THIS IS FOR THE DIFF ROLL TYPES //FOR THE DISPLAY
 const rolls = {
     "Original": {
         "basePrice": 2.49,
@@ -28,17 +29,52 @@ const rolls = {
 // Assuming the roll type is passed via URL parameters
 const params = new URLSearchParams(window.location.search);
 const chosenRoll = params.get('roll'); 
+
+console.log(chosenRoll); //this is passed from product gallery to product detail (chosen roll)
+
 const rollData = rolls[chosenRoll];
+const rollBasePrice = rollData.rollBasePrice;
 
-// Update the header text with the chosen roll name
-const headerElement = document.querySelector('#product-name');
-headerElement.innerText = chosenRoll;
+const headerElement = document.querySelector('#product-name'); //update header
+headerElement.innerText = chosenRoll + " Cinnamon Roll";
 
-// Update the image using the stored image path in the rolls object
-const rollsImage = document.querySelector('#prod-detail-image');
+const rollsImage = document.querySelector('#prod-detail-image'); //update image
 rollsImage.src = rollData.imageFile;
 rollsImage.alt = chosenRoll + " Cinnamon Roll";
 
-// Update the price on the page
-const priceElement = document.querySelector('#item-price-id');
+const priceElement = document.querySelector('#item-price-id'); //update price
 priceElement.innerText = `$${rollData.basePrice.toFixed(2)}`;
+
+
+const cart = []; //CART
+
+//THIS IS FOR STORING AND THEN PUTTING INTO CART
+//rollGlazing is the TYPE of the glazing
+
+class Roll {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
+        this.type = rollType;
+        this.glazing =  rollGlazing;
+        this.size = packSize;
+        this.basePrice = basePrice;
+    }
+}
+
+document.getElementById('add-cart-button').addEventListener('click', function() { 
+    const rollType = chosenRoll; //this is passed from product detail
+    console.log("this is the rollType " + rollType);
+    const rollGlazing = document.querySelector('select[id="glazing-options"]').value; //from select
+    console.log("this is the rollGlazing " + rollGlazing);
+    const packSize= document.querySelector('select[id="quantity-options"]').value; //from select
+    console.log("this is the packSize " + packSize);
+    const rollBasePrice= rollBasePrice; //this is passed from product detail
+
+    addToCart(rollType, rollGlazing, packSize, rollBasePrice); //call the function to add the roll to the cart
+});
+
+
+function addToCart(rollType, rollGlazing, packSize, basePrice) {
+    const newRoll = new Roll(rollType, rollGlazing, packSize, basePrice); //new roll
+    cart.push(newRoll); //add roll to cart
+    console.log(cart); //print cart
+};

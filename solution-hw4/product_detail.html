@@ -1,14 +1,18 @@
 <!DOCTYPE html>
+  <html lang="en">
   <head>
-    <html lang="en">
-      <meta charset="UTF-8">
-      <title>Product Detail</title>
 
-    <!----- In this JS file, we read the URL parameters and modify the page. ---->
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+
+    <!--link to CSS-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--defer scripts to ensure they run after the DOM is fully parsed -->
     <script defer src="js/rollsData.js"></script>
-  </head>
+    <script defer src="js/pricing-data.js"></script>
 
-  <link rel="stylesheet" href="css/style.css">
+  </head>
 
   <nav class="all-nav-container">
     <a href="product_gallery.html">
@@ -28,12 +32,10 @@
         <h5 id="product-name"> Placeholder product name <!-- WILL GET UPDATED --></h5>
       </div>
     </div>
-</nav>
-
-
+  </nav>
 
 <!----------------- THIS IS THE BODY-----------> 
-<body>
+  <body>
 
     <div class="product-detail-container"> 
 
@@ -78,11 +80,8 @@
         </div>  
         </div>
 
-    </div>
-  
-    </div>
+      </div>
+    </div> <!---product detail container--> 
   </body>
 
 </html>
-
-</body>
