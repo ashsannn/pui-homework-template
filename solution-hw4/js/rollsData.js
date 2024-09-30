@@ -33,14 +33,14 @@ const chosenRoll = params.get('roll');
 console.log(chosenRoll); //this is passed from product gallery to product detail (chosen roll)
 
 const rollData = rolls[chosenRoll];
-const rollBasePrice = rollData.rollBasePrice;
+let basePrice = rollData.basePrice;
 
 const headerElement = document.querySelector('#product-name'); //update header
 headerElement.innerText = chosenRoll + " Cinnamon Roll";
 
 const rollsImage = document.querySelector('#prod-detail-image'); //update image
 rollsImage.src = rollData.imageFile;
-rollsImage.alt = chosenRoll + " Cinnamon Roll";
+rollsImage.alt = chosenRoll + " Cinnamon Roll"; //alt text
 
 const priceElement = document.querySelector('#item-price-id'); //update price
 priceElement.innerText = `$${rollData.basePrice.toFixed(2)}`;
@@ -49,7 +49,6 @@ priceElement.innerText = `$${rollData.basePrice.toFixed(2)}`;
 const cart = []; //CART
 
 //THIS IS FOR STORING AND THEN PUTTING INTO CART
-//rollGlazing is the TYPE of the glazing
 
 class Roll {
     constructor(rollType, rollGlazing, packSize, basePrice) {
@@ -67,9 +66,8 @@ document.getElementById('add-cart-button').addEventListener('click', function() 
     console.log("this is the rollGlazing " + rollGlazing);
     const packSize= document.querySelector('select[id="quantity-options"]').value; //from select
     console.log("this is the packSize " + packSize);
-    const rollBasePrice= rollBasePrice; //this is passed from product detail
 
-    addToCart(rollType, rollGlazing, packSize, rollBasePrice); //call the function to add the roll to the cart
+    addToCart(rollType, rollGlazing, packSize, basePrice); //call the function to add the roll to the cart
 });
 
 

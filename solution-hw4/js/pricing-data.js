@@ -45,10 +45,10 @@ let allGlazings = [
 
       for (let i = 0; i < allGlazings.length; i++) {
         const glazingOption = document.createElement('option');
-        glazingOption.value = allGlazings[i].glazingPrice; 
+        glazingOption.value = allGlazings[i].glazing; 
         glazingOption.text = `${allGlazings[i].glazing}`;  //displayed in dropdown
 
-        //glazingOption.setAttribute('glazing-price', allGlazings[i].glazingPrice); //data attribute for price
+        glazingOption.setAttribute('glazingPrice', allGlazings[i].glazingPrice); //data attribute for price
 
         selectElement.appendChild(glazingOption);
       }
@@ -67,7 +67,6 @@ let allGlazings = [
 
   }
 
-  const basePrice = 2.49;
   let glazingPrice = 0; 
   let packSize = 1; 
   let priceAdaptation = 1;
@@ -76,13 +75,14 @@ let allGlazings = [
       let totalPrice = (basePrice + glazingPrice) * packSize;
       let totalPriceElement = document.querySelector('#item-price-id');
       totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-      console.log('total price:', totalPrice, 'base price', basePrice, 'glazing price', glazingPrice, 'pack size', packSize)
+      console.log('total price:', totalPrice, 'base price: ', basePrice, 'glazing price: ', glazingPrice, 'pack size: ', packSize)
   }
   
   function glazingChange(element) {
-      glazingPrice = parseFloat(element.value); 
-      console.log('glazing price change:', glazingPrice); //for debugging
-      updateTotal();
+    const selectedOption = element.options[element.selectedIndex];  
+    glazingPrice = parseFloat(selectedOption.getAttribute('glazingPrice')); 
+    console.log('glazing price change: ', glazingPrice); //for debugging
+    updateTotal();
   }
   
   function quantityChange(element) {
