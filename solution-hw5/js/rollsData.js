@@ -1,4 +1,4 @@
-//THIS IS FOR THE DIFF ROLL TYPES //FOR THE DISPLAY
+//THIS IS FOR THE DIFF ROLL TYPES //FOR THE DISPLAY + UPDATING THEM
 const rolls = {
     "Original": {
         "basePrice": 2.49,
@@ -61,11 +61,11 @@ class Roll {
 
 document.getElementById('add-cart-button').addEventListener('click', function() { 
     const rollType = chosenRoll; //this is passed from product detail
-    console.log("this is the rollType " + rollType);
+    console.log("this is the rollType " + rollType); //debugging
     const rollGlazing = document.querySelector('select[id="glazing-options"]').value; //from select
-    console.log("this is the rollGlazing " + rollGlazing);
+    console.log("this is the rollGlazing " + rollGlazing); //debugging
     const packSize= document.querySelector('select[id="quantity-options"]').value; //from select
-    console.log("this is the packSize " + packSize);
+    console.log("this is the packSize " + packSize); //debugging
 
     addToCart(rollType, rollGlazing, packSize, basePrice); //call the function to add the roll to the cart
 });
@@ -76,3 +76,5 @@ function addToCart(rollType, rollGlazing, packSize, basePrice) {
     cart.push(newRoll); //add roll to cart
     console.log(cart); //print cart
 };
+
+export const cart = [];
