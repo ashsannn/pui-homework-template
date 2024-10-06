@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+ 
+  <nav class="all-nav-container">
+    <a href="product_gallery.html">
+      <img src="../assets/logo/logo-01.svg" id="logo" alt="Logo">
+    </a>
+    <div class="nav-line-menu-container">
+      <div class="nav-menu-choice-container">
+        <h3 class="page-off"> 
+          <a href="product_gallery.html"> Products</a>
+        </h3>
+        <h3 class="page-on"> 
+          <a href="shopping_cart.html">Cart</a>
+        </h3>
+      </div>
+      <hr class="nav-line">
+      <div class="headers">
+        <h5>
+          Our hand-made cinnamon rolls
+        </h5>
+      </div>
+    </div>
+</nav>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <body>
+
+
+    <div class="shopping-cart-container">
+
+      <div class="all-cart-items-container">
+
+
+         <div class="cart-item-container">
+            <div class="image-and-remove-container">
+              <img src="../assets/products/original-cinnamon-roll.jpg" class="cart-thumbnail" alt="original cinnamon roll">
+                <p class="cart-remove-text">
+                  Remove
+                </p>
+            </div>
+            <div class="cart-item-description-price-container">
+              <div class="cart-item-description-container">
+                  <p class="cart-description">
+                  Original Cinnamon Roll
+                  </p>
+                  <p class="cart-description">
+                    Glazing: Keep original
+                  </p>
+                  <p class="cart-description">
+                    Pack size: 1
+                  </p>
+              </div>
+              <div class="cart-price-container">
+                  <p class="cart-price">
+                    $2.49
+                  </p>
+              </div>
+            </div>
+         </div>
+        
+
+          <div class="cart-item-container">
+            <div class="image-and-remove-container">
+             <img src="../assets/products/double-chocolate-cinnamon-roll.jpg" class="cart-thumbnail"  alt="double chocolate cinnamon roll">
+              <p class="cart-remove-text">
+                Remove
+              </p>
+            </div>
+            <div class="cart-item-description-price-container">
+              <div class="cart-item-description-container">
+                <p class="cart-description">
+                  Double-chocolate Cinnamon Roll
+                </p>
+                <p class="cart-description">
+                  Glazing: Sugar milk
+                </p>
+                <p class="cart-description">
+                  Pack size: 6
+                </p>
+              </div>
+              <div class="cart-price-container">
+                <p class="cart-price">
+                  $27.45
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr class="checkout-line">
+      </div>
+      <div class="checkout-info-button-container">
+        <div class="checkout-total-container">
+          <p>
+            Total: 
+          </p>
+          <p>
+            $29.94
+          </p>
+        </div>
+        <button id="checkout-button" type="button" class="button-1">Checkout</button>
+      </div>
+    </div>
+
+    <script src="js/rollsData.js"></script>
+    <script src="js/pricing-data.js"></script>
+
+  </body>
+</html>
