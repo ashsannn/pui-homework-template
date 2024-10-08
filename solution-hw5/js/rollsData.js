@@ -45,10 +45,7 @@ rollsImage.alt = chosenRoll + " Cinnamon Roll"; //alt text
 const priceElement = document.querySelector('#item-price-id'); //update price
 priceElement.innerText = `$${rollData.basePrice.toFixed(2)}`;
 
-
-const cart = []; //CART
-
-//THIS IS FOR STORING AND THEN PUTTING INTO CART
+/*-------------------------------------ROLL CLASS--------------------------------*/
 
 class Roll {
     constructor(rollType, rollGlazing, packSize, basePrice) {
@@ -56,8 +53,22 @@ class Roll {
         this.glazing =  rollGlazing;
         this.size = packSize;
         this.basePrice = basePrice;
+
+        this.element = null;
     }
+
 }
+
+/* ------------------------------ CART FUNCTIONALITY ----------------------------*/
+
+const cart = []; //CART
+
+function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
+    const roll = new Roll(rollType, rollGlazing, packSize, basePrice); //new roll
+    cart.push(roll); //add roll to cart
+    console.log(cart); //print cart
+    return roll;
+};
 
 document.getElementById('add-cart-button').addEventListener('click', function() { 
     const rollType = chosenRoll; //this is passed from product detail
@@ -67,14 +78,5 @@ document.getElementById('add-cart-button').addEventListener('click', function() 
     const packSize= document.querySelector('select[id="quantity-options"]').value; //from select
     console.log("this is the packSize " + packSize); //debugging
 
-    addToCart(rollType, rollGlazing, packSize, basePrice); //call the function to add the roll to the cart
-});
-
-
-function addToCart(rollType, rollGlazing, packSize, basePrice) {
-    const newRoll = new Roll(rollType, rollGlazing, packSize, basePrice); //new roll
-    cart.push(newRoll); //add roll to cart
-    console.log(cart); //print cart
-};
-
-export const cart = [];
+    addRollToCart(rollType, rollGlazing, packSize, basePrice); //call the function to add the roll to the cart
+})

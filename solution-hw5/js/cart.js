@@ -1,13 +1,48 @@
-import { cart } from './rollsData.js';
+const cart = []; //CART
 
-const originalRoll = new Roll('Original', 'Sugar Milk', 1, );
-const walnutRoll = new Roll('Walnut', 'Vanilla Milk', 12, 39.90);
-const raisinRoll = new Roll('Raisin', 'Sugar Milk', 3, 8.97);
-const appleRoll = new Roll('Apple', 'Original', 3, 10.47);
+/* ------------------------------ CART FUNCTIONALITY ----------------------------*/
 
-cart.push(originalRoll);
-cart.push(walnutRoll);
-cart.push(raisinRoll);
-cart.push(appleRoll);
+function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
+    const roll = new Roll(rollType, rollGlazing, packSize, basePrice); //new roll
+    cart.push(roll); //add roll to cart
+    console.log(cart); //print cart
+    return roll;
+};
 
-console.log(cart);
+const rollOne = addRollToCart(
+    'Original',
+    'Sugar Milk',
+    '1'
+);
+
+const rollTwo = addRollToCart(
+    'walnut',
+    'Vanilla Milk',
+    '12'
+);
+
+const rollThree = addRollToCart(
+    'Raisin',
+    'Sugar Milk',
+    '3'
+);
+
+const rollFour = addRollToCart(
+    'Apple',
+    'Original',
+    '3'
+);
+
+for (const roll of cart) {
+    console.log(roll);
+    createElement(roll);
+} //THIS CREATES IT IN DOM SO THAT WE CAN ADD IN HTML
+
+function createElement(roll){
+    console.log("creating a roll")
+    const template = document.querySelector('#roll-template'); 
+    const clone = template.content.cloneNode(true);
+    roll.element = clone.querySelector('.roll');
+
+    console.log(roll.element);
+}

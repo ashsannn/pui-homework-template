@@ -1,6 +1,4 @@
-
 //THIS IS FOR THE PRICE + QUANTITY DYNAMIC
-
 let allGlazings = [
     {
       glazing: 'Original',

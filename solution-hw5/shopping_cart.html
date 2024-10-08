@@ -34,7 +34,8 @@
 
       <div class="all-cart-items-container">
 
-
+        <template id="roll-template">
+        <div class="roll">
          <div class="cart-item-container">
             <div class="image-and-remove-container">
               <img src="../assets/products/original-cinnamon-roll.jpg" class="cart-thumbnail" alt="original cinnamon roll">
@@ -60,9 +61,12 @@
                   </p>
               </div>
             </div>
-         </div>
+         </div> 
+        </div> <!-- END roll class item template -->
+        </template> <!-- END cart item template -->
         
-
+         <template id="roll-template">
+          <div class="roll">
           <div class="cart-item-container">
             <div class="image-and-remove-container">
              <img src="../assets/products/double-chocolate-cinnamon-roll.jpg" class="cart-thumbnail"  alt="double chocolate cinnamon roll">
@@ -76,36 +80,40 @@
                   Double-chocolate Cinnamon Roll
                 </p>
                 <p class="cart-description">
-                  Glazing: Sugar milk
+                  Glazing: <span id="glazing-name-cart"> Sugar milk </span>
                 </p>
                 <p class="cart-description">
-                  Pack size: 6
+                  Pack size:  <span id="pack-size-cart> 6 </span>
                 </p>
               </div>
               <div class="cart-price-container">
-                <p class="cart-price">
+                <p class="price-cart">
                   $27.45
                 </p>
               </div>
             </div>
           </div>
+        </div> <!-- END roll class item template -->
+        </template> <!-- END cart item template -->
+
           <hr class="checkout-line">
+
       </div>
       <div class="checkout-info-button-container">
         <div class="checkout-total-container">
           <p>
             Total: 
           </p>
-          <p>
-            $29.94
+          <p id="total_amount">
+            $
           </p>
         </div>
         <button id="checkout-button" type="button" class="button-1">Checkout</button>
       </div>
     </div>
 
-    <script src="js/rollsData.js"></script>
-    <script src="js/pricing-data.js"></script>
+    
+    <script src="js/cart.js"></script>
 
   </body>
 </html>
