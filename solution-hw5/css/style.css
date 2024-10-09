@@ -297,7 +297,7 @@ a.product-box:hover  .product-name {
   text-align: center;
 }
 
-.cart-remove-text{
+.cart-remove{
   font-size: 16px;
   text-align: left;
   padding-block: 8px;
