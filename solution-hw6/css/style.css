@@ -1,0 +1,326 @@
+/* ---------- MASTER CSS ------------------------------------------------------ */
+
+#logo{
+  width: 400px;
+}
+
+.all-nav-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-line-menu-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-width: 2px;
+  width: 100%;
+  padding-block: 2%;
+}
+
+.nav-menu-choice-container{
+  display: flex;
+  border-width: 2px;
+  column-gap: 30%;
+  align-self: flex-end;
+  padding-right: 20%;
+}
+
+.nav-line{
+  width: 100%;
+  height: 4px;
+  margin-top: 3%;
+  background: #000;
+}
+
+h3{
+  display: flex;
+  font-size: 20px;
+  text-transform: uppercase;
+  align-items: center;
+  border-width: 2px;
+}
+
+.page-on,
+h3{
+  background-color: yellow;
+  font-weight: 600;
+}
+
+.page-off,
+h3{
+  background-color: #fff;
+  font-weight: normal;
+}
+
+h5{
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 5%;
+}
+
+p{
+  font-size: 18px;
+  padding-block: 0px;
+  margin-block: 2px;
+}
+
+.headers{
+  padding-top: 10%;
+  align-self: flex-start;
+  margin-left: 2%;
+  padding-bottom: 2%;
+}
+
+.button-1{
+  background-color: yellow;
+  border-style: solid;
+  border-width: 2px;
+  padding-block: 1%;
+  padding-inline: 3%;
+  width: fit-content;
+  justify-self: flex-end;
+  align-self: flex-end;
+  font-weight: 600;
+}
+
+/* ---------- PRODUCT GALLERY ------------------------------------------------------ */
+
+/* largest div */
+.product-gallery-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  font-size: 16px;
+  align-items: center;
+  margin-bottom: 30%;
+  margin-top: 3%;
+}
+
+.product-thumbnail {
+  width: 283px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+.product-name{
+  text-decoration: underline;
+  margin-block: 0;
+}
+
+.item-price{
+  margin-block: 0px;
+}
+
+.product-box{
+  margin: 8px;
+}
+
+/* ---------- PRODUCT DETAIL ------------------------------------------------------ */
+
+/* largest div */
+.product-detail-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  margin-bottom: 30%;
+}
+
+.product-detail-custom-container{
+  display: flex;
+  flex-direction: column;
+}
+
+#product-name {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+#prod-detail-image{
+  width: 600px;
+  margin-left: 5%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+.product-detail-image-description-custom-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.product-detail-description-custom-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 5%;
+  border-width: 3px;
+  padding-right: 6%;
+}
+
+.product-detail-description-container{
+  display: flex;
+  max-height: fit-content;
+  margin-bottom: 8%;
+}
+
+.product-detail-customization{
+  justify-content: center;
+  margin-bottom: 8%;
+}
+
+.custom-block{
+  justify-content: flex-start;
+  padding-block: 8px;
+}
+
+.custom-title{
+  margin-block: 4px;
+}
+
+#total-container{
+  display: flex;
+  gap: 20px;
+  padding-block: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+a.product-box:hover {
+  background-color: yellow;
+  cursor:pointer;
+}
+
+a.product-box:hover  .product-name {
+  font-weight: 600;
+}
+
+.custom-select-container{
+  padding-block: 4px;
+  display: flex;
+}
+
+.custom-select{
+  width: 100%;
+  padding-block: 2px;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+#add-cart-button{
+  border-width: 2px;
+  padding-inline: 5%;
+  padding-block: 2%;
+}
+
+/* ---------- CART ------------------------------------------------------ */
+
+/* largest div */
+.shopping-cart-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  margin-right: 5%;
+}
+
+.all-cart-items-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 30%;
+  padding-right: 0%;
+  justify-content: center;
+}
+
+.cart-item-container{
+  display: flex;
+  margin-bottom: 3%;
+}
+
+.cart-thumbnail{
+  width: 200px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  margin: auto;
+  justify-content: center;
+}
+
+.image-and-remove-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-right: 2%;
+}
+
+.cart-price-container{
+}
+
+.cart-item-description-price-container{
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 5%;
+  padding-top: 2%;
+}
+
+.cart-item-description-container{
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  padding-left: 2%;
+  justify-content: flex-start;
+  height: fit-content;
+}
+
+.checkout-total-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-block: 4px;
+  column-gap: 30%;
+  margin-left: 0%;
+}
+
+.cart-description{
+  text-align: left;
+  padding-block: 1%;
+}
+
+.cart-price{
+  text-align: center;
+}
+
+.cart-remove{
+  font-size: 16px;
+  text-align: left;
+  padding-block: 8px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.checkout-line{
+  width: 100%;
+  border: none;
+  background: #000;
+  height: 3px;
+  padding-block: 0%;
+}
+
+.checkout-info-button-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#checkout-button{
+  font-weight: 600;
+  margin: 16px;
+  border-width: 1px;
+}
