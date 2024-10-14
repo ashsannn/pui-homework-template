@@ -2,114 +2,31 @@
 const cart = []; //CART
 
 /* ------------------------------ ROLL TYPES INFO  ----------------------------*/
-
 const rolls = {
-    "Original": {
-        "basePrice": 2.49,
-        "imageFile": "../assets/products/original-cinnamon-roll.jpg"
-    },
-    "Apple": {
-        "basePrice": 3.49,
-        "imageFile": "../assets/products/apple-cinnamon-roll.jpg"
-    },
-    "Raisin": {
-        "basePrice": 2.99,
-        "imageFile": "../assets/products/raisin-cinnamon-roll.jpg"
-    },
-    "Walnut": {
-        "basePrice": 3.49,
-        "imageFile": "../assets/products/walnut-cinnamon-roll.jpg"
-    },
-    "Double-Chocolate": {
-        "basePrice": 3.99,
-        "imageFile": "../assets/products/double-chocolate-cinnamon-roll.jpg"
-    },
-    "Strawberry": {
-        "basePrice": 3.99,
-        "imageFile": "../assets/products/strawberry-cinnamon-roll.jpg"
-    }    
+    "Original": { "basePrice": 2.49, "imageFile": "../assets/products/original-cinnamon-roll.jpg"},
+    "Apple": { "basePrice": 3.49, "imageFile": "../assets/products/apple-cinnamon-roll.jpg"},
+    "Raisin": { "basePrice": 2.99, "imageFile": "../assets/products/raisin-cinnamon-roll.jpg"},
+    "Walnut": { "basePrice": 3.49, "imageFile": "../assets/products/walnut-cinnamon-roll.jpg"},
+    "Double-Chocolate": {"basePrice": 3.99, "imageFile": "../assets/products/double-chocolate-cinnamon-roll.jpg" },
+    "Strawberry": { "basePrice": 3.99, "imageFile": "../assets/products/strawberry-cinnamon-roll.jpg"}    
 };
 
 /* ------------------------------ CALCULATION CODE ----------------------------*/
-
 let allGlazings = [
-    {
-      glazing: 'Original',
-      glazingPrice: '0.00',
-    },
-    {
-      glazing: 'Sugar Milk',
-      glazingPrice: '0.00',
-    },
-    {
-      glazing: 'Vanilla Milk',
-      glazingPrice: '0.50',
-    },
-    {
-      glazing: 'Double Chocolate',
-      glazingPrice: '1.50',
-    }
+    { glazing: 'Original', glazingPrice: '0.00'},
+    { glazing: 'Sugar Milk', glazingPrice: '0.00'},
+    { glazing: 'Vanilla Milk', glazingPrice: '0.50'},
+    { glazing: 'Double Chocolate', glazingPrice: '1.50'}
   ];
   
   let packSizes = [
-    {
-      packSize: '1',
-      priceAdaptation: '1',
-    },
-    {
-      packSize: '3',
-      priceAdaptation: '3',
-    },
-    {
-      packSize: '6',
-      priceAdaptation: '5',
-    },
-    {
-      packSize: '12',
-      priceAdaptation: '10',
-    }
+    { packSize: '1', priceAdaptation: '1'},
+    { packSize: '3', priceAdaptation: '3'},
+    { packSize: '6', priceAdaptation: '5'},
+    { packSize: '12', priceAdaptation: '10'}
   ];
 
-
-/*-------------------------------------ROLL CLASS--------------------------------*/
-
-class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.type = rollType;
-        this.glazing = rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-
-        this.element = null;
-    }
-
-    getGlazingPrice() {
-        for (let i = 0; i < allGlazings.length; i++) {
-            if (allGlazings[i].glazing === this.glazing) {
-                return parseFloat(allGlazings[i].glazingPrice);
-            }
-        }
-    }
-
-    getPackPriceAdaptation() {
-        for (let i = 0; i < packSizes.length; i++) {
-            if (packSizes[i].packSize === this.size) {
-                return parseFloat(packSizes[i].priceAdaptation);
-            }
-        }
-    }
-
-    calculateRollTotal() {
-        const glazingPrice = this.getGlazingPrice();
-        const packPriceAdaptation = this.getPackPriceAdaptation();
-        
-        const totalPrice = (this.basePrice + glazingPrice) * packPriceAdaptation;
-        return totalPrice;
-    }
-}
-
 /* ------------------------------ CART FUNCTIONALITY ----------------------------*/
-
 function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
     const roll = new Roll(rollType, rollGlazing, packSize, basePrice);
     cart.push(roll);
@@ -121,9 +38,6 @@ function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
 
 /* ------------------------------ CART INITIALIZATION ----------------------------*/
 addRollToCart('Original','Sugar Milk', '1', 2.49);
-addRollToCart('Walnut','Vanilla Milk', '12', 3.49);
-addRollToCart('Raisin', 'Sugar Milk', '3', 2.99);
-addRollToCart('Apple', 'Original', '3', 3.49);
 
 /* ------------------------------ DOM MANIPULATION ----------------------------*/
 function createElement(roll){
@@ -138,7 +52,6 @@ function createElement(roll){
     cartListElement.prepend(roll.element); 
     updateElement(roll);
 }
-
 
 function updateElement(roll) {
     const cartImageElement = roll.element.querySelector('.cart-thumbnail');
@@ -171,7 +84,6 @@ function updateCartTotal() {
 }
 
 /* ------------------------------ DELETE FUNCTIONALITY ----------------------------*/
-//TO DELETE NOTECARD !! 
 function deleteRoll(roll) {
     roll.element.remove(); //Remove from DOM
     
@@ -182,5 +94,28 @@ function deleteRoll(roll) {
 
     updateCartTotal();
 }
-
 updateCartTotal();
+
+/* ------------------------------ LOCAL STORAGE FUNCTIONALITY ----------------------------*/
+function saveToLocalStorage() {
+    const cartArrayString = JSON.stringify(cart);
+    localStorage.setItem('storedCart', cartArrayString);
+    console.log('Cart saved to localStorage:', cartArrayString);
+}
+
+function retrieveFromLocalStorage() {
+    const cartArrayString = localStorage.getItem('storedCart');
+    if (cartArrayString) {
+        const cartArray = JSON.parse(cartArrayString);
+        for (const rollData of cartArray) {
+            const roll = addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);  
+            createElement(roll); // Update the DOM
+        }
+        updateCartTotal(); // Update total price
+    }
+}
+
+/* ------------------------------ INITIALIZATION ----------------------------*/
+if (localStorage.getItem('storedCart') != null) {
+    retrieveFromLocalStorage();
+}

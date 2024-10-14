@@ -1,42 +1,17 @@
 //THIS IS FOR THE PRICE + QUANTITY DYNAMIC
 let allGlazings = [
-    {
-      glazing: 'Original',
-      glazingPrice: '0.00',
-    },
-    {
-      glazing: 'Sugar Milk',
-      glazingPrice: '0.00',
-    },
-    {
-      glazing: 'Vanilla Milk',
-      glazingPrice: '0.50',
-    },
-    {
-      glazing: 'Double Chocolate',
-      glazingPrice: '01.50',
-    }
+    {glazing: 'Original', glazingPrice: '0.00'},
+    {glazing: 'Sugar Milk', glazingPrice: '0.00'},
+    {glazing: 'Vanilla Milk', glazingPrice: '0.50'},
+    {glazing: 'Double Chocolate', glazingPrice: '01.50',}
   ];
   
   let packSizes = [
-    {
-      packSize: '1',
-      priceAdaptation: '1',
-    },
-    {
-      packSize: '3',
-      priceAdaptation: '3',
-    },
-    {
-      packSize: '6',
-      priceAdaptation: '5',
-    },
-    {
-      packSize: '12',
-      priceAdaptation: '10',
-    }
+    {packSize: '1', priceAdaptation: '1'},
+    {packSize: '3', priceAdaptation: '3'},
+    {packSize: '6', priceAdaptation: '5'},
+    {packSize: '12', priceAdaptation: '10'}
   ];
-
 
   function populateGlazingSelect() {
     const selectElement = document.getElementById('glazing-options');
