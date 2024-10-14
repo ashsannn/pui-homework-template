@@ -94,7 +94,6 @@ function deleteRoll(roll) {
 
     updateCartTotal();
 }
-updateCartTotal();
 
 /* ------------------------------ LOCAL STORAGE FUNCTIONALITY ----------------------------*/
 function saveToLocalStorage() {
@@ -108,8 +107,8 @@ function retrieveFromLocalStorage() {
     if (cartArrayString) {
         const cartArray = JSON.parse(cartArrayString);
         for (const rollData of cartArray) {
-            const roll = addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);  
-            createElement(roll); // Update the DOM
+            console.log(`Roll Data: ${JSON.stringify(rollData)}`); // Log retrieved data
+            const roll = addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);
         }
         updateCartTotal(); // Update total price
     }

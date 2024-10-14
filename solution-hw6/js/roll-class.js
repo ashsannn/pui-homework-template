@@ -16,6 +16,7 @@ class Roll {
                 return parseFloat(allGlazings[i].glazingPrice);
             }
         }
+        return 0;
     }
 
     getPackPriceAdaptation() {
@@ -24,13 +25,22 @@ class Roll {
                 return parseFloat(packSizes[i].priceAdaptation);
             }
         }
+        console.warn(`Pack size ${this.size} not found. Defaulting to 1`);
+        return 1; 
     }
 
     calculateRollTotal() {
         const glazingPrice = this.getGlazingPrice();
         const packPriceAdaptation = this.getPackPriceAdaptation();
-        
         const totalPrice = (this.basePrice + glazingPrice) * packPriceAdaptation;
+
+        console.log("Roll class debugging vvv");
+        console.log(`Calculating total for ~${this.type}~ roll:`);
+        console.log(`Base Price: $${this.basePrice}`);
+        console.log(`Glazing Price (${this.glazing}): $${glazingPrice}`);
+        console.log(`Pack Price Adaptation: ${packPriceAdaptation}`);
+        console.log(`Total Price: $${totalPrice.toFixed(2)}`);
+
         return totalPrice;
     }
 }

@@ -1,4 +1,4 @@
-//THIS IS FOR THE PRICE + QUANTITY DYNAMIC
+/* ------------------------------ POPULATING THE DROP DOWN  ----------------------------*/
 let allGlazings = [
     {glazing: 'Original', glazingPrice: '0.00'},
     {glazing: 'Sugar Milk', glazingPrice: '0.00'},
@@ -48,19 +48,19 @@ let allGlazings = [
       let totalPrice = (basePrice + glazingPrice) * packSize;
       let totalPriceElement = document.querySelector('#item-price-id');
       totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-      console.log('total price:', totalPrice, 'base price: ', basePrice, 'glazing price: ', glazingPrice, 'pack size: ', packSize)
+      console.log('Total price roll:', totalPrice.toFixed(2), 'Base price:', basePrice, 'Glazing price:', glazingPrice, 'Pack size:', packSize)
   }
   
   function glazingChange(element) {
     const selectedOption = element.options[element.selectedIndex];  
     glazingPrice = parseFloat(selectedOption.getAttribute('glazingPrice')); 
-    console.log('glazing price change: ', glazingPrice); //for debugging
+    console.log('Glazing price change: ', glazingPrice); //for debugging
     updateTotal();
   }
   
   function quantityChange(element) {
       packSize = parseInt(element.value);
-      console.log('quantity change:', packSize); //for debugging
+      console.log('Quantity change:', packSize); //for debugging
       updateTotal();
   } 
 
