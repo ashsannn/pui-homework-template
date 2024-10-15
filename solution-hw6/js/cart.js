@@ -103,14 +103,17 @@ function retrieveFromLocalStorage() {
     if (cartArrayString) {
         const cartArray = JSON.parse(cartArrayString);
         for (const rollData of cartArray) {
-            console.log(`Roll Data: ${JSON.stringify(rollData)}`); // Log retrieved data
+            console.log(`Roll Data: ${JSON.stringify(rollData)}`); //log
             addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);
         }
-        updateCartTotal(); // Update total price
+        updateCartTotal(); //update total price
     }
 }
 
 /* ------------------------------ INITIALIZATION ----------------------------*/
+addRollToCart('Original', 'Sugar Milk', '1', 2.49);
+
+
 if (localStorage.getItem('storedCart') != null) {
     retrieveFromLocalStorage();
 } else {
