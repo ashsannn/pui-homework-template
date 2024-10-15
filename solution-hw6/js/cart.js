@@ -1,4 +1,5 @@
 const cart = [];
+
 /* ------------------------------ ROLL TYPES INFO  ----------------------------*/
 const rolls = {
     "Original": { "basePrice": 2.49, "imageFile": "../assets/products/original-cinnamon-roll.jpg"},
@@ -33,6 +34,8 @@ function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
     updateCartTotal(); 
     return roll;
 }
+addRollToCart('Original', 'Sugar Milk', '1', 2.49);
+
 
 /* ------------------------------ DOM MANIPULATION ----------------------------*/
 function createElement(roll){
@@ -111,11 +114,7 @@ function retrieveFromLocalStorage() {
 }
 
 /* ------------------------------ INITIALIZATION ----------------------------*/
-addRollToCart('Original', 'Sugar Milk', '1', 2.49);
-
 
 if (localStorage.getItem('storedCart') != null) {
     retrieveFromLocalStorage();
-} else {
-    addRollToCart('Original', 'Sugar Milk', '1', 2.49);
-}
+} 
