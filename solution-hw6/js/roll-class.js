@@ -39,7 +39,7 @@ class Roll {
         console.log(`Base Price: $${this.basePrice}`);
         console.log(`Glazing Price (${this.glazing}): $${glazingPrice}`);
         console.log(`Pack Price Adaptation: ${packPriceAdaptation}`);
-        console.log(`Total Price: $${totalPrice.toFixed(2)}`);
+        console.log(`Total Price (roll class): $${totalPrice.toFixed(2)}`);
 
         return totalPrice;
     }

@@ -1,6 +1,4 @@
-
-const cart = []; //CART
-
+const cart = [];
 /* ------------------------------ ROLL TYPES INFO  ----------------------------*/
 const rolls = {
     "Original": { "basePrice": 2.49, "imageFile": "../assets/products/original-cinnamon-roll.jpg"},
@@ -35,9 +33,6 @@ function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
     updateCartTotal(); 
     return roll;
 }
-
-/* ------------------------------ CART INITIALIZATION ----------------------------*/
-addRollToCart('Original','Sugar Milk', '1', 2.49);
 
 /* ------------------------------ DOM MANIPULATION ----------------------------*/
 function createElement(roll){
@@ -80,19 +75,20 @@ function updateCartTotal() {
     }
     const totalPriceElement = document.querySelector('#total-amount');
     totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-    console.log('Total price:', totalPrice);
+    console.log(`Total Price cart: $${totalPrice.toFixed(2)}`);
 }
 
 /* ------------------------------ DELETE FUNCTIONALITY ----------------------------*/
 function deleteRoll(roll) {
-    roll.element.remove(); //Remove from DOM
+    roll.element.remove(); //eemove from DOM
     
     const index = cart.indexOf(roll);
     if (index > -1) {
         cart.splice(index, 1);
+        console.log("Roll removed from cart");
     }
-
     updateCartTotal();
+    saveToLocalStorage();
 }
 
 /* ------------------------------ LOCAL STORAGE FUNCTIONALITY ----------------------------*/
@@ -108,7 +104,7 @@ function retrieveFromLocalStorage() {
         const cartArray = JSON.parse(cartArrayString);
         for (const rollData of cartArray) {
             console.log(`Roll Data: ${JSON.stringify(rollData)}`); // Log retrieved data
-            const roll = addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);
+            addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);
         }
         updateCartTotal(); // Update total price
     }
@@ -117,4 +113,6 @@ function retrieveFromLocalStorage() {
 /* ------------------------------ INITIALIZATION ----------------------------*/
 if (localStorage.getItem('storedCart') != null) {
     retrieveFromLocalStorage();
+} else {
+    addRollToCart('Original', 'Sugar Milk', '1', 2.49);
 }

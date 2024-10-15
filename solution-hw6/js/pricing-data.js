@@ -1,4 +1,4 @@
-/* ------------------------------ POPULATING THE DROP DOWN  ----------------------------*/
+//THIS IS FOR THE PRICE + QUANTITY DYNAMIC
 let allGlazings = [
     {glazing: 'Original', glazingPrice: '0.00'},
     {glazing: 'Sugar Milk', glazingPrice: '0.00'},
@@ -35,6 +35,11 @@ let allGlazings = [
         const option = document.createElement('option');
         option.value = packSizes[i].priceAdaptation;
         option.text = packSizes[i].packSize; //displayed in dropdown
+
+        option.setAttribute('packSize', packSizes[i].packSize); // Store packSize attribute
+        option.setAttribute('priceAdaptation', packSizes[i].priceAdaptation); // Store priceAdaptation attribute
+        selectElement.appendChild(option);
+
         selectElement.appendChild(option);
       }
 
@@ -48,19 +53,19 @@ let allGlazings = [
       let totalPrice = (basePrice + glazingPrice) * packSize;
       let totalPriceElement = document.querySelector('#item-price-id');
       totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-      console.log('Total price roll:', totalPrice.toFixed(2), 'Base price:', basePrice, 'Glazing price:', glazingPrice, 'Pack size:', packSize)
+      console.log('Updating total --> Total price:', `$${totalPrice.toFixed(2)}`, 'Base price: ', `$${basePrice.toFixed(2)}`, 'Glazing price: ', `$${glazingPrice.toFixed(2)}`, 'pack size: ', packSize)
   }
   
   function glazingChange(element) {
     const selectedOption = element.options[element.selectedIndex];  
     glazingPrice = parseFloat(selectedOption.getAttribute('glazingPrice')); 
-    console.log('Glazing price change: ', glazingPrice); //for debugging
+    console.log('New glazing --> Glazing price change: ', glazingPrice); //for debugging
     updateTotal();
   }
   
   function quantityChange(element) {
       packSize = parseInt(element.value);
-      console.log('Quantity change:', packSize); //for debugging
+      console.log('New Q --> Quantity change:', packSize); //for debugging
       updateTotal();
   } 
 

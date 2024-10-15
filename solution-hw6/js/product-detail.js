@@ -1,3 +1,5 @@
+let cart = [];
+
 /*-------------------------------------DATA STRUCTURES--------------------------------*/
 const rolls = {
     "Original": {"basePrice": 2.49, "imageFile": "../assets/products/original-cinnamon-roll.jpg"},
@@ -28,13 +30,12 @@ const priceElement = document.querySelector('#item-price-id'); //update price
 priceElement.innerText = `$${rollData.basePrice.toFixed(2)}`;
 
 /* ------------------------------ CART FUNCTIONALITY ----------------------------*/
-let cart = [];
 
 function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
     const roll = new Roll(rollType, rollGlazing, packSize, basePrice); //new roll
     cart.push(roll); //add roll to cart
     console.log("Added to cart: ", roll); //debugging
-    saveToLocalStorage(); // Save the updated cart to localStorage
+    saveToLocalStorage(); //save the updated cart to localStorage
     console.log("This is the cart now: ", cart); //print cart
     updateCartTotal();
     return roll;
@@ -43,10 +44,18 @@ function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
 document.getElementById('add-cart-button').addEventListener('click', function() { 
     const rollType = chosenRoll; //this is passed from product detail
     console.log("this is the rollType " + rollType); //debugging
-    const rollGlazing = document.querySelector('select[id="glazing-options"]').value; //from select
-    console.log("this is the rollGlazing " + rollGlazing); //debugging
-    const packSize= document.querySelector('select[id="quantity-options"]').value; //from select
-    console.log("this is the packSize " + packSize); //debugging
+    
+    //glazing
+    const glazingSelect = document.querySelector('select[id="glazing-options"]');
+    const selectedGlazingOption = glazingSelect.options[glazingSelect.selectedIndex];
+    const rollGlazing = selectedGlazingOption.value; //get selected glazing
+    console.log("This is the rollGlazing: " + rollGlazing); //debugging
+
+    //packsize
+    const packSizeSelect = document.querySelector('select[id="quantity-options"]');
+    const selectedPackOption = packSizeSelect.options[packSizeSelect.selectedIndex];
+    const packSize = selectedPackOption.getAttribute('packSize'); //get pack size
+    console.log("This is the packSize: " + packSize); //debugging
 
     addRollToCart(rollType, rollGlazing, packSize, basePrice); //call the function to add the roll to the cart
 })
@@ -58,7 +67,7 @@ function updateCartTotal() {
     for (const roll of cart) {
         totalPrice += roll.calculateRollTotal();
     }
-    console.log("HELP IM BROKEN")
+    console.log("HELP!!!!")
 }
 /* ------------------------------ SAVE FUNCTIONALITY ----------------------------*/
 
