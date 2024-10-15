@@ -1,4 +1,3 @@
-const cart = [];
 
 /* ------------------------------ ROLL TYPES INFO  ----------------------------*/
 const rolls = {
@@ -29,13 +28,12 @@ let allGlazings = [
 function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
     const roll = new Roll(rollType, rollGlazing, packSize, basePrice);
     cart.push(roll);
-    console.log("Added to cart" + roll); //test
+    console.log("Current cart contents:", cart); //debug
     createElement(roll);
     updateCartTotal(); 
+    saveToLocalStorage();
     return roll;
 }
-addRollToCart('Original', 'Sugar Milk', '1', 2.49);
-
 
 /* ------------------------------ DOM MANIPULATION ----------------------------*/
 function createElement(roll){
@@ -81,19 +79,6 @@ function updateCartTotal() {
     console.log(`Total Price cart: $${totalPrice.toFixed(2)}`);
 }
 
-/* ------------------------------ DELETE FUNCTIONALITY ----------------------------*/
-function deleteRoll(roll) {
-    roll.element.remove(); //eemove from DOM
-    
-    const index = cart.indexOf(roll);
-    if (index > -1) {
-        cart.splice(index, 1);
-        console.log("Roll removed from cart");
-    }
-    updateCartTotal();
-    saveToLocalStorage();
-}
-
 /* ------------------------------ LOCAL STORAGE FUNCTIONALITY ----------------------------*/
 function saveToLocalStorage() {
     const cartArrayString = JSON.stringify(cart);
@@ -105,16 +90,33 @@ function retrieveFromLocalStorage() {
     const cartArrayString = localStorage.getItem('storedCart');
     if (cartArrayString) {
         const cartArray = JSON.parse(cartArrayString);
-        for (const rollData of cartArray) {
-            console.log(`Roll Data: ${JSON.stringify(rollData)}`); //log
-            addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);
+        for (const roll of cartArray) {
+            console.log(`Roll Data: ${JSON.stringify(roll)}`); // log the roll data
+            console.log(`Type: ${roll.type}, Glazing: ${roll.glazing}, Size: ${roll.size}, Base Price: ${roll.basePrice}`);
+            addRollToCart(roll.type, roll.glazing, roll.size, roll.basePrice);
         }
-        updateCartTotal(); //update total price
+        updateCartTotal(); // Update total price
     }
+}
+
+/* ------------------------------ DELETE FUNCTIONALITY ----------------------------*/
+function deleteRoll(roll) {
+    roll.element.remove(); //remove from DOM
+    
+    const index = cart.indexOf(roll);
+    if (index > -1) {
+        cart.splice(index, 1);
+        console.log("Roll removed from cart. Current cart contents:", cart); //debug
+    }
+    updateCartTotal();
+    saveToLocalStorage();
 }
 
 /* ------------------------------ INITIALIZATION ----------------------------*/
 
-if (localStorage.getItem('storedCart') != null) {
+const cart = []; //
+const storedCart = localStorage.getItem('storedCart');
+if (storedCart) {
+    console.log("Retrieving cart from localStorage.");
     retrieveFromLocalStorage();
 } 

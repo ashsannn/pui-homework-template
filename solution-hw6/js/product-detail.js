@@ -41,25 +41,20 @@ function addRollToCart(rollType, rollGlazing, packSize, basePrice) {
     return roll;
 };
 
+
 document.getElementById('add-cart-button').addEventListener('click', function() { 
     const rollType = chosenRoll; //this is passed from product detail
     console.log("this is the rollType " + rollType); //debugging
-    
-    //glazing
-    const glazingSelect = document.querySelector('select[id="glazing-options"]');
-    const selectedGlazingOption = glazingSelect.options[glazingSelect.selectedIndex];
-    const rollGlazing = selectedGlazingOption.value; //get selected glazing
-    console.log("This is the rollGlazing: " + rollGlazing); //debugging
 
-    //packsize
+    const rollGlazing = document.querySelector('select[id="glazing-options"]').value; //from select
+    console.log("this is the rollGlazing " + rollGlazing); //debugging
+   
     const packSizeSelect = document.querySelector('select[id="quantity-options"]');
-    const selectedPackOption = packSizeSelect.options[packSizeSelect.selectedIndex];
-    const packSize = selectedPackOption.getAttribute('packSize'); //get pack size
+    const packSize = packSizeSelect.options[packSizeSelect.selectedIndex].value; 
     console.log("This is the packSize: " + packSize); //debugging
 
     addRollToCart(rollType, rollGlazing, packSize, basePrice); //call the function to add the roll to the cart
 })
-
 
 /* ------------------------------ TOTAL CART PRICE CALCULATION ----------------------------*/
 function updateCartTotal() {
@@ -67,7 +62,6 @@ function updateCartTotal() {
     for (const roll of cart) {
         totalPrice += roll.calculateRollTotal();
     }
-    console.log("HELP!!!!")
 }
 /* ------------------------------ SAVE FUNCTIONALITY ----------------------------*/
 
@@ -78,26 +72,16 @@ function saveToLocalStorage() {
 }
 
 function retrieveFromLocalStorage() {
-    const cartArrayString = localStorage.getItem('storedCart'); // Get cart from localStorage
-
-    if (!cartArrayString) {
-        console.warn('No stored cart found in localStorage.'); //debugging
-        return;
-    }
-
-    let cartArray;
-    try {
-        cartArray = JSON.parse(cartArrayString); //parse
-    } catch (error) {
-        console.error('Error parsing stored cart data:', error); //debug
-        return;
+    const cartArrayString = localStorage.getItem('storedCart');
+    if (cartArrayString) {
+        const cartArray = JSON.parse(cartArrayString);
+        for (const rollData of cartArray) {
+            console.log(`Restoring roll from localStorage:`, rollData); //debug
+            addRollToCart(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);
+        }
     }
 }
 
 if (localStorage.getItem('storedCart') != null) {
     retrieveFromLocalStorage();
-} else {
-    cart = [];
-}
-
-retrieveFromLocalStorage();
+} 

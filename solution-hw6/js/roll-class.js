@@ -1,3 +1,5 @@
+
+
 /*-------------------------------------ROLL CLASS--------------------------------*/
 
 class Roll {
@@ -25,8 +27,7 @@ class Roll {
                 return parseFloat(packSizes[i].priceAdaptation);
             }
         }
-        console.warn(`Pack size ${this.size} not found. Defaulting to 1`);
-        return 1; 
+        return 1;
     }
 
     calculateRollTotal() {
