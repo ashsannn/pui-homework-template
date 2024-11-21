@@ -1,39 +1,42 @@
-    /* Base styles and CSS reset */
+
+@media (max-width: 390px){
+/* Base styles and CSS reset */
     * {
-      margin: 8;
-      padding: 0;
+      margin: 0rem;
+      padding: 0rem;
       box-sizing: border-box;
     }
 
     .landing{
-        display: flex;
-        width: 390px; 
-        padding: 80px 0px 131px 0px;
+        display: flex; 
+        padding-block: 4rem;
+        padding-inline: 0rem;
         flex-direction: column;
         align-items: center;
         background-color: #F6F6F6;
     }
 
     .container-header{
+        width: 24rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: .8rem;
         background-color: #F6F6F6;
-        margin-bottom: 24px;
+        margin-bottom: 1rem;
     }
 
     .sub-header{
         font-family: helvetica neue;
         color: #E4703E;
-        font-size: 14px;
+        font-size: .9rem;
         font-weight: 400;
         padding: 0;
         margin: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px;
+        gap: .6rem;
         align-self: stretch;
     }
 
@@ -46,18 +49,11 @@
     }
 
     #sabor-logo{
-        width: 200px;
+        width: 12rem;
         height: fit-content;
     }
 
-    .container-instruction{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .input-container{
+    .container-input{
         display: flex;
         width: 342px;
         height: 44px;
@@ -88,17 +84,18 @@
         font-weight: 300;
         line-height: normal;
         margin-block: 2px;
-        padding-block: 2px;
+        padding-block: .2rem;
     }
 
-    
     .container-instruction{
-        width: 342px;
+        width: 25rem;
+        max-width: 390px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
-        padding-block: 13px;
+        gap: .5rem;
+        padding-block: 1rem;
+        padding-inline: 1rem;
     }
 
     .button-container{
@@ -149,3 +146,72 @@
         gap: 8px;
         text-align: center;
     }
+}
+
+/*-----------------RECIPE PAGE-----------------------*/
+
+
+@media (max-width: 390px) {
+    .search-box {
+        display: flex;
+        width: 24rem;
+        width: 390px;
+        padding-block: 1.8rem;
+        padding-inline: 1.5rem;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+        background: var(--color-surface-request, #DADADA);
+        margin: 0rem;
+    }
+
+    .search-text{
+        font-family: var(--body-font-family, 'Inter-Light', sans-serif);
+        font-size: var(--body-font-size, 13px);
+        line-height: var(--body-line-height, 20px);
+        font-weight: var(--body-font-weight, 300);
+        position: relative;
+    }
+
+    .container-recipe-1{
+        padding-inline: 1.5rem;
+        display: flex;
+        padding-block: 2rem; 
+        gap: .9rem;
+    }
+
+    .container-recipe-2{
+        display: flex;
+        flex-direction: column;
+        padding-inline: 1.5rem;
+        gap: 1rem;
+    }
+
+    .container-recipe-stats{
+        border: #616161;
+        border-width: 8rem;
+        width: 16rem;
+        height: 16rem;
+    }
+
+    .body-recipe{
+        background-color: #F6F6F6;
+    }
+
+    .recipe-utilities{
+        display:flex;
+        flex-direction: column;
+        gap: .7rem;
+        width: 2.2rem;
+        align-content: center;
+    }
+
+    #sabor-profile{
+        width: 2.2rem;
+    }
+
+    .recipe-utilities-icons{
+        width: 1.8rem;
+    }
+
+}
