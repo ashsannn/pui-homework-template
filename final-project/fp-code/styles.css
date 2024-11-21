@@ -5,19 +5,21 @@
       margin: 0rem;
       padding: 0rem;
       box-sizing: border-box;
+    
     }
 
     .landing{
         display: flex; 
+        width: 25.5rem;
         padding-block: 4rem;
-        padding-inline: 0rem;
+        padding-inline: 1rem;
         flex-direction: column;
         align-items: center;
         background-color: #F6F6F6;
     }
 
     .container-header{
-        width: 24rem;
+        width: max-content;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -53,6 +55,12 @@
         height: fit-content;
     }
 
+    .container-one{
+        width: 390px;
+        padding-block: .2rem;
+        padding-inline: 1rem;
+    }
+
     .container-input{
         display: flex;
         width: 342px;
@@ -83,8 +91,8 @@
         font-style: normal;
         font-weight: 300;
         line-height: normal;
-        margin-block: 2px;
         padding-block: .2rem;
+        flex-wrap: wrap;
     }
 
     .container-instruction{
@@ -96,6 +104,18 @@
         gap: .5rem;
         padding-block: 1rem;
         padding-inline: 1rem;
+    }
+
+    .container-instruction-3 {
+        width: 22rem;
+        max-width: 342px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .5rem;
+        padding-block: 1rem;
+        padding-inline: 0rem;
     }
 
     .button-container{
@@ -177,21 +197,22 @@
         padding-inline: 1.5rem;
         display: flex;
         padding-block: 2rem; 
-        gap: .9rem;
+        gap: 1rem;
     }
 
     .container-recipe-2{
         display: flex;
         flex-direction: column;
-        padding-inline: 1.5rem;
+        padding-inline: 0rem;
         gap: 1rem;
     }
 
     .container-recipe-stats{
-        border: #616161;
-        border-width: 8rem;
+        border: .09rem solid;
+        border-color: #cbcaca;
+        border-radius: 1rem;
         width: 16rem;
-        height: 16rem;
+        padding: 1rem 1rem 1rem 1rem;
     }
 
     .body-recipe{
@@ -212,6 +233,8 @@
 
     .recipe-utilities-icons{
         width: 1.8rem;
+        align-items: center;
+        padding-left: .3rem;
     }
 
 }
