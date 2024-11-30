@@ -9,18 +9,29 @@
 
 
 
-<body class="body-recipe-menu">
+<body>
+    <div class="body-recipe-menu">
 
-    <div class="nav-menu">
+    <div class="nav-recipe">
+
         <!-- Hamburger Icon -->
-        <div class="hamburger" onclick="toggleMenu()">
+        <div class="hamburger-icon" onclick="toggleMenu()">
             &#9776; <!-- Unicode character for hamburger menu -->
         </div>
 
         <!-- Logo -->
         <div class="container-logo">
-        <a onclick="location.href='index.html'"> <img src="../fp-code/images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo"> </a>       
+            <a onclick="location.href='index.html'"> <img src="../fp-code/images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo"> </a>       
         </div>
+
+        <div class="hamburger-menu-content" id="hamburger-menu">
+            <ul>
+                <li><a href="#"><span class="menu-text">home</span></a></li>
+                <li><a href="#"><span class="menu-text">saved recipes</span></a></li>
+            </ul>
+        </div>
+        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>    
+
     </div>
 
 <div class="body-recipe">
@@ -104,9 +115,6 @@
     <input type="text" id="search-box-query" class="search-box-query" placeholder="Search...">
 </div>
 
-
 </body>
-
-<script src="script.js"></script>
-
+    <script src="recipe-edit.js"></script>
 </html>

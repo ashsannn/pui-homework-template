@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js">
+    </script>
+    
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F9F9F9;
+            font-family: Arial, sans-serif;
+        }
+        #loading-animation {
+            width: 10rem;
+            height: 250px;
+        }
+        h1 {
+            color: #555;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-overlay"></div>
+    <h1>Loading...</h1>
+
+    <script>
+        try {
+            lottie.loadAnimation({
+                container: document.getElementById('loading-animation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets10.lottiefiles.com/packages/lf20_kxczsi6z.json'
+            });
+            console.log('Lottie animation loaded successfully');
+        } catch (error) {
+            console.error('Error loading Lottie animation:', error);
+        }
+
+        // Simulate page redirection after 3 seconds
+        setTimeout(() => {
+            window.location.href = "index.html"; // Replace with your main page
+        }, 4000);
+    </script>
+</body>
+</html>

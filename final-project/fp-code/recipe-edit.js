@@ -70,41 +70,5 @@ document.getElementById('edit-button').addEventListener('click', function () {
         }
     });
 
-
-
-
-
     console.log("test1");
 });
-
-
-// Track the scroll direction
-let lastScrollTop = 0;
-const searchBoxContainer = document.getElementById('container-query');
-
-// Event listener for scroll
-window.addEventListener('scroll', function() {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // If the user scrolls down, hide the search box
-    if (currentScroll > lastScrollTop) {
-        // Scroll down
-        searchBoxContainer.style.transform = 'translateY(100%)'; // Hide the box
-    } else {
-        // Scroll up
-        searchBoxContainer.style.transform = 'translateY(0)'; // Show the box
-    }
-    
-    // Update last scroll position
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-
-
-function toggleMenu() {
-    var menu = document.getElementById('hamburger-menu');
-    var overlay = document.getElementById('overlay');
-    
-    // Toggle the 'active' class on the menu and overlay
-    menu.classList.toggle('active');
-    overlay.classList.toggle('active');
-}

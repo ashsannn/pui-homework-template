@@ -18,10 +18,8 @@
 
       <div class="hamburger-menu-content" id="hamburger-menu">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Recipes</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#"><span class="menu-text">home</span></a></li>
+            <li><a href="#"><span class="menu-text">saved recipes</span></a></li>
         </ul>
     </div>
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
@@ -55,11 +53,8 @@
           <input type="recipe" id="recipe-input">
           
           <div class="container-button">
-            <img id="search-button" src="../fp-code/images/search-button.png" />
+            <img id="search-button" src="../fp-code/images/search-button.png" onclick="location.href='recipe1.html'" />
           </div>
-
-          
-
 
         </div>
 
@@ -107,8 +102,14 @@
 
     </div>
 
-  </body>
-  
-  <script src="script.js"></script>
 
+    <!-- Loading animation -->
+    <div id="loading-overlay" class="hidden">
+      <div class="spinner"></div>
+    </div>
+
+  
+  <script src="home.js"></script>
+  
+  </body>
   </html>
