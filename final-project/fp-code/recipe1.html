@@ -12,34 +12,34 @@
 <body class="body-recipe-menu">
 
     <div class="nav-menu">
-    <!-- Hamburger Icon -->
-    <div class="hamburger" onclick="toggleMenu()">
-        &#9776; <!-- Unicode character for hamburger menu -->
-    </div>
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776; <!-- Unicode character for hamburger menu -->
+        </div>
 
-    <!-- Hamburger Icon -->
-    <div class="container-logo">
-       <a onclick="location.href='index.html'"> <img src="/images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo"> </a>       
-    </div>
+        <!-- Logo -->
+        <div class="container-logo">
+        <a onclick="location.href='index.html'"> <img src="../fp-code/images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo"> </a>       
+        </div>
     </div>
 
 <div class="body-recipe">
 <div class="search-box">
-    <img src="/images/icon.png" alt="profile image" id="profile-icon">    
+    <img src="../fp-code/images/icon.png" alt="profile image" id="profile-icon">    
     <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
 </div>
 
 <div class="container-recipe-1">
 
     <div class="recipe-utilities">
-        <img src="/images/icon.png" alt="profile image" id="sabor-profile">    
+        <img src="../fp-code/images/icon.png" alt="profile image" id="sabor-profile">    
         <div>
-            <img src="/images/bookmark.svg" alt="bookmark" class="recipe-utilities-icons">    
-            <p class="icon-text"> save recipe</p>
+            <img src="../fp-code/images/bookmark.svg" id="bookmark-button" alt="bookmark" class="recipe-utilities-icons">    
+            <p class="icon-text" id="save-text"> save recipe</p>
         </div>
         <div>
-            <img src="/images/edit-button.svg" alt="edit" class="recipe-utilities-icons">    
-            <p class="icon-text"> edit recipe</p>
+            <img src="../fp-code/images/edit-button.svg" id="edit-button"  alt="edit" class="recipe-utilities-icons">    
+            <p class="icon-text" id="edit-text"> edit recipe</p>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
             <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
         </div>
 
-        <div class="container-recipe-stats">
+        <div id="container-recipe-stats">
             <div id="container-serv-cal">
                 <div id="container-serv" id="serv"> <p class="search-text"> <Span id="serving-num"> 3 </Span>servings</p></div>
                 <div id="container-cal" id="cal"> <p class="search-text"> <Span id="serving-cals"> 300 </Span>calories/serving</p></div>
@@ -62,48 +62,51 @@
             </div>
         </div>
 
-        <div class="container-recipe-ingredients">
+        <div id="container-recipe-ingredients">
             <p class="search-text" id="recipe-header"> Ingredients:</p>
             <div class="recipe-list-container">
-            <ul class="recipe-list">
-                <li class="search-text">  1 cup water </p></li>
-                <li class="search-text">  1 onion, chopped </p></li>
-                <li class="search-text">  2 tomatoes, diced </p></li>
-                <li class="search-text">  3 bell pepper, diced </p></li>
-                <li class="search-text">  2 tsp cumin </p></li>
-                <li class="search-text">  4 tsp paprika </p></li>
-                <li class="search-text">  2 tbsp olive oil </p></li>
-                <li class="search-text">  fresh cilanto, chopped (for garnish) </p></li>
+            <ul class="recipe-ingredient-list">
+                <li><span class="ingredient">1 cup water</span></li>
+                <li><span class="ingredient">1 onion, chopped</span></li>
+                <li><span class="ingredient">2 tomatoes, diced</span></li>
+                <li><span class="ingredient">3 bell pepper, diced</span></li>
+                <li><span class="ingredient">2 tsp cumin</span></li>
+                <li><span class="ingredient">4 tsp paprika</span></li>
+                <li><span class="ingredient">2 tbsp olive oil</span></li>
+                <li><span class="ingredient">fresh cilantro, chopped (for garnish)</span></li>
             </ul>
             </div>
         </div>
 
-        <div class="container-recipe-instructions">
+        <div id="container-recipe-instructions">
             <p class="search-text" id="recipe-header"> Instructions:</p>
             <div class="recipe-list-container">
-            <ol class="recipe-instruction-list">
-                <li class="search-text">  Rinse lentils thoroughly under running water </p></li>
-                <li class="search-text">  In a large pot, heat the olive oil over medium heat. </p></li>
-                <li class="search-text">  Add the chopped onion and minced garlic to 
-                    the pot and sauté until they become translucent and fragrant. </p></li>
-                <li class="search-text">  Add the diced carrots, celery, bell pepper,
-                     and tomato to the pot. Sauté for a few minutes until the
-                      vegetables begin to soften. </p></li>
-                <li class="search-text">  Sprinkle the cumin powder and paprika 
-                    over the vegetables and stir well to coat them evenly. </p></li>
-                <li class="search-text">  Add the rinsed lentils to the pot,
-                     followed by the vegetable broth. </p></li>
-                <li class="search-text">  Bring the soup to a boil, then reduce
-                     the heat to low and let it simmer for about 30-40 minutes, 
-                     or until the lentils are tender. </p></li>
-                <li class="search-text">  Season the soup with salt and 
-                    pepper according to your taste. </p></li>
-                <li class="search-text">  Serve the lentil soup hot, 
-                    garnished with fresh cilantro if desired. </p></li>
+            <ul id="recipe-instruction-list">
+                <ul id="recipe-instruction-list">
+                    <li class="search-text">Rinse lentils thoroughly under running water.</li>
+                    <li class="search-text">In a large pot, heat the olive oil over medium heat.</li>
+                    <li class="search-text">Add the chopped onion and minced garlic to the pot and sauté until they become translucent and fragrant.</li>
+                    <li class="search-text">Add the diced carrots, celery, bell pepper, and tomato to the pot. Sauté for a few minutes until the vegetables begin to soften.</li>
+                    <li class="search-text">Sprinkle the cumin powder and paprika over the vegetables and stir well to coat them evenly.</li>
+                    <li class="search-text">Add the rinsed lentils to the pot, followed by the vegetable broth.</li>
+                    <li class="search-text">Bring the soup to a boil, then reduce the heat to low and let it simmer for about 30-40 minutes, or until the lentils are tender.</li>
+                    <li class="search-text">Season the soup with salt and pepper according to your taste.</li>
+                    <li class="search-text">Serve the lentil soup hot, garnished with fresh cilantro if desired.</li>
+                </ul>
             </ol>
             </div>
         </div>
 
     </div>
 </div>
+
+<div class="container-query" id="container-query">
+    <input type="text" id="search-box-query" class="search-box-query" placeholder="Search...">
+</div>
+
+
 </body>
+
+<script src="script.js"></script>
+
+</html>

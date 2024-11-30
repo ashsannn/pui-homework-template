@@ -7,32 +7,83 @@
   
   body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Full viewport height */
     background-color: #F6F6F6; 
   }
-  
+/* Hamburger icon */
+.nav-landing .hamburger-icon {
+  display: flex;
+  justify-content: flex-start;
+  width: 100vw;
+  padding-left: 2rem;
+  padding-top: 1.2rem;
+  font-size: 1.4rem;
+  color: #E4703E;
+  cursor: pointer;
+}
+
+/* Hidden menu content initially (position it off-screen on the left) */
+.hamburger-menu-content {
+  display: none; /* Hide the menu initially */
+  position: fixed;
+  top: 0;
+  left: -200px; /* Start off-screen on the left */
+  background-color: #333;
+  width: 200px;
+  height: 100%; /* Full height */
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000; /* Ensure the menu appears above other content */
+  transition: transform 0.3s ease; /* Slide effect */
+}
+
+/* Menu items */
+.hamburger-menu-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hamburger-menu-content ul li {
+  margin: 10px 0;
+}
+
+.hamburger-menu-content ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Show the menu when the 'active' class is added */
+.hamburger-menu-content.active {
+  display: block;
+  transform: translateX(200px); /* Slide in the menu */
+}
+
+/* Overlay (background behind the menu) */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Just below the menu */
+}
+
+/* Show the overlay when the menu is active */
+.hamburger-menu-content.active + .overlay {
+  display: block;
+}
+
+
   /* Shared styles */
-
-    .landing-menu{
-        display: flex;
-        flex-direction: column;
-        align-content: flex-start;
-    }
-
     #text{
         color: #616161;
-    }
-
-    .landing-menu .hamburger{
-        display: flex;
-        justify-content: flex-start;
-        width: 100vw;
-        padding-left: 2rem;
-        padding-top: 1.2rem;
-        font-size: 1.4rem;
-        color: #E4703E;
     }
 
   .landing {
@@ -184,6 +235,44 @@
     text-align: center;
   }
   
+  .replace-icon {
+    width: .7rem; /* Adjust size of the icon */
+    height: .7rem;
+    margin-left: .4rem; /* Space between the text and the icon */
+    margin-right: .2rem;
+    vertical-align: middle; /* Align the icon with text */
+}
+
+.delete-icon{
+  width: 1rem;
+  vertical-align: middle; /* Align the icon with text */
+}
+
+    /* Search box container at the bottom */
+    .container-query {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #f1f1f1;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    padding-inline: 3rem;
+  }
+
+  /* Styling the search box */
+  .search-box-query {
+      width: 100%; /* Full width */
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; /* Makes the padding part of the box */
+      align-content: flex-end;
+  }
+
   /* Media Queries */
   
   /* Medium screens (max-width: 1200px) */
@@ -217,7 +306,7 @@
     }
   }
   
-  @media (max-width: 390px) and (min-width: ) { /* 1200px to 640px */
+  @media (max-width: 390px) and (min-width: 640) { /* 1200px to 640px */
     .landing {
       width: 40rem; /* Matches the width at this breakpoint */
     }
@@ -278,6 +367,8 @@
   }
   
 
+
+
 /*-----------------RECIPE PAGE-----------------------*/
 /* General Styles */
 .body-recipe-menu {
@@ -285,16 +376,6 @@
     display: flex;
     flex-direction: column;
     background-color: #DADADA;
-}
-
-.nav-menu {
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    background-color: #DADADA;
-    padding-bottom: 0;
-    align-content: center;
-    gap: 2rem;
 }
 
 .hamburger{
@@ -330,7 +411,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 1.2rem;
     background: var(--color-surface-request, #DADADA);
     margin: 0;
     box-sizing: border-box;
@@ -365,18 +446,22 @@
     gap: 1.5rem;
 }
 
-.container-recipe-stats,
-.container-recipe-ingredients,
-.container-recipe-instructions {
+#container-recipe-stats,
+#container-recipe-ingredients,
+#container-recipe-instructions {
     display: flex;
     flex-direction: column;
     border: 0.09rem solid #cbcaca;
     border-radius: 1rem;
-    padding: 0.6rem 0.8rem;
-    gap: 0.5rem;
+    padding: 0.8rem 0.8rem;
+    gap: 0.2rem;
     box-sizing: border-box;
     width: 100%;
     max-width: 18rem; /* Max width for smaller screens */
+}
+
+#container-recipe-stats{
+  padding-left: 2rem;
 }
 
 .icon-text {
@@ -385,11 +470,6 @@
     text-align: center;
     font-weight: 500;
     color: darkgrey;
-}
-
-.recipe-instruction-list,
-.recipe-list {
-    padding-left: 1.5rem;
 }
 
 .recipe-utilities {
@@ -408,6 +488,69 @@
     width: 1.8rem;
     align-items: center;
     padding-left: 0.3rem;
+}
+
+.edit-box{
+  border-color: rgba(81, 82, 81, 0.4);
+  border-style: solid;
+  border-width: .1rem;
+  border-radius: .1rem;
+  padding-block: .1rem;
+  padding-left: .25rem;
+  padding-right: .2;
+  margin-right: .4rem;
+  margin-block: .25rem;
+}
+
+.highlight-border {
+  box-shadow: inset 0 0 0 2px rgba(187, 205, 184, 0.40) !important; /* Green border added on top */
+}
+
+.ingredient {
+  display: inline; /* Make sure it adjusts based on the text width */
+  white-space: nowrap; /* Prevents the text from wrapping to a new line */
+  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
+  font-size: .75rem; /* Convert to rem */
+  line-height: 1.25rem; /* Line height in rem */
+  font-weight: var(--body-font-weight, 300);
+  position: relative;
+}
+
+.ing-highlight {
+  background: rgba(187, 205, 184, 0.40);
+  border-style: dotted;
+  border-color:  rgba(187, 205, 184, 0.40);;
+  border-width: .12rem;
+  border-radius: .5rem;
+  padding-block: .2rem;
+  padding-inline: .2rem;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+
+}
+
+.recipe-ingredient-list{
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  list-style: circle;
+}
+
+.recipe-ingredient-list li {
+  flex: 0 0 auto; /* Prevents list items from stretching or shrinking */
+  max-width: fit-content; /* Shrinks the <li> to wrap tightly around the content */
+  margin: 0; /* Removes extra margin */
+  padding-inline: .4rem; /* Removes extra padding */
+}
+
+.highlight-green {
+  background: rgba(187, 205, 184, 0.40);
+  border-style: dotted;
+  border-color:  rgba(187, 205, 184, 0.40);;
+  border-width: .12rem;
+  border-radius: .5rem;
+  padding-block: .09rem;
+  padding-inline: .5rem;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
 }
 
 /* Media Queries */
@@ -435,19 +578,20 @@
         max-width: 75%;
     }
 
-    .container-recipe-stats,
-    .container-recipe-ingredients,
-    .container-recipe-instructions {
+    #container-recipe-stats,
+    #container-recipe-ingredients,
+    #container-recipe-instructions {
         max-width: 100%;
         padding: 1.4rem;
         min-width: 40px;
     }
 
+    
     .icon-text {
         font-size: 0.8rem; /* Make icon text smaller */
     }
 
-    .recipe-list-container .search-text{
+    .recipe-list-container, .search-text{
         padding-block: .24rem;
         font-size: .9rem;
     }
@@ -455,7 +599,7 @@
     .recipe-utilities-icons{
         width: 2.2rem;
     }
-}
+  }
 
 /* For Extra Small screens (max-width: 390px) */
 @media (max-width: 390px) {
@@ -480,9 +624,9 @@
         gap: 0.8rem;
     }
 
-    .container-recipe-stats,
-    .container-recipe-ingredients,
-    .container-recipe-instructions {
+    #container-recipe-stats,
+    #container-recipe-ingredients,
+    #container-recipe-instructions {
         max-width: 100%;
         padding: 0.5rem;
         padding-left: .8rem;
@@ -496,7 +640,18 @@
         width: 1.8rem; /* Adjust size for small screens */
     }
 
-    .recipe-list-container .search-text{
+    .recipe-list-container{
+      padding-left: 1.2rem;
+      list-style-type: disc;
+    }
+
+    .recipe-list-container, .search-text{
         padding-block: .2rem;
     }
+
+
+  .serving-num{
+    align-content: center;
+  }
+
 }
