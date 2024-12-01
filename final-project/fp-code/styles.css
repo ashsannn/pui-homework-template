@@ -262,6 +262,9 @@
 
     /* Search box container at the bottom */
     .container-query {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -278,11 +281,13 @@
   .search-box-query {
       width: 100%; /* Full width */
       padding: 10px;
+      height: 2rem;
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 4px;
       box-sizing: border-box; /* Makes the padding part of the box */
       align-content: flex-end;
+      align-self: center;
   }
 
   /* Media Queries */
@@ -381,45 +386,54 @@
 
 /*-----------------LOADING---------------------------*/
 
-#loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
+
+
+/* Loading Overlay */
+/* Full-screen container for the loading screen */
+#loading-page {
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#loading-animation .active {
+  position: fixed;
+  padding-top: 4rem;
+  left: 0;
+  width: 3rem;
+  height: 60vh;
+  background: linear-gradient(135deg, #FF7E5F, #FEB47B); /* A smooth gradient */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
+  color: #fff;
 }
 
-#loading-overlay.active {
-  opacity: 1;
-  pointer-events: all;
+/* Loading text styles */
+#loading-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  align-content: center;
+  text-align: center;
+  animation: fadeIn 2s infinite;
 }
 
-/* Spinner styles */
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid #ccc;
-  border-top: 6px solid #E4703E;
-  border-radius: 50%;
-  animation: spin 3s linear infinite;
-}
-
-/* Spinner animation */
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+/* Fade-in animation for text */
+@keyframes fadeIn {
+  0%, 100% {
+      opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+      opacity: 0.5;
   }
+}
+
+
+/* Hidden class to hide loading overlay by default */
+.hidden {
+  display: none;
 }
 
 /*-----------------RECIPE PAGE-----------------------*/
