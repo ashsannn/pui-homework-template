@@ -269,12 +269,12 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 10px;
+    padding: .2rem;
     background-color: #f1f1f1;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     z-index: 9999;
     transition: transform 0.3s ease-in-out; /* Smooth transition */
-    padding-inline: 3rem;
+    padding-inline: 1rem;
   }
 
   /* Styling the search box */
@@ -290,7 +290,43 @@
       align-self: center;
   }
 
-  /* Media Queries */
+  @keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px); /* Start slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at its original position */
+    }
+}
+
+@keyframes slideInFromBottom {
+  from {
+      opacity: 0;
+      transform: translateY(50px); /* Start from below */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0); /* End at normal position */
+  }
+}
+
+.recipe-slide-in {
+  animation: slideInFromBottom 0.5s ease-out; /* Smooth slide-in */
+  margin-top: 20px; /* Optional: adds some space between recipes */
+}
+
+
+
+/* Optional: Styling for updated recipes */
+.container-recipe-2 + .container-recipe-2 {
+  margin-top: 20px;
+  border-top: 2px dashed #ccc;
+  padding-top: 10px;
+}
+
+  /************************ Media Queries *******************************/
   
   /* Medium screens (max-width: 1200px) */
   @media (max-width: 1200px) {
