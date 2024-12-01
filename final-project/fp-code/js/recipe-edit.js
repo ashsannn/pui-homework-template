@@ -26,28 +26,46 @@ document.getElementById('edit-button').addEventListener('click', function () {
 
     // Add the remove icon and handle functionality
     ings.forEach(item => {
+        // Toggle the highlight class on each item
         item.classList.toggle('ing-highlight');
 
-        // Add a delete icon if not already present
-        let deleteIcon = item.querySelector('.delete-icon');
-        if (!deleteIcon) {
-            deleteIcon = document.createElement('img');
-            deleteIcon.src = 'images/delete-icon.svg'; // Update with your icon's path
+        // Handle the replace icon
+        if (item.classList.contains('ing-highlight')) {
+            // Add the replace icon if the highlight class is applied and icon doesn't exist
+            if (!item.querySelector('.replace-icon')) {
+                const icon = document.createElement('img');
+                icon.src = 'images/replace-icon.png'; // Replace with your icon's path
+                icon.alt = 'replace icon';
+                icon.className = 'replace-icon';
+                item.appendChild(icon);
+            }
+        } else {
+            // Remove the replace icon if the highlight class is removed
+            const icon = item.querySelector('.replace-icon');
+            if (icon) {
+                item.removeChild(icon);
+            }
+        }
+
+        // Handle the delete icon (removes or adds based on edit mode)
+        if (!item.querySelector('.delete-icon')) {
+            const deleteIcon = document.createElement('img');
+            deleteIcon.src = 'images/delete-icon.svg'; // Replace with your icon's path
             deleteIcon.alt = 'delete icon';
             deleteIcon.className = 'delete-icon';
             item.appendChild(deleteIcon);
-        }
 
-        // Add click functionality to the delete icon
-        deleteIcon.addEventListener('click', function () {
-            // Clone and create the new recipe without this ingredient
-            duplicateUpdatedRecipe(item);
-        });
+            // Add the click event listener to remove the ingredient in the new recipe
+            deleteIcon.addEventListener('click', function () {
+                duplicateUpdatedRecipe(item); // Pass the clicked ingredient to the function
+            });
+        }
     });
 
     console.log("Edit button functionality triggered");
 });
 
+// Function to duplicate the recipe and remove ingredient from the new recipe
 function duplicateUpdatedRecipe(ingredientToRemove) {
     const originalRecipeContainer = document.querySelector('.container-recipe-1'); // The container of the whole recipe
 
@@ -102,6 +120,9 @@ function duplicateUpdatedRecipe(ingredientToRemove) {
         if (parentContainer) {
             // Insert the duplicated recipe container after the original one
             parentContainer.insertBefore(updatedRecipeContainer, originalRecipeContainer.nextSibling);
+
+            // Optionally, remove the old recipe (original one) if you want to replace it entirely
+            originalRecipeContainer.remove();
         }
     }
 }
