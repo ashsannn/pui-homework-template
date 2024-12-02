@@ -330,32 +330,38 @@
   
   /* Medium screens (max-width: 1200px) */
   @media (max-width: 1200px) {
+    .header{
+      justify-content: center;
+    }
+
     .landing {
-      width: 40rem;
+      width: 48rem;
+      gap: 1rem;
     }
   
     .container-instruction {
-      max-width: 390px;
+      max-width: 400px;
     }
   
     .container-instruction-3 {
-      max-width: 342px;
+      max-width: 400px;
     }
   
     .container-one {
-      width: 390px;
+      width: 400px;
     }
   
     .container-input {
-      width: 342px;
+      width: 390px;
     }
   
     #recipe-input {
-      width: 285px;
+      width: 390px;
     }
   
     .button-main {
-      width: 342px;
+      width: 400px;
+      height: 48px;
     }
   }
   
@@ -421,9 +427,6 @@
   
 
 /*-----------------LOADING---------------------------*/
-
-
-
 /* Loading Overlay */
 /* Full-screen container for the loading screen */
 #loading-page {
@@ -544,15 +547,16 @@
     gap: 0.5rem;
 }
 
-#container-serv-cal {
+.container-serv-cal {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
 }
 
-#container-recipe-stats,
-#container-recipe-ingredients,
-#container-recipe-instructions {
+.container-recipe-stats,
+.container-recipe-ingredients,
+.container-recipe-instructions {
+    font-size: .5rem;
     display: flex;
     flex-direction: column;
     border: 0.09rem solid #cbcaca;
@@ -561,7 +565,11 @@
     gap: 0.2rem;
     box-sizing: border-box;
     width: 100%;
-    max-width: 18rem; /* Max width for smaller screens */
+}
+
+.container-recipe-stats, .search-text{
+  font-size: .8rem;
+  gap: .8rem;
 }
 
 #container-recipe-stats{
@@ -588,10 +596,16 @@
     width: 2.2rem;
 }
 
+#bookmark-button, #edit-button{
+  width: 2rem;
+  padding-left: .2rem;
+}
+
+
 .recipe-utilities-icons {
-    width: 1.8rem;
+    width: 1rem;
     align-items: center;
-    padding-left: 0.3rem;
+    padding-left: 0rem;
 }
 
 .edit-box{
@@ -620,6 +634,16 @@
   position: relative;
 }
 
+.instruction {
+  display: inline; /* Make sure it adjusts based on the text width */
+  white-space: wrap; /* Prevents the text from wrapping to a new line */
+  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
+  font-size: .8rem; /* Convert to rem */
+  line-height: 1.8rem; /* Line height in rem */
+  font-weight: var(--body-font-weight, 300);
+  position: relative;
+}
+
 .ing-highlight {
   background: rgba(187, 205, 184, 0.40);
   border-style: dotted;
@@ -632,11 +656,15 @@
 
 }
 
-.recipe-ingredient-list{
+.recipe-ingredient-list, .recipe-instruction-list{
   display: flex;
   flex-direction: column;
-  gap: .4rem;
+  gap: .8rem;
   list-style: circle;
+}
+
+.recipe-instruction-list{
+  list-style: decimal;
 }
 
 .recipe-ingredient-list li {
@@ -661,25 +689,53 @@
 
 /* For Small screens (max-width: 640px) */
 @media (min-width: 640px) and (max-width: 1800px){
+    .body-recipe-menu{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+    }  
+  
+    .body-recipe{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+    }  
+
+  .hamburger-icon{
+      justify-content: flex-start;
+    }
+  
+    .nav-recipe{
+      justify-content:center;
+      padding-inline: 2rem;
+      gap: 12rem;
+      align-self: center;
+      max-width: 640px;
+    }
+  
     .search-box {
-        max-width: 640px; /* Ensure flexibility for smaller screens */
-        justify-content: flex-start;
-        gap: 3rem;
-        padding-inline: 4rem;
+      max-width: 100vw; /* Ensure flexibility for smaller screens */
+      justify-content: center;
+      padding-inline: 5.7rem;
+      padding-block: 3rem;
+      gap: 3rem;
+      max-width: 640px;
+      align-self: center;
     }
 
     .container-recipe-1{
-        padding-inline: 1.5rem;
-        padding-block: 1.5rem; /* Adjust padding for small screens */
-        gap: 3rem;
-        max-width: 640px;
-        padding-inline: 4rem;
-        min-width: 480;
+      justify-content: center;
+      padding-block: 2.4rem; /* Adjust padding for small screens */
+      gap: 3rem;
+      max-width: 480px;
+      align-self: center;
     }
 
     .container-recipe-2 {
         gap: 1.1rem; /* Adjust gap for smaller screens */
-        max-width: 75%;
+        max-width: 60vw;
     }
 
     #container-recipe-stats,
@@ -690,14 +746,18 @@
         min-width: 40px;
     }
 
+    #recipe-header{
+      padding-left: 0rem;
+    }
     
     .icon-text {
-        font-size: 0.8rem; /* Make icon text smaller */
+        font-size: .8rem; /* Make icon text smaller */
     }
 
-    .recipe-list-container, .search-text{
+    .recipe-ingredient-list, .recipe-instruction-list{
         padding-block: .24rem;
         font-size: .9rem;
+        padding-left: 1rem;
     }
 
     .recipe-utilities-icons{
@@ -706,7 +766,7 @@
   }
 
 /* For Extra Small screens (max-width: 390px) */
-@media (max-width: 390px) {
+@media (min-width: 390px) and (max-width: 640px) {
     .search-box {
         justify-content: flex-start;
         width: 100%; /* Take full width on very small screens */
@@ -753,9 +813,13 @@
         padding-block: .2rem;
     }
 
+    .body-recipe{
+      width: 100vw;
+    }
 
   .serving-num{
     align-content: center;
   }
 
 }
+
