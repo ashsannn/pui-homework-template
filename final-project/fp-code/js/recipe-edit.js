@@ -59,13 +59,18 @@ document.getElementById('edit-button').addEventListener('click', function () {
             deleteIcon.addEventListener('click', function () {
                 duplicateUpdatedRecipe(item); // Pass the clicked ingredient to the function
             });
+        } else {
+            // Remove the remove icon if the highlight class is removed
+            const icon = item.querySelector('.delete-icon');
+            if (icon) {
+                item.removeChild(icon);
+            }
         }
     });
 
     console.log("Edit button functionality triggered");
 });
 
-// Function to duplicate the recipe and remove ingredient from the new recipe
 function duplicateUpdatedRecipe(ingredientToRemove) {
     const originalRecipeContainer = document.querySelector('.container-recipe-1'); // The container of the whole recipe
 
@@ -124,5 +129,81 @@ function duplicateUpdatedRecipe(ingredientToRemove) {
             // Optionally, remove the old recipe (original one) if you want to replace it entirely
             originalRecipeContainer.remove();
         }
+
+        // Reinitialize the edit functionality for the new recipe
+        initEditMode(updatedRecipeContainer);
+    }
+}
+
+// Function to initialize/edit functionality for a recipe (newly created or existing)
+function initEditMode(recipeContainer) {
+    const editButton = recipeContainer.querySelector('#edit-button');
+    if (editButton) {
+        editButton.addEventListener('click', function () {
+            const editText = recipeContainer.querySelector('#edit-text');
+            
+            // Toggle the text between 'edit recipe' and 'editing ON'
+            if (editText) {
+                if (editText.innerText === 'edit recipe') {
+                    editText.innerText = 'editing ON';
+                } else {
+                    editText.innerText = 'edit recipe';
+                }
+            }
+
+            const containerServ = recipeContainer.querySelector('#container-serv');
+            const containerCal = recipeContainer.querySelector('#container-cal');
+            const servingNum = recipeContainer.querySelector('#serving-num');
+            const servingCals = recipeContainer.querySelector('#serving-cals');
+            containerServ.classList.toggle('highlight-green');
+            containerCal.classList.toggle('highlight-green');
+            servingNum.classList.toggle('edit-box');
+            servingCals.classList.toggle('edit-box');
+
+            const contIng = recipeContainer.querySelector('#container-recipe-ingredients');
+            contIng.classList.toggle('highlight-border');
+
+            const ings = recipeContainer.querySelectorAll('.recipe-list-container .recipe-ingredient-list li');
+
+            // Add the remove icon and handle functionality
+            ings.forEach(item => {
+                item.classList.toggle('ing-highlight');
+
+                // Handle the replace icon
+                if (item.classList.contains('ing-highlight')) {
+                    if (!item.querySelector('.replace-icon')) {
+                        const icon = document.createElement('img');
+                        icon.src = 'images/replace-icon.png'; // Replace with your icon's path
+                        icon.alt = 'replace icon';
+                        icon.className = 'replace-icon';
+                        item.appendChild(icon);
+                    }
+                } else {
+                    const icon = item.querySelector('.replace-icon');
+                    if (icon) {
+                        item.removeChild(icon);
+                    }
+                }
+
+                // Handle the delete icon (removes or adds based on edit mode)
+                if (!item.querySelector('.delete-icon') && editText.innerText === 'editing ON') {
+                    const deleteIcon = document.createElement('img');
+                    deleteIcon.src = 'images/delete-icon.svg'; // Replace with your icon's path
+                    deleteIcon.alt = 'delete icon';
+                    deleteIcon.className = 'delete-icon';
+                    item.appendChild(deleteIcon);
+
+                    // Add the click event listener to remove the ingredient in the new recipe
+                    deleteIcon.addEventListener('click', function () {
+                        duplicateUpdatedRecipe(item); // Pass the clicked ingredient to the function
+                    });
+                } else {
+                    const icon = item.querySelector('.delete-icon');
+                    if (icon && editText.innerText !== 'editing ON') {
+                        item.removeChild(icon);
+                    }
+                }
+            });
+        });
     }
 }
