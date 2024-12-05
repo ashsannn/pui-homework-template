@@ -1,3 +1,13 @@
+///////////////////////////MENU TOGGLE////////////////////////////////
+function toggleMenu() {
+    ['hamburger-menu', 'overlay'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.classList.toggle('active');
+        }
+    });
+  }
+
 document.getElementById('edit-button').addEventListener('click', function () {
     const editText = document.getElementById('edit-text');
 

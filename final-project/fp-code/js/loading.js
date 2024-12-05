@@ -19,7 +19,7 @@ const showLoadingAnimation = (redirectUrl) => {
         // Redirect after delay
         setTimeout(() => {
             window.location.href = redirectUrl;
-        }, 2500);
+        }, 1200);
     }
 };
 
