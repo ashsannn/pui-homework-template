@@ -48,12 +48,41 @@ document.getElementById('edit-button').addEventListener('click', function () {
                 icon.alt = 'replace icon';
                 icon.className = 'replace-icon';
                 item.appendChild(icon);
+
+                // Handle the replace icon click event
+                icon.addEventListener('click', function () {
+                    const modal = document.getElementById('replace-modal');
+                    modal.style.display = 'flex'; // Show the modal
+
+                    // Get the Yes and No buttons
+                    const confirmBtn = document.getElementById('modal-confirm');
+                    const cancelBtn = document.getElementById('modal-cancel');
+
+                    // The ingredient associated with this icon
+                    const ingredientItem = item; // Directly use `item`
+
+                    // Confirm button logic
+                    confirmBtn.onclick = function () {
+                        console.log("Ingredient replaced:", ingredientItem.innerText);
+
+                        // Optionally replace the ingredient or trigger a function here
+                        // Replace the ingredient logic here
+
+                        // Close the modal after confirmation
+                        modal.style.display = 'none';
+                    };
+
+                    // Cancel button logic
+                    cancelBtn.onclick = function () {
+                        // Close the modal without replacing the ingredient
+                        modal.style.display = 'none';
+                    };
+                });
             }
         } else {
             // Remove the replace icon if the highlight class is removed
             const icon = item.querySelector('.replace-icon');
-            if (icon) {
-                item.removeChild(icon);
+            if (icon) {item.removeChild(icon);
             }
         }
 
@@ -217,3 +246,4 @@ function initEditMode(recipeContainer) {
         });
     }
 }
+
