@@ -1,4 +1,4 @@
-/* Base styles and CSS reset */
+/******************************** HIGHEST LEVEL STYLES *********************************/
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +13,104 @@
     min-height: 100vh; /* Full viewport height */
     background-color: #F6F6F6; 
   }
+
+  /* Shared styles */
+  p {
+    color: #616161;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  }
+
+/******************************** TEXT STYLES *********************************/
+
+/* Loading-page text styles */
+#loading-text {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  padding-bottom: 1rem;
+  font-size: 16px;
+  align-content: center;
+  text-align: center;
+  animation: fadeIn 4s infinite;
+}
+
+.text-instruction {
+  color: var(--color-text-text-filled, #616161);
+  font-family: "Helvetica Neue";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+  padding-block: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.sub-header {
+  font-family: helvetica neue;
+  color: #E4703E;
+  font-size: 0.9rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  align-self: stretch;
+}
+
+.sub-header p {
+  margin: 0;
+}
+
+.sub-text-soft {
+  font-weight: 300;
+}
+
+.menu-text{
+  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
+  font-size: .9rem; /* Convert to rem */
+  line-height: 1.25rem; /* Line height in rem */
+  font-weight: var(--body-font-weight, 300);
+  position: relative;
+}
+
+.search-text {
+  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
+  font-size: .9rem; /* Convert to rem */
+  line-height: 1.25rem; /* Line height in rem */
+  font-weight: var(--body-font-weight, 300);
+  position: relative;
+}
+
+.icon-text {
+  font-size: 0.8rem;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight: 500;
+  color: darkgrey;
+}
+
+
+/******************************** LISTS *********************************/
+
+.recipe-ingredient-list{
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  list-style: circle;
+}
+
+.recipe-ingredient-list li {
+  flex: 0 0 auto; /* Prevents list items from stretching or shrinking */
+  max-width: fit-content; /* Shrinks the <li> to wrap tightly around the content */
+  margin: 0; /* Removes extra margin */
+  padding-inline: .4rem; /* Removes extra padding */
+}
+
+.recipe-instruction-list{
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  list-style: decimal;
+}
+
+/******************************** HAMBURGER MENU *********************************/
 /* Hamburger icon */
 .nav-landing .hamburger-icon {
   display: flex;
@@ -57,6 +155,11 @@
   font-size: 18px;
 }
 
+/* Show the overlay when the menu is active */
+.hamburger-menu-content.active + .overlay {
+  display: block;
+}
+
 /* Show the menu when the 'active' class is added */
 .hamburger-menu-content.active {
   align-items: center;
@@ -65,14 +168,6 @@
   padding-left: 2rem;
   display: block;
   transform: translateX(200px); /* Slide in the menu */
-}
-
-.menu-text{
-  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
-  font-size: .9rem; /* Convert to rem */
-  line-height: 1.25rem; /* Line height in rem */
-  font-weight: var(--body-font-weight, 300);
-  position: relative;
 }
 
 /* Overlay (background behind the menu) */
@@ -87,17 +182,194 @@
   z-index: 999; /* Just below the menu */
 }
 
-/* Show the overlay when the menu is active */
-.hamburger-menu-content.active + .overlay {
-  display: block;
+
+/***************************** MODAL *********************************/
+/* Modal Styles */
+#replace-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center;  /* Horizontally center the modal */
+  align-items: center;      /* Vertically center the modal */
+  z-index: 1000;            /* Make sure the modal appears above other content */
+}
+
+/* Modal Content Styles */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  width: 300px;             /* Adjust the width as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for better visibility */
+}
+
+/* Modal Buttons*/
+#modal-confirm {
+  background-color: #4CAF50; /* Green for confirm */
+  color: white;
+  border: none;
+}
+
+#modal-cancel {
+  background-color: #f44336; /* Red for cancel */
+  color: white;
+  border: none;
 }
 
 
-  /* Shared styles */
-    #text{
-        color: #616161;
+/******************************** BUTTONS *********************************/
+.button-container {
+  width: 44px;
+  height: 44px;
+}
+
+/*Search-sendoff*/
+#search-button {
+  padding-top: .4rem;
+  width: 2.5rem;
+  height: 44px;
+}
+
+/*Landing options*/
+.button-main {
+  width: 20rem;
+  min-height: 40px;
+  max-height: 65px;
+  border-radius: 8px;
+  border-width: 1px;
+  padding-inline: 16px;
+  padding-block: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #f7e0d6;
+  color: var(--color-text-text-primary, #1f120c);
+  text-align: center;
+  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
+  font-size: var(--body-font-size, 13px);
+  line-height: var(--body-line-height, 20px);
+  font-weight: var(--body-font-weight, 300);
+  margin: 0rem;
+}
+
+/******************************** ICONS *********************************/
+
+  .replace-icon {
+    width: .7rem; /* Adjust size of the icon */
+    height: .7rem;
+    margin-left: .4rem; /* Space between the text and the icon */
+    margin-right: .2rem;
+    vertical-align: middle; /* Align the icon with text */
+}
+
+.delete-icon{
+  width: 1rem;
+  vertical-align: middle; /* Align the icon with text */
+}
+
+/******************************** CONTAINERS/FORMS *********************************/
+
+  /* Landing container */
+  .container-input {
+    display: flex;
+    width: 100%;
+    height: 44px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-block: 0;
+  }
+
+  #recipe-input {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 8px;
+    border-width: 1px;
+  }
+
+    /* Search box container for query */
+    .container-query {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: .2rem;
+      background-color: #f1f1f1;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+      transition: transform 0.3s ease-in-out; /* Smooth transition */
+      padding-inline: 1rem;
+    }
+  
+    /* Actual search box */
+    .search-box-query {
+        width: 100%; /* Full width */
+        padding: 10px;
+        height: 2rem;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Makes the padding part of the box */
+        align-content: flex-end;
+        align-self: center;
     }
 
+
+
+/*************************** LOADING *************************************************/
+/* Full-screen container for the loading screen */
+#loading-page {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#loading-animation .active {
+  position: fixed;
+  padding-top: 4rem;
+  left: 0;
+  background: linear-gradient(135deg, #FF7E5F, #FEB47B); /* A smooth gradient */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+
+/* Fade-in animation for text */
+@keyframes fadeIn {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.5;
+  }
+}
+
+/* Hidden class to hide loading overlay by default */
+.hidden {
+  display: none;
+}
+
+
+/******************************** INDEX/LANDING *********************************/
   .landing {
     display: flex;
     align-items: center;
@@ -119,26 +391,6 @@
     margin-bottom: 1rem;
   }
   
-  .sub-header {
-    font-family: helvetica neue;
-    color: #E4703E;
-    font-size: 0.9rem;
-    font-weight: 400;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.6rem;
-    align-self: stretch;
-  }
-  
-  .sub-header p {
-    margin: 0;
-  }
-  
-  .sub-text-soft {
-    font-weight: 300;
-  }
-  
   #sabor-logo {
     width: 12rem;
     height: fit-content;
@@ -147,39 +399,6 @@
   .container-one {
     padding-block: 0.2rem;
     padding-inline: 2rem;
-  }
-  
-  .container-input {
-    display: flex;
-    width: 100%;
-    height: 44px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-block: 0;
-  }
-  
-  #recipe-input {
-    display: flex;
-    width: 100%;
-    height: 40px;
-    padding: 8px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    border-radius: 8px;
-    border-width: 1px;
-  }
-  
-  .text-instruction {
-    color: var(--color-text-text-filled, #616161);
-    font-family: "Helvetica Neue";
-    font-size: 14px;
-    font-weight: 300;
-    line-height: normal;
-    padding-block: 0.2rem;
-    flex-wrap: wrap;
   }
   
   .container-instruction {
@@ -204,40 +423,7 @@
     padding-block: 1rem;
     padding-inline: 0rem;
   }
-  
-  .button-container {
-    width: 44px;
-    height: 44px;
-  }
-  
-  #search-button {
-    padding-top: .4rem;
-    width: 2.5rem;
-    height: 44px;
-  }
-  
-  .button-main {
-    width: 20rem;
-    min-height: 40px;
-    max-height: 65px;
-    border-radius: 8px;
-    border-width: 1px;
-    padding-inline: 16px;
-    padding-block: 8px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    background: #f7e0d6;
-    color: var(--color-text-text-primary, #1f120c);
-    text-align: center;
-    font-family: var(--body-font-family, 'Inter-Light', sans-serif);
-    font-size: var(--body-font-size, 13px);
-    line-height: var(--body-line-height, 20px);
-    font-weight: var(--body-font-weight, 300);
-  }
-  
+
   #container-instruction-details {
     width: 342px;
     display: flex;
@@ -245,49 +431,6 @@
     align-items: center;
     gap: 8px;
     text-align: center;
-  }
-  
-  .replace-icon {
-    width: .7rem; /* Adjust size of the icon */
-    height: .7rem;
-    margin-left: .4rem; /* Space between the text and the icon */
-    margin-right: .2rem;
-    vertical-align: middle; /* Align the icon with text */
-}
-
-.delete-icon{
-  width: 1rem;
-  vertical-align: middle; /* Align the icon with text */
-}
-
-    /* Search box container at the bottom */
-    .container-query {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: .2rem;
-    background-color: #f1f1f1;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
-    padding-inline: 1rem;
-  }
-
-  /* Styling the search box */
-  .search-box-query {
-      width: 100%; /* Full width */
-      padding: 10px;
-      height: 2rem;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box; /* Makes the padding part of the box */
-      align-content: flex-end;
-      align-self: center;
   }
 
   @keyframes slideInFromBottom {
@@ -318,15 +461,14 @@
 }
 
 
-
-/* Optional: Styling for updated recipes */
+/*Styling for updated recipes */
 .container-recipe-2 + .container-recipe-2 {
   margin-top: 20px;
   border-top: 2px dashed #ccc;
   padding-top: 10px;
 }
 
-  /************************ Media Queries *******************************/
+/******************************** MEDIA QUERIES *********************************/
   
   /* Medium screens (max-width: 1200px) */
   @media (max-width: 1200px) {
@@ -420,55 +562,6 @@
   }
   
 
-/*-----------------LOADING---------------------------*/
-
-
-
-/* Loading Overlay */
-/* Full-screen container for the loading screen */
-#loading-page {
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-#loading-animation .active {
-  position: fixed;
-  padding-top: 4rem;
-  left: 0;
-  background: linear-gradient(135deg, #FF7E5F, #FEB47B); /* A smooth gradient */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-/* Loading text styles */
-#loading-text {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  padding-bottom: 1rem;
-  font-size: 16px;
-  align-content: center;
-  text-align: center;
-  animation: fadeIn 4s infinite;
-}
-
-/* Fade-in animation for text */
-@keyframes fadeIn {
-  0%, 100% {
-      opacity: 1;
-  }
-  50% {
-      opacity: 0.5;
-  }
-}
-
-/* Hidden class to hide loading overlay by default */
-.hidden {
-  display: none;
-}
-
 /*-----------------RECIPE PAGE-----------------------*/
 /* General Styles */
 .nav-recipe {
@@ -519,14 +612,6 @@
     box-sizing: border-box;
 }
 
-.search-text {
-    font-family: var(--body-font-family, 'Inter-Light', sans-serif);
-    font-size: .9rem; /* Convert to rem */
-    line-height: 1.25rem; /* Line height in rem */
-    font-weight: var(--body-font-weight, 300);
-    position: relative;
-}
-
 .container-recipe-1 {
     padding-inline: 1.5rem;
     display: flex;
@@ -564,14 +649,6 @@
 
 #container-recipe-stats{
   padding-left: 2rem;
-}
-
-.icon-text {
-    font-size: 0.8rem;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-weight: 500;
-    color: darkgrey;
 }
 
 .recipe-utilities {
@@ -628,20 +705,6 @@
   padding-inline: .2rem;
   transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
 
-}
-
-.recipe-ingredient-list{
-  display: flex;
-  flex-direction: column;
-  gap: .4rem;
-  list-style: circle;
-}
-
-.recipe-ingredient-list li {
-  flex: 0 0 auto; /* Prevents list items from stretching or shrinking */
-  max-width: fit-content; /* Shrinks the <li> to wrap tightly around the content */
-  margin: 0; /* Removes extra margin */
-  padding-inline: .4rem; /* Removes extra padding */
 }
 
 .highlight-green {
