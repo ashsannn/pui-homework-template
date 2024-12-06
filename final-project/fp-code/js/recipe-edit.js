@@ -132,69 +132,87 @@ document.getElementById('edit-button').addEventListener('click', function () {
     console.log("Edit button functionality triggered");
 });
 
+
 function duplicateUpdatedRecipe(ingredientToRemove) {
-    const originalRecipeContainer = document.querySelector('.container-recipe-1'); // The container of the whole recipe
+    const originalRecipeContainer = document.querySelector('.container-recipe-all'); // The entire recipe container
 
     if (originalRecipeContainer) {
-        // Clone the entire original recipe container (container-recipe-1)
-        const updatedRecipeContainer = originalRecipeContainer.cloneNode(true);
+        console.log('Found container-recipe-all:', originalRecipeContainer);
 
-        // Find the ingredient list in the cloned recipe container and remove the specific ingredient
-        const ingredientList = updatedRecipeContainer.querySelector('.recipe-ingredient-list');
-        if (ingredientList && ingredientToRemove) {
-            const ingredientItems = ingredientList.querySelectorAll('li');
-            ingredientItems.forEach(item => {
-                if (item.innerText === ingredientToRemove.innerText) {
-                    item.remove(); // Remove the matched ingredient
-                }
-            });
+        // Find the actual content (container-recipe-2) we want to clone
+        const originalRecipeContent = originalRecipeContainer.querySelector('.container-recipe-2');
+        console.log('Found container-recipe-2:', originalRecipeContent);
+
+        if (originalRecipeContent) {
+            // Clone only the content (container-recipe-2) and not the utilities
+            const updatedRecipeContent = originalRecipeContent.cloneNode(true);
+
+            // If we need to remove a specific ingredient, do so here
+            const ingredientList = updatedRecipeContent.querySelector('.recipe-ingredient-list');
+            if (ingredientList && ingredientToRemove) {
+                const ingredientItems = ingredientList.querySelectorAll('li');
+                ingredientItems.forEach(item => {
+                    if (item.innerText === ingredientToRemove.innerText) {
+                        item.remove(); // Remove the matched ingredient
+                    }
+                });
+            }
+
+            // Reset the edit mode - turn off any active edits or icons
+            const editText = updatedRecipeContent.querySelector('#edit-text');
+            if (editText) {
+                editText.innerText = 'edit recipe'; // Reset edit button text
+            }
+
+            // Remove any delete or replace icons (if any exist)
+            const deleteIcons = updatedRecipeContent.querySelectorAll('.delete-icon');
+            deleteIcons.forEach(icon => icon.remove());
+
+            const replaceIcons = updatedRecipeContent.querySelectorAll('.replace-icon');
+            replaceIcons.forEach(icon => icon.remove());
+
+            const highlightedItems = updatedRecipeContent.querySelectorAll('.ing-highlight');
+            highlightedItems.forEach(item => item.classList.remove('ing-highlight'));
+
+            // Reset edit mode-related styles if they exist
+            const containerServ = updatedRecipeContent.querySelector('#container-serv');
+            const containerCal = updatedRecipeContent.querySelector('#container-cal');
+            const servingNum = updatedRecipeContent.querySelector('#serving-num');
+            const servingCals = updatedRecipeContent.querySelector('#serving-cals');
+            const contIng = updatedRecipeContent.querySelector('#container-recipe-ingredients');
+
+            containerServ.classList.remove('highlight-green');
+            containerCal.classList.remove('highlight-green');
+            servingNum.classList.remove('edit-box');
+            servingCals.classList.remove('edit-box');
+            contIng.classList.remove('highlight-border');
+
+            // Add an animation class for smooth entry
+            updatedRecipeContent.classList.add('recipe-slide-in');
+
+            // Directly append the updated recipe content to container-recipe-1
+            originalRecipeContainer.appendChild(updatedRecipeContent);
+            console.log('Updated recipe injected:', updatedRecipeContent);
+
+            // Smoothly scroll to the newly added recipe
+            updatedRecipeContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            console.log('Scrolling to new recipe');
+
+            // Reinitialize the edit functionality for the new recipe (but with edit mode off)
+            initEditMode(updatedRecipeContent);
+        } else {
+            console.error('Could not find .container-recipe-2 in original recipe container');
         }
-
-        // Remove edit mode-specific styles and icons from the duplicated recipe
-        const deleteIcons = updatedRecipeContainer.querySelectorAll('.delete-icon');
-        deleteIcons.forEach(icon => icon.remove());
-
-        const replaceIcons = updatedRecipeContainer.querySelectorAll('.replace-icon');
-        replaceIcons.forEach(icon => icon.remove());
-
-        const highlightedItems = updatedRecipeContainer.querySelectorAll('.ing-highlight');
-        highlightedItems.forEach(item => item.classList.remove('ing-highlight'));
-
-        const containerServ = updatedRecipeContainer.querySelector('#container-serv');
-        const containerCal = updatedRecipeContainer.querySelector('#container-cal');
-        const servingNum = updatedRecipeContainer.querySelector('#serving-num');
-        const servingCals = updatedRecipeContainer.querySelector('#serving-cals');
-        const contIng = updatedRecipeContainer.querySelector('#container-recipe-ingredients');
-
-        containerServ.classList.remove('highlight-green');
-        containerCal.classList.remove('highlight-green');
-        servingNum.classList.remove('edit-box');
-        servingCals.classList.remove('edit-box');
-        contIng.classList.remove('highlight-border');
-
-        // Reset the edit button text
-        const editText = updatedRecipeContainer.querySelector('#edit-text');
-        if (editText) {
-            editText.innerText = 'edit recipe';
-        }
-
-        // Add the 'recipe-slide-in' class to apply the animation
-        updatedRecipeContainer.classList.add('recipe-slide-in');
-
-        // Find the parent container of the original recipe
-        const parentContainer = originalRecipeContainer.parentNode; // Ensure correct parent
-        if (parentContainer) {
-            // Insert the duplicated recipe container after the original one
-            parentContainer.insertBefore(updatedRecipeContainer, originalRecipeContainer.nextSibling);
-
-            // Optionally, remove the old recipe (original one) if you want to replace it entirely
-            originalRecipeContainer.remove();
-        }
-
-        // Reinitialize the edit functionality for the new recipe
-        initEditMode(updatedRecipeContainer);
+    } else {
+        console.error('Could not find .container-recipe-1');
     }
 }
+
+
+
+
+
+
 
 // Function to initialize/edit functionality for a recipe (newly created or existing)
 function initEditMode(recipeContainer) {

@@ -297,7 +297,17 @@
 
 /******************************** ICONS *********************************/
 
+
+.recipe-utilities {
+  position: sticky;
+  top: 0; /* Or any desired offset */
+  z-index: 10; /* Ensure it stays above other content */
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
   .replace-icon {
+    position: sticky;
     width: .7rem; /* Adjust size of the icon */
     height: .7rem;
     margin-left: .4rem; /* Space between the text and the icon */
@@ -565,12 +575,23 @@
 
 /* Icons and all recipe*/
 .container-recipe-1 {
-    padding-inline: 1.6rem;
+    padding-inline: 1rem;
     display: flex;
+    flex-direction: row;
     padding-block: 2rem;
-    gap: 1rem;
+    gap: 2rem;
     padding-bottom: 2.2rem; /* Adjusted to rem */
     max-width: 40rem;
+}
+
+
+/* Stats, Ingredients, Steps*/
+.container-recipe-all {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 0;
+  gap: 0.5rem;
+  max-width: 40rem;
 }
 
 /* Stats, Ingredients, Steps*/
@@ -709,3 +730,35 @@
   }
 }
 
+
+
+
+/******************************** RECIPE HISTORY *********************************/
+
+
+
+#recipe-history-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  background: #f7f7f7;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+#recipe-history-list {
+  list-style: none;
+  padding: 0;
+}
+
+#recipe-history-list li {
+  margin: 10px 0;
+}
+
+#recipe-display {
+  margin-left: 220px;
+  padding: 20px;
+}

@@ -41,7 +41,7 @@
 </div>
 
 <div class="container-recipe-1">
-
+    <!-- Utilities that stay in place -->
     <div class="recipe-utilities">
         <img src="images/icon.png" alt="profile image" id="sabor-profile">    
         <div>
@@ -49,64 +49,67 @@
             <p class="icon-text" id="save-text"> save recipe</p>
         </div>
         <div>
-            <img src="images/edit-button.svg" id="edit-button"  alt="edit" class="recipe-utilities-icons">    
+            <img src="images/edit-button.svg" id="edit-button" alt="edit" class="recipe-utilities-icons">    
             <p class="icon-text" id="edit-text"> edit recipe</p>
         </div>
     </div>
 
-    <div class="container-recipe-2">
-
-        <div class="container-recipe-q">
-            <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
-        </div>
-
-        <div id="container-recipe-stats">
-            <div id="container-serv-cal">
-                <div id="container-serv" id="serv"> <p class="search-text"> <Span id="serving-num"> 3 </Span>servings</p></div>
-                <div id="container-cal" id="cal"> <p class="search-text"> <Span id="serving-cals"> 300 </Span>calories/serving</p></div>
+    <div class="container-recipe-all">
+        <!-- Recipe Content that gets updated -->
+        <div class="container-recipe-2">
+            <div class="container-recipe-q">
+                <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
             </div>
-            <div id="container-serving-size-quantity"> <p class="search-text"> serving size: <Span id="serving-cals"> 1 cup </Span> </p></div>
-            <div id="container-time"> 
-                <p class="search-text" id="time-total"> 50 mins | prep: <Span id="prep=time"> 15 mins </Span> 
-                <span id="cook=time"> cook: 15 mins</span>
-                </p>
+
+            <div id="container-recipe-stats">
+                <div id="container-serv-cal">
+                    <div id="container-serv"> <p class="search-text"><span id="serving-num">3</span> servings</p></div>
+                    <div id="container-cal"> <p class="search-text"><span id="serving-cals">300</span> calories/serving</p></div>
+                </div>
+                <div id="container-serving-size-quantity">
+                    <p class="search-text"> serving size: <span id="serving-size">1 cup</span> </p>
+                </div>
+                <div id="container-time">
+                    <p class="search-text" id="time-total">
+                        50 mins | prep: <span id="prep-time">15 mins</span>
+                        <span id="cook-time"> cook: 15 mins</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="container-recipe-ingredients">
+                <p class="search-text" id="recipe-header">Ingredients:</p>
+                <div class="recipe-list-container">
+                    <ul class="recipe-ingredient-list">
+                        <li><span class="ingredient">1 cup water</span></li>
+                        <li><span class="ingredient">1 onion, chopped</span></li>
+                        <li><span class="ingredient">2 tomatoes, diced</span></li>
+                        <li><span class="ingredient">3 bell peppers, diced</span></li>
+                        <li><span class="ingredient">2 tsp cumin</span></li>
+                        <li><span class="ingredient">4 tsp paprika</span></li>
+                        <li><span class="ingredient">2 tbsp olive oil</span></li>
+                        <li><span class="ingredient">fresh cilantro, chopped (for garnish)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="container-recipe-instructions">
+                <p class="search-text" id="recipe-header">Instructions:</p>
+                <div class="recipe-list-container">
+                    <ol id="recipe-instruction-list">
+                        <li class="search-text">Rinse lentils thoroughly under running water.</li>
+                        <li class="search-text">In a large pot, heat the olive oil over medium heat.</li>
+                        <li class="search-text">Add the chopped onion and minced garlic to the pot and sauté until translucent.</li>
+                        <li class="search-text">Add the diced carrots, celery, bell pepper, and tomato to the pot. Sauté until softened.</li>
+                        <li class="search-text">Sprinkle cumin and paprika, stirring well to coat evenly.</li>
+                        <li class="search-text">Add rinsed lentils and vegetable broth to the pot.</li>
+                        <li class="search-text">Bring to a boil, then reduce heat to low and simmer for 30-40 minutes until lentils are tender.</li>
+                        <li class="search-text">Season with salt and pepper to taste.</li>
+                        <li class="search-text">Serve hot, garnished with fresh cilantro.</li>
+                    </ol>
+                </div>
             </div>
         </div>
-
-        <div id="container-recipe-ingredients">
-            <p class="search-text" id="recipe-header"> Ingredients:</p>
-            <div class="recipe-list-container">
-            <ul class="recipe-ingredient-list">
-                <li><span class="ingredient">1 cup water</span></li>
-                <li><span class="ingredient">1 onion, chopped</span></li>
-                <li><span class="ingredient">2 tomatoes, diced</span></li>
-                <li><span class="ingredient">3 bell pepper, diced</span></li>
-                <li><span class="ingredient">2 tsp cumin</span></li>
-                <li><span class="ingredient">4 tsp paprika</span></li>
-                <li><span class="ingredient">2 tbsp olive oil</span></li>
-                <li><span class="ingredient">fresh cilantro, chopped (for garnish)</span></li>
-            </ul>
-            </div>
-        </div>
-
-        <div id="container-recipe-instructions">
-            <p class="search-text" id="recipe-header"> Instructions:</p>
-            <div class="recipe-list-container">
-                <ol id="recipe-instruction-list">
-                    <li class="search-text">Rinse lentils thoroughly under running water.</li>
-                    <li class="search-text">In a large pot, heat the olive oil over medium heat.</li>
-                    <li class="search-text">Add the chopped onion and minced garlic to the pot and sauté until they become translucent and fragrant.</li>
-                    <li class="search-text">Add the diced carrots, celery, bell pepper, and tomato to the pot. Sauté for a few minutes until the vegetables begin to soften.</li>
-                    <li class="search-text">Sprinkle the cumin powder and paprika over the vegetables and stir well to coat them evenly.</li>
-                    <li class="search-text">Add the rinsed lentils to the pot, followed by the vegetable broth.</li>
-                    <li class="search-text">Bring the soup to a boil, then reduce the heat to low and let it simmer for about 30-40 minutes, or until the lentils are tender.</li>
-                    <li class="search-text">Season the soup with salt and pepper according to your taste.</li>
-                    <li class="search-text">Serve the lentil soup hot, garnished with fresh cilantro if desired.</li>
-                </ul>
-            </ol>
-            </div>
-        </div>
-
     </div>
 </div>
 
