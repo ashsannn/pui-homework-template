@@ -19,7 +19,6 @@ document.getElementById('edit-button').addEventListener('click', function () {
             editText.innerText = 'edit recipe';
         }
     }
-
     const containerServ = document.getElementById('container-serv');
     const containerCal = document.getElementById('container-cal');
     const servingNum = document.getElementById('serving-num');
@@ -34,7 +33,6 @@ document.getElementById('edit-button').addEventListener('click', function () {
 
     const ings = document.querySelectorAll('.recipe-list-container .recipe-ingredient-list li');
 
-    // Add the remove icon and handle functionality
     ings.forEach(item => {
         // Toggle the highlight class on each item
         item.classList.toggle('ing-highlight');
@@ -43,20 +41,20 @@ document.getElementById('edit-button').addEventListener('click', function () {
         if (item.classList.contains('ing-highlight')) {
             // Add the replace icon if the highlight class is applied and icon doesn't exist
             if (!item.querySelector('.replace-icon')) {
-                const icon = document.createElement('img');
-                icon.src = 'images/replace-icon.png'; // Replace with your icon's path
-                icon.alt = 'replace icon';
-                icon.className = 'replace-icon';
-                item.appendChild(icon);
+                const replaceIcon = document.createElement('img');
+                replaceIcon.src = 'images/replace-icon.png'; // Replace with your icon's path
+                replaceIcon.alt = 'replace icon';
+                replaceIcon.className = 'replace-icon';
+                item.appendChild(replaceIcon);
 
                 // Handle the replace icon click event
-                icon.addEventListener('click', function () {
+                replaceIcon.addEventListener('click', function () {
                     const modal = document.getElementById('replace-modal');
                     modal.style.display = 'flex'; // Show the modal
 
                     // Get the Yes and No buttons
-                    const confirmBtn = document.getElementById('modal-confirm');
-                    const cancelBtn = document.getElementById('modal-cancel');
+                    const confirmBtn = document.getElementById('replace-modal-confirm');
+                    const cancelBtn = document.getElementById('replace-modal-cancel');
 
                     // The ingredient associated with this icon
                     const ingredientItem = item; // Directly use `item`
@@ -81,8 +79,8 @@ document.getElementById('edit-button').addEventListener('click', function () {
             }
         } else {
             // Remove the replace icon if the highlight class is removed
-            const icon = item.querySelector('.replace-icon');
-            if (icon) {item.removeChild(icon);
+            const replaceIcon = item.querySelector('.replace-icon');
+            if (replaceIcon) {item.removeChild(replaceIcon);
             }
         }
 
@@ -94,9 +92,33 @@ document.getElementById('edit-button').addEventListener('click', function () {
             deleteIcon.className = 'delete-icon';
             item.appendChild(deleteIcon);
 
-            // Add the click event listener to remove the ingredient in the new recipe
             deleteIcon.addEventListener('click', function () {
-                duplicateUpdatedRecipe(item); // Pass the clicked ingredient to the function
+                const modal = document.getElementById('remove-modal');
+                modal.style.display = 'flex'; // Show the modal
+
+                // Get the Yes and No buttons
+                const confirmBtn = document.getElementById('delete-modal-confirm');
+                const cancelBtn = document.getElementById('delete-modal-cancel');
+
+                // The ingredient associated with this icon
+                const ingredientItem = item; // Directly use `item`
+
+                // Confirm button logic
+                confirmBtn.onclick = function () {
+                    console.log("Ingredient removed:", ingredientItem.innerText);
+                    duplicateUpdatedRecipe(item); 
+                    // Optionally replace the ingredient or trigger a function here
+                    // Replace the ingredient logic here
+
+                    // Close the modal after confirmation
+                    modal.style.display = 'none';
+                };
+                
+                // Cancel button logic
+                cancelBtn.onclick = function () {
+                    // Close the modal without removing the ingredient
+                    modal.style.display = 'none';
+                };
             });
         } else {
             // Remove the remove icon if the highlight class is removed

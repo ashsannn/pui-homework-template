@@ -26,25 +26,25 @@
 #loading-text {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   padding-bottom: 1rem;
-  font-size: 16px;
-  align-content: center;
-  text-align: center;
+  font-size: 1rem; /* Use rem for better scalability */
+  text-align: center; /* 'align-content' is not applicable here */
   animation: fadeIn 4s infinite;
 }
 
 .text-instruction {
   color: var(--color-text-text-filled, #616161);
-  font-family: "Helvetica Neue";
-  font-size: 14px;
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Add fallback fonts */
+  font-size: 0.875rem; /* Use rem units */
   font-weight: 300;
-  line-height: normal;
+  line-height: 1.2;
   padding-block: 0.2rem;
+  display: flex; /* Ensure flex behavior for wrapping */
   flex-wrap: wrap;
 }
 
 .sub-header {
-  font-family: helvetica neue;
-  color: #E4703E;
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Consistency */
+  color: #e4703e; /* Use lowercase hex values */
   font-size: 0.9rem;
   font-weight: 400;
   display: flex;
@@ -52,6 +52,7 @@
   align-items: center;
   gap: 0.6rem;
   align-self: stretch;
+  text-align: center; /* Align nested text */
 }
 
 .sub-header p {
@@ -62,29 +63,23 @@
   font-weight: 300;
 }
 
-.menu-text{
-  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
-  font-size: .9rem; /* Convert to rem */
-  line-height: 1.25rem; /* Line height in rem */
-  font-weight: var(--body-font-weight, 300);
-  position: relative;
-}
-
+.menu-text,
 .search-text {
-  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
-  font-size: .9rem; /* Convert to rem */
-  line-height: 1.25rem; /* Line height in rem */
+  font-family: var(--body-font-family, "Inter", sans-serif); /* Unified fallback */
+  font-size: 0.9rem;
+  line-height: 1.25rem;
   font-weight: var(--body-font-weight, 300);
   position: relative;
 }
 
 .icon-text {
   font-size: 0.8rem;
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   text-align: center;
   font-weight: 500;
   color: darkgrey;
 }
+
 
 
 /******************************** LISTS *********************************/
@@ -184,8 +179,8 @@
 
 
 /***************************** MODAL *********************************/
-/* Modal Styles */
-#replace-modal {
+/* Entire screen */
+.modal {
   display: none; /* Hidden by default */
   position: fixed;
   top: 0;
@@ -201,34 +196,64 @@
 /* Modal Content Styles */
 .modal-content {
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   border-radius: 5px;
   text-align: center;
   width: 300px;             /* Adjust the width as needed */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for better visibility */
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+/******************************** BUTTONS *********************************/
+
+.button {
+  width: 100%;
+  margin-bottom: 1rem;
+  min-height: 40px;
+  max-height: 65px;
+  border-radius: 8px;
+  border-width: 1px;
+  padding-inline: 16px;
+  padding-block: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #f7e0d6;
+  color: var(--color-text-text-primary, #1f120c);
+  text-align: center;
+  font-family: var(--body-font-family, 'Inter-Light', sans-serif);
+  font-size: var(--body-font-size, 13px);
+  line-height: var(--body-line-height, 20px);
+  font-weight: var(--body-font-weight, 300);
+  margin-bottom: .8rem;
+  font-size: 1rem;
 }
 
 /* Modal Buttons*/
-#modal-confirm {
-  background-color: #4CAF50; /* Green for confirm */
+#replace-modal-confirm,
+#delete-modal-confirm {
+  background-color: #BBCDB8; /* Green for confirm */
+  color: 616161;
+  border: none;
+}
+
+#replace-modal-cancel,
+#delete-modal-cancel {
+  background-color: #de5f56; /* Red for cancel */
   color: white;
   border: none;
 }
 
-#modal-cancel {
-  background-color: #f44336; /* Red for cancel */
-  color: white;
-  border: none;
-}
-
-
-/******************************** BUTTONS *********************************/
+/*Search sendoff button*/
 .button-container {
   width: 44px;
   height: 44px;
 }
 
-/*Search-sendoff*/
 #search-button {
   padding-top: .4rem;
   width: 2.5rem;
