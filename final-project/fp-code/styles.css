@@ -40,6 +40,7 @@
   padding-block: 0.2rem;
   display: flex; /* Ensure flex behavior for wrapping */
   flex-wrap: wrap;
+  align-self: flex-start;
 }
 
 .sub-header {
@@ -66,14 +67,14 @@
 .menu-text,
 .search-text {
   font-family: var(--body-font-family, "Inter", sans-serif); /* Unified fallback */
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   line-height: 1.25rem;
   font-weight: var(--body-font-weight, 300);
   position: relative;
 }
 
 .icon-text {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-family: "Helvetica Neue", Arial, sans-serif;
   text-align: center;
   font-weight: 500;
@@ -89,6 +90,7 @@
   flex-direction: column;
   gap: .4rem;
   list-style: circle;
+  padding-left: 1.8rem;
 }
 
 .recipe-ingredient-list li {
@@ -98,11 +100,12 @@
   padding-inline: .4rem; /* Removes extra padding */
 }
 
-.recipe-instruction-list{
+#recipe-instruction-list{
   display: flex;
   flex-direction: column;
-  gap: .4rem;
+  gap: .6rem;
   list-style: decimal;
+  padding-left: 1.8rem;
 }
 
 /******************************** HAMBURGER MENU *********************************/
@@ -116,6 +119,7 @@
   font-size: 1.4rem;
   color: #E4703E;
   cursor: pointer;
+  max-width: 40rem;
 }
 
 /* Hidden menu content initially (position it off-screen on the left) */
@@ -177,6 +181,13 @@
   z-index: 999; /* Just below the menu */
 }
 
+
+.hamburger-icon{
+  padding-left: 1.5rem;
+  align-content: center;
+  font-size: 1.4rem;
+  color: #E4703E;
+}
 
 /***************************** MODAL *********************************/
 /* Entire screen */
@@ -262,7 +273,7 @@
 
 /*Landing options*/
 .button-main {
-  width: 20rem;
+  width: 19rem;
   min-height: 40px;
   max-height: 65px;
   border-radius: 8px;
@@ -424,22 +435,21 @@
   .container-one {
     padding-block: 0.2rem;
     padding-inline: 2rem;
+    width: 22rem;
   }
   
   .container-instruction {
-    width: 25rem;
+    width: 20rem;
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
     padding-block: 1rem;
-    padding-inline: 1.5rem;
   }
   
   .container-instruction-3 {
-    width: 22rem;
-    max-width: 342px;
+    width: 20rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -450,12 +460,17 @@
   }
 
   #container-instruction-details {
-    width: 342px;
+    width: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
     text-align: center;
+  }
+
+  #container-instruction-details .text-instruction {
+    text-align: center;
+    align-self: center;
   }
 
   @keyframes slideInFromBottom {
@@ -493,115 +508,25 @@
   padding-top: 10px;
 }
 
-/******************************** MEDIA QUERIES *********************************/
-  
-  /* Medium screens (max-width: 1200px) */
-  @media (max-width: 1200px) {
-    .landing {
-      width: 40rem;
-    }
-  
-    .container-instruction {
-      max-width: 390px;
-    }
-  
-    .container-instruction-3 {
-      max-width: 342px;
-    }
-  
-    .container-one {
-      width: 390px;
-    }
-  
-    .container-input {
-      width: 342px;
-    }
-  
-    #recipe-input {
-      width: 285px;
-    }
-  
-    .button-main {
-      width: 342px;
-    }
-  }
-  
-  @media (max-width: 390px) and (min-width: 640) { /* 1200px to 640px */
-    .landing {
-      width: 40rem; /* Matches the width at this breakpoint */
-    }
 
-    .container-instruction {
-        max-width: 390px;
-      }
-    
-      .container-instruction-3 {
-        max-width: 342px;
-      }
-    
-      .container-one {
-        width: 390px;
-      }
-    
-      .container-input {
-        width: 342px;
-      }
-    
-      #recipe-input {
-        width: 285px;
-      }
-    
-      .button-main {
-        width: 342px;
-      }
-  }
 
-  /* Small screens (max-width: 390px) */
-  @media (max-width: 390px) {
-    .landing {
-      width: 30rem;
-    }
-  
-    .container-instruction {
-      max-width: 390px;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .container-instruction-3 {
-      max-width: 342px;
-    }
-  
 
-    .container-input {
-      width: 342px;
-    }
-  
-    #recipe-input {
-      width: 285px;
-    }
-  
-    .button-main {
-      width: 20rem;
-    }
-  }
-  
-
-/*-----------------RECIPE PAGE-----------------------*/
+/****************************RECIPE PAGE****************************/
 /* General Styles */
+.body-recipe-menu {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  max-width: 40rem;
+}
+
 .nav-recipe {
     width: 100vw;
     display: flex;
     flex-direction: row;
     background-color: #DADADA;
-    gap: 5rem;
-}
-
-.hamburger-icon{
-    padding-left: 1.5rem;
-    align-content: center;
-    font-size: 1.4rem;
-    color: #E4703E;
+    gap: 4.2rem;
+    max-width: 40rem;
 }
 
 .container-logo{
@@ -623,33 +548,38 @@
     padding-bottom: 5rem;
 }
 
+/* Displays results*/
 .search-box {
-    display: flex;
-    width: 100%;
-    padding-block: 1.8rem;
-    padding-inline: 1.5rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-    background: var(--color-surface-request, #DADADA);
-    margin: 0;
-    box-sizing: border-box;
+  display: flex;
+  width: 100vw;
+  padding-block: 1.8rem;
+  padding-left: 1.6rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.2rem;
+  background: var(--color-surface-request, #DADADA);
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 40rem;
 }
 
+/* Icons and all recipe*/
 .container-recipe-1 {
-    padding-inline: 1.5rem;
+    padding-inline: 1.6rem;
     display: flex;
     padding-block: 2rem;
     gap: 1rem;
     padding-bottom: 2.2rem; /* Adjusted to rem */
+    max-width: 40rem;
 }
 
+/* Stats, Ingredients, Steps*/
 .container-recipe-2 {
     display: flex;
     flex-direction: column;
     padding-inline: 0;
     gap: 0.5rem;
+    max-width: 40rem;
 }
 
 #container-serv-cal {
@@ -665,15 +595,15 @@
     flex-direction: column;
     border: 0.09rem solid #cbcaca;
     border-radius: 1rem;
-    padding: 0.8rem 0.8rem;
-    gap: 0.2rem;
+    padding: 0.8rem 0.6rem;
+    gap: 0.4rem;
     box-sizing: border-box;
-    width: 100%;
-    max-width: 18rem; /* Max width for smaller screens */
+    width: 18rem;
+    max-width: 40rem; /* Max width for smaller screens */
 }
 
 #container-recipe-stats{
-  padding-left: 2rem;
+  padding-inline: 1rem;
 }
 
 .recipe-utilities {
@@ -714,11 +644,13 @@
   display: inline; /* Make sure it adjusts based on the text width */
   white-space: nowrap; /* Prevents the text from wrapping to a new line */
   font-family: var(--body-font-family, 'Inter-Light', sans-serif);
-  font-size: .75rem; /* Convert to rem */
-  line-height: 1.25rem; /* Line height in rem */
+  font-size: .8rem; 
+  line-height: 1.25rem;
   font-weight: var(--body-font-weight, 300);
   position: relative;
 }
+
+/*----------------RECIPE PAGE: EDIT MODE----------------------*/
 
 .ing-highlight {
   background: rgba(187, 205, 184, 0.40);
@@ -743,105 +675,37 @@
   transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
 }
 
-/* Media Queries */
 
-/* For Small screens (max-width: 640px) */
-@media (min-width: 640px) and (max-width: 1800px){
-    .search-box {
-        max-width: 640px; /* Ensure flexibility for smaller screens */
-        justify-content: flex-start;
-        gap: 3rem;
-        padding-inline: 4rem;
-    }
+/******************************** MEDIA QUERIES *********************************/
 
-    .container-recipe-1{
-        padding-inline: 1.5rem;
-        padding-block: 1.5rem; /* Adjust padding for small screens */
-        gap: 3rem;
-        max-width: 640px;
-        padding-inline: 4rem;
-        min-width: 480;
-    }
-
-    .container-recipe-2 {
-        gap: 1.1rem; /* Adjust gap for smaller screens */
-        max-width: 75%;
-    }
-
-    #container-recipe-stats,
-    #container-recipe-ingredients,
-    #container-recipe-instructions {
-        max-width: 100%;
-        padding: 1.4rem;
-        min-width: 40px;
-    }
-
-    
-    .icon-text {
-        font-size: 0.8rem; /* Make icon text smaller */
-    }
-
-    .recipe-list-container, .search-text{
-        padding-block: .24rem;
-        font-size: .9rem;
-    }
-
-    .recipe-utilities-icons{
-        width: 2.2rem;
-    }
+/***Landing page****/
+@media  (min-width: 640) and (max-width: 1200px) {
+  .landing {
+    width: 40rem;
   }
 
-/* For Extra Small screens (max-width: 390px) */
-@media (max-width: 390px) {
-    .search-box {
-        justify-content: flex-start;
-        width: 100%; /* Take full width on very small screens */
-    }
-
-    .search-text {
-        font-size: 0.8rem; /* Slightly smaller text for small devices */
-    }
-
-    .container-recipe-1 {
-        padding-inline: 1.5rem;
-        padding-block: 1.5rem; /* Adjust padding for small screens */
-        gap: 1.5rem;
-        max-width: 390px;
-        padding-block: 1rem; /* Reduce padding for very small screens */
-    }
-
-    .container-recipe-2 {
-        gap: 0.8rem;
-    }
-
-    #container-recipe-stats,
-    #container-recipe-ingredients,
-    #container-recipe-instructions {
-        max-width: 100%;
-        padding: 0.5rem;
-        padding-left: .8rem;
-    }
-
-    .icon-text {
-        font-size: 0.6rem; /* Make icon text smaller */
-    }
-
-    .recipe-utilities {
-        width: 1.8rem; /* Adjust size for small screens */
-    }
-
-    .recipe-list-container{
-      padding-left: 1.2rem;
-      list-style-type: disc;
-    }
-
-    .recipe-list-container, .search-text{
-        padding-block: .2rem;
-    }
-
-
-  .serving-num{
-    align-content: center;
+  .container-instruction {
+    max-width: 390px;
   }
 
+  .container-instruction-3 {
+    max-width: 342px;
+  }
+
+  .container-one {
+    width: 390px;
+  }
+
+  .container-input {
+    width: 342px;
+  }
+
+  #recipe-input {
+    width: 285px;
+  }
+
+  .button-main {
+    width: 342px;
+  }
 }
+
