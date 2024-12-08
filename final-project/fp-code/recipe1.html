@@ -14,17 +14,24 @@
 
     <div class="nav-recipe">
 
-        <!-- Hamburger Icon -->
-        <div class="hamburger-icon" onclick="toggleMenu()">
-            &#9776; <!-- Unicode character for hamburger menu -->
-        </div>
+        <button 
+            id="hamburger-icon" 
+            onclick="toggleMenu()" 
+            aria-expanded="false" 
+            aria-controls="hamburger-menu" 
+            aria-label="Open menu">
+            &#9776;
+        </button>
 
         <!-- Logo -->
         <div class="container-logo">
-            <a onclick="location.href='index.html'"> <img src="images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo"> </a>       
+            <a onclick="location.href='index.html'"> <img src="images/sabor-logo0.png" alt="Sabor Logo" id="sabor-logo"> </a>       
         </div>
 
         <div class="hamburger-menu-content" id="hamburger-menu">
+            <button id="close-menu" onclick="toggleMenu()" aria-label="Close menu">
+                &#10005; <!-- "X" icon -->
+               </button>
             <ul>
                 <li><a href="#"><span class="menu-text">home</span></a></li>
                 <li><a href="#"><span class="menu-text">saved recipes</span></a></li>
@@ -36,20 +43,20 @@
 
 <div class="body-recipe">
 <div class="search-box">
-    <img src="images/icon.png" alt="profile image" id="profile-icon">    
-    <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
+    <img src="images/icon.png" alt="profile icon" id="profile-icon">    
+    <h1 class="search-text" id="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
 </div>
 
 <div class="container-recipe-1">
     <!-- Utilities that stay in place -->
     <div class="recipe-utilities">
-        <img src="images/icon.png" alt="profile image" id="sabor-profile">    
+        <img src="images/icon.png" alt="profile icon" id="sabor-profile">    
         <div>
-            <img src="images/bookmark.svg" id="bookmark-button" alt="bookmark" class="recipe-utilities-icons">    
+            <img src="images/bookmark.svg" id="bookmark-button" alt="bookmark icon" class="recipe-utilities-icons">    
             <p class="icon-text" id="save-text"> save recipe</p>
         </div>
         <div>
-            <img src="images/edit-button.svg" id="edit-button" alt="edit" class="recipe-utilities-icons">    
+            <img src="images/edit-button.svg" id="edit-button" alt="edit icon" class="recipe-utilities-icons">    
             <p class="icon-text" id="edit-text"> edit recipe</p>
         </div>
     </div>
@@ -58,7 +65,7 @@
         <!-- Recipe Content that gets updated -->
         <div class="container-recipe-2">
             <div class="container-recipe-q">
-                <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
+                <h1 class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
             </div>
 
             <div id="container-recipe-stats">
@@ -135,13 +142,16 @@
         </div>
     </div>
  </div>
- 
+</div>
 
 <div class="container-query" id="container-query">
+    <label for="search-box-query" class="visually-hidden">Search Box</label>
     <input type="text" id="search-box-query" class="search-box-query" placeholder="Ask away...">
     <div class="container-button">
-        <img id="search-button" src="images/search-button.png" onclick="location.href='recipe1.html'" />
-      </div>
+        <img id="search-button" src="images/search-button.png" alt="search button" onclick="location.href='recipe1.html'" />
+    </div>
+</div>
+
 </div>
 
 </body>

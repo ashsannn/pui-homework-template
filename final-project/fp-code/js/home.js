@@ -22,30 +22,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Menu Toggle Functionality
 function toggleMenu() {
-  ['hamburger-menu', 'overlay'].forEach(id => {
-      const element = document.getElementById(id);
-      if (element) {
-          element.classList.toggle('active');
-      }
-  });
+    // Toggle 'active' class for both the menu and overlay
+    const menu = document.getElementById('hamburger-menu');
+    const overlay = document.getElementById('overlay');
+    
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    // Update ARIA attributes for accessibility
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const isExpanded = hamburgerIcon.getAttribute('aria-expanded') === 'true';
+    hamburgerIcon.setAttribute('aria-expanded', !isExpanded);
 }
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('hamburger-menu');
+    const overlay = document.getElementById('overlay');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    
+    // Only close if click happens outside the menu and hamburger icon
+    if (
+      menu && overlay &&
+      !menu.contains(event.target) &&
+      !overlay.contains(event.target) &&
+      !hamburgerIcon.contains(event.target)
+    ) {
+      menu.classList.remove('active');
+      overlay.classList.remove('active');
+      
+      // Reset ARIA attributes for accessibility
+      hamburgerIcon.setAttribute('aria-expanded', 'false');
+    }
+});
 
 // Redirect to the loading page with a target URL
 document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.button-main');
+    const buttons = document.querySelectorAll('.button-main');
+  
+    buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const targetUrl = event.target.dataset.redirect || 'recipe1.html'; // Default redirect
+            window.location.href = `loading.html?redirect=${encodeURIComponent(targetUrl)}`;
+        });
+    });
+  
+    const searchButton = document.getElementById('search-button');
 
-  buttons.forEach(button => {
-      button.addEventListener('click', (event) => {
-          const targetUrl = event.target.dataset.redirect || 'recipe1.html'; // Default redirect
-          window.location.href = `loading.html?redirect=${encodeURIComponent(targetUrl)}`;
-      });
+    if (searchButton) {
+        // Function to handle navigation
+        const navigateToLoading = () => {
+            window.location.href = 'recipe1.html'; // Replace with your desired navigation logic
+        };
+
+        // Add click event listener
+        searchButton.addEventListener('click', () => navigateToLoading());
+
+        // Add keydown event listener for keyboard accessibility
+        searchButton.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault(); // Prevent default scrolling for space
+                navigateToLoading();
+            }
+        });
+    }
   });
-
-  const searchButton = document.getElementById('search-button');
-  if (searchButton) {
-      searchButton.addEventListener('click', () => {
-          const targetUrl = 'recipe1.html'; // Default redirect for search
-          window.location.href = `loading.html?redirect=${encodeURIComponent(targetUrl)}`;
-      });
-  }
-});

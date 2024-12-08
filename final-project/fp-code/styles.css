@@ -20,7 +20,30 @@
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   }
 
+  h1{
+    margin: 0rem;
+    padding: 0rem;
+  }
+
+
+  /* Visually hidden but accessible */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0); /* Ensures it's clipped from the viewport */
+  overflow: hidden;
+  white-space: nowrap; /* Prevents text from breaking */
+}
 /******************************** TEXT STYLES *********************************/
+
+#search-text{ 
+  color: #323232;
+  font-weight: 400;
+}
 
 /* Loading-page text styles */
 #loading-text {
@@ -78,7 +101,7 @@
   font-family: "Helvetica Neue", Arial, sans-serif;
   text-align: center;
   font-weight: 500;
-  color: darkgrey;
+  color: rgb(43, 43, 43);
 }
 
 
@@ -110,7 +133,11 @@
 
 /******************************** HAMBURGER MENU *********************************/
 /* Hamburger icon */
-.nav-landing .hamburger-icon {
+.nav-landing {
+  background-color: #DADADA;
+}
+
+.nav-landing #hamburger-icon {
   display: flex;
   justify-content: flex-start;
   width: 100vw;
@@ -120,18 +147,20 @@
   color: #E4703E;
   cursor: pointer;
   max-width: 40rem;
+  background-color: #F6F6F6;
 }
 
-/* Hidden menu content initially (position it off-screen on the left) */
+/* Hidden menu content initially */
 .hamburger-menu-content {
-  display: none; /* Hide the menu initially */
   position: fixed;
+  display: flex;
+  flex-direction: column;
   top: 0;
   left: -200px; /* Start off-screen on the left */
   background-color: #333;
   width: 200px;
   height: 100%; /* Full height */
-  padding: 10px;
+  padding: 2rem;
   border-radius: 5px;
   z-index: 1000; /* Ensure the menu appears above other content */
   transition: transform 0.3s ease; /* Slide effect */
@@ -154,24 +183,26 @@
   font-size: 18px;
 }
 
-/* Show the overlay when the menu is active */
-.hamburger-menu-content.active + .overlay {
-  display: block;
-}
-
 /* Show the menu when the 'active' class is added */
 .hamburger-menu-content.active {
-  align-items: center;
-  justify-content: center;
-  padding-top: 2rem;
-  padding-left: 2rem;
-  display: block;
   transform: translateX(200px); /* Slide in the menu */
 }
 
-/* Overlay (background behind the menu) */
+/* Overlay that shows when the menu is active */
 .overlay {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Show the overlay when the menu is active */
+.overlay.active {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -181,13 +212,30 @@
   z-index: 999; /* Just below the menu */
 }
 
-
-.hamburger-icon{
+/* Additional hamburger icon styling */
+#hamburger-icon {
   padding-left: 1.5rem;
   align-content: center;
   font-size: 1.4rem;
   color: #E4703E;
+  border: none;
 }
+
+.body-recipe-menu #hamburger-icon {
+  padding-left: 1.5rem;
+  align-content: center;
+  font-size: 1.4rem;
+  color: #E4703E;
+  border: none;
+  background-color: #DADADA;
+}
+
+#close-menu{
+  color: white;
+  align-self: flex-end;
+  background-color: #1f120c;
+}
+
 
 /***************************** MODAL *********************************/
 /* Entire screen */
@@ -300,10 +348,16 @@
 
 .recipe-utilities {
   position: sticky;
-  top: 0; /* Or any desired offset */
+  top: 4rem; /* Or any desired offset */
   z-index: 10; /* Ensure it stays above other content */
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  max-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 2.2rem;
+  align-content: center;
 }
 
   .replace-icon {
@@ -346,22 +400,28 @@
     border-width: 1px;
   }
 
-    /* Search box container for query */
-    .container-query {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: .2rem;
-      background-color: #f1f1f1;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 9999;
-      transition: transform 0.3s ease-in-out; /* Smooth transition */
-      padding-inline: 1rem;
-    }
+  /* Search box container for query */
+  #container-query {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: .2rem;
+    background-color: #f1f1f1;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    padding-inline: 1rem;
+    max-width: 40rem;
+    
+    /* Center the container */
+    justify-content: center;
+    align-items: center; /* Vertically centers the content */
+    margin: 0 auto;
+
+  }
   
     /* Actual search box */
     .search-box-query {
@@ -531,13 +591,17 @@
 }
 
 .nav-recipe {
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    background-color: #DADADA;
-    gap: 4.2rem;
-    max-width: 40rem;
+  position: sticky;
+  top: 0; /* Ensures it sticks to the top of the viewport */
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  background-color: #DADADA;
+  gap: 4.2rem;
+  max-width: 40rem;
+  z-index: 1000; /* Ensures it stays above other elements */
 }
+
 
 .container-logo{
     height: 3rem;
@@ -606,10 +670,22 @@
 #container-serv-cal {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
-#container-recipe-stats,
+#container-recipe-stats{
+  display: flex;
+  flex-direction: column;
+  border: 0.09rem solid #cbcaca;
+  border-radius: 1rem;
+  padding: 0.8rem 0.6rem;
+  gap: 0.4rem;
+  box-sizing: border-box;
+  width: 18rem;
+  max-width: 40rem; /* Max width for smaller screens */
+}
+
+
 #container-recipe-ingredients,
 #container-recipe-instructions {
     display: flex;
@@ -621,18 +697,6 @@
     box-sizing: border-box;
     width: 18rem;
     max-width: 40rem; /* Max width for smaller screens */
-}
-
-#container-recipe-stats{
-  padding-inline: 1rem;
-}
-
-.recipe-utilities {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 2.2rem;
-    align-content: center;
 }
 
 #sabor-profile {
@@ -651,10 +715,11 @@
   border-width: .1rem;
   border-radius: .1rem;
   padding-block: .1rem;
-  padding-left: .25rem;
-  padding-right: .2;
+  padding-left: .3rem;
+  padding-right: .3rem;
   margin-right: .4rem;
   margin-block: .25rem;
+  align-content: center;
 }
 
 .highlight-border {

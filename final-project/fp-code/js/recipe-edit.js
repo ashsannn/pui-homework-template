@@ -151,11 +151,21 @@ function duplicateUpdatedRecipe(ingredientToRemove) {
             const ingredientList = updatedRecipeContent.querySelector('.recipe-ingredient-list');
             if (ingredientList && ingredientToRemove) {
                 const ingredientItems = ingredientList.querySelectorAll('li');
+                let ingredientWasRemoved = false; // Track if the ingredient was found and removed
                 ingredientItems.forEach(item => {
                     if (item.innerText === ingredientToRemove.innerText) {
                         item.remove(); // Remove the matched ingredient
+                        ingredientWasRemoved = true;
                     }
                 });
+
+                // Update the search-text with the removed ingredient note
+                if (ingredientWasRemoved) {
+                    const searchText = updatedRecipeContent.querySelector('h1.search-text');
+                    if (searchText) {
+                        searchText.innerText += ` (ingredient removed: ${ingredientToRemove.innerText})`;
+                    }
+                }
             }
 
             // Reset the edit mode - turn off any active edits or icons
@@ -194,9 +204,14 @@ function duplicateUpdatedRecipe(ingredientToRemove) {
             originalRecipeContainer.appendChild(updatedRecipeContent);
             console.log('Updated recipe injected:', updatedRecipeContent);
 
-            // Smoothly scroll to the newly added recipe
-            updatedRecipeContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            console.log('Scrolling to new recipe');
+            // Smoothly scroll to the top of the newly added recipe, adjusted by 2rem
+            const recipeTop = updatedRecipeContent.getBoundingClientRect().top + window.scrollY;
+            const offset = 7 * parseFloat(getComputedStyle(document.documentElement).fontSize); // Convert 2rem to pixels
+            window.scrollTo({
+                top: recipeTop - offset, // Subtract 2rem in pixels to ensure visibility
+                behavior: 'smooth'
+            });
+            console.log('Scrolling to new recipe top, offset by 2rem');
 
             // Reinitialize the edit functionality for the new recipe (but with edit mode off)
             initEditMode(updatedRecipeContent);
