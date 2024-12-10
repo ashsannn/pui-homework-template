@@ -13,7 +13,7 @@ const showLoadingAnimation = (redirectUrl) => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'assets/lottie/animation.json', // Update with correct path
+            path: 'assets/lottie/animation.json',
         });
 
         // Redirect after delay

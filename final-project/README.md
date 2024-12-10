@@ -1,3 +1,151 @@
+# **FP4 \- Final Project Writeup**
+
+## Part 1: Website Description
+
+* What is the purpose of your website?   
+* Who is the target audience?  
+* What information do you convey with your website?   
+* How is it interesting and engaging? 
+
+* The purpose of my website is to serve as the front end of a tool which uses Gen AI to create a recipe interface that allows users to edit the recipe via an “edit mode.”  In a fully fleshed out version of the application, users may change the following things about their recipe: calories, serving size, and ingredients (replace/delete.)
+
+* The website seeks to convey recipes in a very organized manner. It also seeks to convey how users may be creative with their cooking by changing ingredients and experimenting. 
+
+* I tried to make my website engaging by incorporating micro animations and a branding resembling cooking motifs. The idea of designing your own recipes has been interesting to users in my testing. 
+
+* *The target audience are those who cook a lot and often want to edit their recipes, but struggle to do so. This may include people who are very health-conscious and want more nutrition in their recipe, people who have allergies and can’t eat certain ingredients, or even people who do not have a certain ingredient on hand
+
+
+## Part 2: User Interaction
+
+How a user would interact with your website? For each step, briefly but clearly state the interaction type & how we should reproduce it.
+
+1. Interaction type. Click on X on page Y / scroll on page X, etc.  
+
+
+1. Landing page: Starting a recipe. Interaction: type in a recipe to the form in the landing page and click on the search button (button with airplane)
+2. Landing page. Choosing a recipe. Prepopulated prompts: select one of the recipe suggestions (test using the first option)
+3. Landing page / recipe page: Open the menu. (Actually going to saved recipes is a feature for the future)
+4. Recipe page: Turn on edit mode. Interaction: Press on edit mode. 
+4. Recipe page: Replace an ingredient. Interaction: Press on replace icon. Click No. (replacing ingredient is a future feature)
+5. Recipe page: Remove an ingredient. Interaction: Press on remove icon. Click Yes - remove ingredeint. 
+6. Recipe page: Bookmark a recipe. Interaction: Press save recipe icon. Notification pops up saying that recipe was saved/is already saved. This saves recipe to an array. 
+7. Menu toggle: Press hamburger menu to toggle on/off.
+
+
+## Part 3: External Tool
+
+Describe what important external tool you used (JavaScript library, Web API, animations, or other). Following the bulleted list format below, reply to each of the prompts.
+
+1. Name of tool1: Javascript library Lottie
+   * Why did you choose to use it over other alternatives? (2 sentences max)  
+   * How you used it? (2 sentences max)  
+   * What does it add to your website? (2 sentences max)  
+
+    * I chose Lottie for my loading animation over other libraries because I liked the range of animations they offered and I could customize each to fit my application’s branding. 
+    * I imported the lottie library into my loading screen’s html, downloaded the animation’s JSON file into the assets folder in my project, and called a function to play the animation in my loading.js file.
+    * Lottie adds a bit of fun interaction and believability, since gen AI results take some time to load and don’t just appear instantaneously. 
+
+
+## Part 4: Design Iteration
+
+Describe how you iterated on your prototypes, if at all, including any changes you made to your original design while you were implementing your website and the rationale for the changes. (4-8 sentences max)
+
+I had three major rounds of iterations and revisions for my prototype.
+
+* Round one: I changed how users were onboarded onto the application, providing users a lot more guidance and information about what they could do. 
+* Round two: When on the recipe page, I tried to increase user control over how much information they saw at one time by creating an “edit mode” from which they could make changes to their recipe. 
+* Round 3: I ensured that users always had feedback after creating an action, such as replace or remove an ingredient. I also placed a modal screen that appeared after a user chose an action to confirm a decision and avoid any accidental mistakes. 
+
+## Part 5: Implementation Challenge
+
+What challenges did you experience in implementing your website? (2-4 sentences max)
+
+* I really struggled with making my website responsive to different screen sizes. Initially, I wanted to make my site responsive for mobile, iPad, and desktop resolutions. However, I began to struggle with text/image sizes and just decided to simplify to two different screens.
+*  Another thing I struggled with was keeping my code clean and organized, at times I found my code becoming repetitive. Even now looking back, I wish that I had been more strategic with some of my naming conventions for classes. 
+
+
+## Part 6: Generative AI Use and Reflection
+
+Describe how you used Generative AI tools to create this final project (fill in the following information, write \~500 words in total).
+
+* I used chatgpt and perplexity AI. I used chat gpt to find out what steps I needed to incorporate into functions, to ask about how to organize files within my project, how to make code more accessible, and to get help with fixing bugs. I used Perplexity AI to find a good JS library to use for micro animations. 
+* Gen AI helped me a lot with accessibility features. Any code that Gen AI suggested I reviewed carefully, line by line to ensure that the algorithm was actually understanding my final goal. Sometimes I asked ChatGPT to refine the code itself telling it what to modify and other times I did it myself. 
+* I was surprised by how much Gen AI was able to help me. I did not expect to use Gen AI as much as I did because I did not use it for my homeworks previously. The benefits I found from using Gen AI were that it allowed me to consider creative ways of coding things that I would not have thought about before. I also really liked using chatGPT to help me think through how I wanted to code things. I found that this sped up the process a lot.
+Prompts and chat history links if applicable. 
+* Prompts: 
+--> "What is the best way to style a button that has images inside of it?"
+--> "Why is my media query not working?"
+--> “Please tell me the most efficient way to implement functionality so that when an edit button/icon is clicked, new icons show up and there is a highlight around things that are editable”
+-->  “Why is my list item <span> not wrapping around the text, but around the whole <div>? Please help debug.”
+-->  ““What does ‘an event handler may not be accessible’ mean?” / “My web page needs more accessible input modes. How can I improve my code?” 
+--> "What is an ARIA landmark?"
+--> “What are some JS libraries I can use for micro animations?”
+-->  “What is a JS library I can use to create a hamburger menu?”
+-->  “Why is my <ol> list not showing any numbers?”
+--> "Please help explain what are the benefits of using rem instead of px?"
+--> "Please give me the code for an label box with a a label inside the box?"
+
+### Usage Experiences by Project Aspects
+
+Feel free to edit the column \_ (other?) or add more columns if there's any other aspect in your project you've used the GenAI tools for.
+
+For the following aspects of your project, edit the corresponding table cell to answer:
+- *Usage*: Whether you used / did not use this tool for the aspect. Enter [Yes/No]
+- *Productivity*: Give a rating on whether this tool makes your productivity for X aspect [1-Much Reduced, 2-Reduced, 3-Slightly Reduced, 4-Not Reduced nor Improved, 5-Slightly Improved, 6-Improved, 7-Much Improved].
+
+| Tool Name | Ratings | design | plan | write code | debug | \_ (other?) |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| ChatGPT | Usage | No | No | Yes/No | Yes | Yes |
+| ChatGPT | Productivity | n/a | n/a | 1 | 4 | 7 |
+| Perplexity | Usage | Yes | Yes | No | No | No |
+| Perplexity  | Productivity | 3 | 3 | n/a | n/a | n/a |
+
+
+### Usage Reflection
+
+> Impact on your design and plan 
+* I will be answering the below for ChatGPT because I used that tool much more. 
+
+* It matched my expectations and plan in [FP2](#generative-ai-use-plan) in that … For example, 
+  1. ChatGPT: It was actually able to help me see bugs in my code, something I did not expect. For example, at times I really was struggling to find an error - and I described step by step what I did up to that point to ChatGPT. ChatGPT listed potential sources of error in order from likelihood. I was able to check the list in order to find where my bug was. 
+* It did not match my expectations and plan in [FP2](#generative-ai-use-plan) in that … For example, 
+  1. N/A: ChatGPT matched my expecations. 
+* GenAI tool did/did not influence my final design and implementation plan because … For example, 
+  1. ChatGPT: ChatGPT did influence my final design and implementaiton plan by helping my realize that some features are actually a lot easier to implement than what I had imagined. For example, I thought that adding a microinteraction would be too hard, but by leveraging a library it actually was not.
+
+> Use patterns
+* I accepted the generations when …  For example, 
+  1. ChatGPT: this tool once suggested that I edit my buttons and heading strcutures to be more accessible. I adjusted my design according to the suggestion because I knew it was the necessary step - I had overemphasized style over accessibility and left some accessibility features off.  
+* I critiqued/evaluated the generated suggestions by … For example, 
+  1. ChatGPT: this tool once suggested that I combine my classes to reduce redundant codebut I modified/rejected the suggestion because I want to scale my app and knew that I wanted to keep my classes seprated intentionally. 
+
+
+> Pros and cons of using GenAI tools
+* Pros
+  1. ChatGPT: Move fast by getting help structuring the code you want to implement. Check to see deep understanding of the benefits of certain decisions in the code. 
+* Cons
+  1. ChatGPT: Often, GenAI didn't understand intent and strategy with your project (because I didn't share it). Thus, the tool was better for small questions where I wanted help getting a concept explained or examples of code, rather than larger questions about how to structure code that was interdependent on other code in my project.
+
+
+
+### Usage Log
+
+Document the usage logs (prompts and chat history links) for the GenAI tools you used. Some tools may not have an easy way to share usage logs, just try your best! Some instructions for different tools:
+
+1. [ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) / [Gemini](https://support.google.com/gemini/answer/13743730?hl=en&co=GENIE.Platform%3DDesktop): share the anonymous link to all of your chat histories relevant to this project
+2. [GitHub Copilot (VSCode)](https://code.visualstudio.com/docs/copilot/copilot-chat#:~:text=You%20can%20export%20all%20prompts%20and%20responses%20for%20a%20chat%20session%20in%20a%20JSON%20file%20with%20the%20Chat%3A%20Export%20Session...%20command%20(workbench.action.chat.export)%20in%20the%20Command%20Palette.): export chat histories relevant to this project.
+
+---
+
+1. https://chatgpt.com/c/6730eb0f-8d1c-800a-b52c-9c036c6b3c83 // Getting sample code for a form
+2. https://chatgpt.com/c/6734e5c2-7cac-800a-a63e-53706cd41a52 // Styling a button
+3. https://chatgpt.com/c/673ea94a-31fc-800a-a4b8-f658fbe6985e // Library to create a menu
+4. https://chatgpt.com/c/675310f5-87b0-800a-8110-0fb7a16356b3 // Help with responsive design
+5. https://chatgpt.com/c/675790a8-4db4-800a-aa40-025dc06d5b55 // Help with accessible design
+6. https://chatgpt.com/c/67579118-baa8-800a-966a-d26a532bb5cf // Help with coding an edit state with JS, HTMl, CSS
+
+
 # **FP2 \- Evaluation of the Final project**
 
 ## Project Description

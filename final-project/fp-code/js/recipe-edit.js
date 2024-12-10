@@ -1,4 +1,6 @@
-///////////////////////////MENU TOGGLE////////////////////////////////
+let deletedIngredients = []; // array to track deleted ingredients globally
+
+///////////////////////////menu toggle////////////////////////////////
 function toggleMenu() {
     ['hamburger-menu', 'overlay'].forEach(id => {
         const element = document.getElementById(id);
@@ -6,19 +8,23 @@ function toggleMenu() {
             element.classList.toggle('active');
         }
     });
-  }
+}
 
 document.getElementById('edit-button').addEventListener('click', function () {
     const editText = document.getElementById('edit-text');
 
-    // Toggle the text between 'edit recipe' and 'editing ON'
+    // toggle the text between 'edit recipe' and 'editing current recipe'
     if (editText) {
         if (editText.innerText === 'edit recipe') {
-            editText.innerText = 'editing ON';
+            editText.innerText = 'editing current recipe';
         } else {
             editText.innerText = 'edit recipe';
         }
     }
+    toggleEditModeFeatures();
+});
+
+function toggleEditModeFeatures() {
     const containerServ = document.getElementById('container-serv');
     const containerCal = document.getElementById('container-cal');
     const servingNum = document.getElementById('serving-num');
@@ -34,271 +40,231 @@ document.getElementById('edit-button').addEventListener('click', function () {
     const ings = document.querySelectorAll('.recipe-list-container .recipe-ingredient-list li');
 
     ings.forEach(item => {
-        // Toggle the highlight class on each item
         item.classList.toggle('ing-highlight');
 
-        // Handle the replace icon
+        // add or remove the replace icon
         if (item.classList.contains('ing-highlight')) {
-            // Add the replace icon if the highlight class is applied and icon doesn't exist
             if (!item.querySelector('.replace-icon')) {
-                const replaceIcon = document.createElement('img');
-                replaceIcon.src = 'images/replace-icon.png'; // Replace with your icon's path
-                replaceIcon.alt = 'replace icon';
-                replaceIcon.className = 'replace-icon';
+                const replaceIcon = createReplaceIcon(item);
                 item.appendChild(replaceIcon);
-
-                // Handle the replace icon click event
-                replaceIcon.addEventListener('click', function () {
-                    const modal = document.getElementById('replace-modal');
-                    modal.style.display = 'flex'; // Show the modal
-
-                    // Get the Yes and No buttons
-                    const confirmBtn = document.getElementById('replace-modal-confirm');
-                    const cancelBtn = document.getElementById('replace-modal-cancel');
-
-                    // The ingredient associated with this icon
-                    const ingredientItem = item; // Directly use `item`
-
-                    // Confirm button logic
-                    confirmBtn.onclick = function () {
-                        console.log("Ingredient replaced:", ingredientItem.innerText);
-
-                        // Optionally replace the ingredient or trigger a function here
-                        // Replace the ingredient logic here
-
-                        // Close the modal after confirmation
-                        modal.style.display = 'none';
-                    };
-
-                    // Cancel button logic
-                    cancelBtn.onclick = function () {
-                        // Close the modal without replacing the ingredient
-                        modal.style.display = 'none';
-                    };
-                });
             }
         } else {
-            // Remove the replace icon if the highlight class is removed
             const replaceIcon = item.querySelector('.replace-icon');
-            if (replaceIcon) {item.removeChild(replaceIcon);
-            }
+            if (replaceIcon) item.removeChild(replaceIcon);
         }
 
-        // Handle the delete icon (removes or adds based on edit mode)
-        if (!item.querySelector('.delete-icon')) {
-            const deleteIcon = document.createElement('img');
-            deleteIcon.src = 'images/delete-icon.svg'; // Replace with your icon's path
-            deleteIcon.alt = 'delete icon';
-            deleteIcon.className = 'delete-icon';
-            item.appendChild(deleteIcon);
-
-            deleteIcon.addEventListener('click', function () {
-                const modal = document.getElementById('remove-modal');
-                modal.style.display = 'flex'; // Show the modal
-
-                // Get the Yes and No buttons
-                const confirmBtn = document.getElementById('delete-modal-confirm');
-                const cancelBtn = document.getElementById('delete-modal-cancel');
-
-                // The ingredient associated with this icon
-                const ingredientItem = item; // Directly use `item`
-
-                // Confirm button logic
-                confirmBtn.onclick = function () {
-                    console.log("Ingredient removed:", ingredientItem.innerText);
-                    duplicateUpdatedRecipe(item); 
-                    // Optionally replace the ingredient or trigger a function here
-                    // Replace the ingredient logic here
-
-                    // Close the modal after confirmation
-                    modal.style.display = 'none';
-                };
-                
-                // Cancel button logic
-                cancelBtn.onclick = function () {
-                    // Close the modal without removing the ingredient
-                    modal.style.display = 'none';
-                };
-            });
-        } else {
-            // Remove the remove icon if the highlight class is removed
-            const icon = item.querySelector('.delete-icon');
-            if (icon) {
-                item.removeChild(icon);
+        // add or remove the delete icon
+        if (item.classList.contains('ing-highlight')) {
+            if (!item.querySelector('.delete-icon')) {
+                const deleteIcon = createDeleteIcon(item);
+                item.appendChild(deleteIcon);
             }
+        } else {
+            const deleteIcon = item.querySelector('.delete-icon');
+            if (deleteIcon) item.removeChild(deleteIcon);
         }
     });
 
-    console.log("Edit button functionality triggered");
-});
+    console.log("edit mode toggled");
+}
 
+function createReplaceIcon(item) {
+    const replaceIcon = document.createElement('img');
+    replaceIcon.src = 'images/replace-icon.png';
+    replaceIcon.alt = 'replace icon';
+    replaceIcon.className = 'replace-icon';
 
-function duplicateUpdatedRecipe(ingredientToRemove) {
-    const originalRecipeContainer = document.querySelector('.container-recipe-all'); // The entire recipe container
+    replaceIcon.addEventListener('click', function () {
+        const modal = document.getElementById('replace-modal');
+        modal.style.display = 'flex'; // show the modal
+
+        const confirmBtn = document.getElementById('replace-modal-confirm');
+        const cancelBtn = document.getElementById('replace-modal-cancel');
+
+        confirmBtn.onclick = function () {
+            console.log("ingredient replaced:", item.innerText);
+            modal.style.display = 'none';
+        };
+
+        cancelBtn.onclick = function () {
+            modal.style.display = 'none';
+        };
+    });
+
+    return replaceIcon;
+}
+
+function createDeleteIcon(item) {
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src = 'images/delete-icon.svg';
+    deleteIcon.alt = 'delete icon';
+    deleteIcon.className = 'delete-icon';
+
+    deleteIcon.addEventListener('click', function () {
+        const modal = document.getElementById('remove-modal');
+        modal.style.display = 'flex'; // show the modal
+
+        const confirmBtn = document.getElementById('delete-modal-confirm');
+        const cancelBtn = document.getElementById('delete-modal-cancel');
+
+        confirmBtn.onclick = function () {
+            console.log("ingredient removed:", item.innerText);
+            deletedIngredients.push(item.innerText); // add the deleted ingredient to the global array
+            createNewRecipe(item); // update all recipes
+            modal.style.display = 'none';
+        };
+
+        cancelBtn.onclick = function () {
+            modal.style.display = 'none';
+        };
+    });
+
+    return deleteIcon;
+}
+
+function resetEditMode(recipeContainer) {
+    const editText = document.getElementById('edit-text'); 
+    if (editText) {
+        editText.innerText = 'edit recipe';
+    }
+
+    // remove highlights and icons
+    recipeContainer.querySelectorAll('.highlight-green, .edit-box, .highlight-border, .ing-highlight').forEach(el => {
+        el.classList.remove('highlight-green', 'edit-box', 'highlight-border', 'ing-highlight');
+    });
+
+    recipeContainer.querySelectorAll('.replace-icon, .delete-icon').forEach(icon => icon.remove());
+}
+
+function createNewRecipe() {
+    const originalRecipeContainer = document.querySelector('.container-recipe-all');
 
     if (originalRecipeContainer) {
-        console.log('Found container-recipe-all:', originalRecipeContainer);
-
-        // Find the actual content (container-recipe-2) we want to clone
         const originalRecipeContent = originalRecipeContainer.querySelector('.container-recipe-2');
-        console.log('Found container-recipe-2:', originalRecipeContent);
 
         if (originalRecipeContent) {
-            // Clone only the content (container-recipe-2) and not the utilities
             const updatedRecipeContent = originalRecipeContent.cloneNode(true);
 
-            // If we need to remove a specific ingredient, do so here
             const ingredientList = updatedRecipeContent.querySelector('.recipe-ingredient-list');
-            if (ingredientList && ingredientToRemove) {
-                const ingredientItems = ingredientList.querySelectorAll('li');
-                let ingredientWasRemoved = false; // Track if the ingredient was found and removed
-                ingredientItems.forEach(item => {
-                    if (item.innerText === ingredientToRemove.innerText) {
-                        item.remove(); // Remove the matched ingredient
-                        ingredientWasRemoved = true;
+            const deletedIngredientText = deletedIngredients.join(', '); // join deleted ingredients into a string
+
+            if (ingredientList) {
+                ingredientList.querySelectorAll('li').forEach(item => {
+                    // only remove the ingredient if it exists in the deletedIngredients list
+                    if (deletedIngredients.includes(item.innerText)) {
+                        item.remove();
                     }
                 });
-
-                // Update the search-text with the removed ingredient note
-                if (ingredientWasRemoved) {
-                    const searchText = updatedRecipeContent.querySelector('h1.search-text');
-                    if (searchText) {
-                        searchText.innerText += ` (ingredient removed: ${ingredientToRemove.innerText})`;
-                    }
-                }
             }
 
-            // Reset the edit mode - turn off any active edits or icons
-            const editText = updatedRecipeContent.querySelector('#edit-text');
-            if (editText) {
-                editText.innerText = 'edit recipe'; // Reset edit button text
+            // update the h1.search-text with the removed ingredient(s)
+            const searchText = updatedRecipeContent.querySelector('h1.search-text');
+            if (searchText && deletedIngredientText) {
+                searchText.innerText += ` (Removed: ${deletedIngredientText})`; // append deleted ingredients
             }
 
-            // Remove any delete or replace icons (if any exist)
-            const deleteIcons = updatedRecipeContent.querySelectorAll('.delete-icon');
-            deleteIcons.forEach(icon => icon.remove());
+            // reset edit mode for all existing recipes
+            document.querySelectorAll('.container-recipe-2').forEach(recipe => resetEditMode(recipe));
+            console.log("edit mode off");
 
-            const replaceIcons = updatedRecipeContent.querySelectorAll('.replace-icon');
-            replaceIcons.forEach(icon => icon.remove());
-
-            const highlightedItems = updatedRecipeContent.querySelectorAll('.ing-highlight');
-            highlightedItems.forEach(item => item.classList.remove('ing-highlight'));
-
-            // Reset edit mode-related styles if they exist
-            const containerServ = updatedRecipeContent.querySelector('#container-serv');
-            const containerCal = updatedRecipeContent.querySelector('#container-cal');
-            const servingNum = updatedRecipeContent.querySelector('#serving-num');
-            const servingCals = updatedRecipeContent.querySelector('#serving-cals');
-            const contIng = updatedRecipeContent.querySelector('#container-recipe-ingredients');
-
-            containerServ.classList.remove('highlight-green');
-            containerCal.classList.remove('highlight-green');
-            servingNum.classList.remove('edit-box');
-            servingCals.classList.remove('edit-box');
-            contIng.classList.remove('highlight-border');
-
-            // Add an animation class for smooth entry
-            updatedRecipeContent.classList.add('recipe-slide-in');
-
-            // Directly append the updated recipe content to container-recipe-1
+            // append the new recipe and disable edit mode
             originalRecipeContainer.appendChild(updatedRecipeContent);
-            console.log('Updated recipe injected:', updatedRecipeContent);
+            resetEditMode(updatedRecipeContent);
 
-            // Smoothly scroll to the top of the newly added recipe, adjusted by 2rem
+            updatedRecipeContent.classList.add('recipe-slide-in');
             const recipeTop = updatedRecipeContent.getBoundingClientRect().top + window.scrollY;
-            const offset = 7 * parseFloat(getComputedStyle(document.documentElement).fontSize); // Convert 2rem to pixels
+            const offset = 7 * parseFloat(getComputedStyle(document.documentElement).fontSize);
             window.scrollTo({
-                top: recipeTop - offset, // Subtract 2rem in pixels to ensure visibility
+                top: recipeTop - offset,
                 behavior: 'smooth'
             });
-            console.log('Scrolling to new recipe top, offset by 2rem');
-
-            // Reinitialize the edit functionality for the new recipe (but with edit mode off)
-            initEditMode(updatedRecipeContent);
         } else {
-            console.error('Could not find .container-recipe-2 in original recipe container');
+            console.error('could not find .container-recipe-2');
         }
     } else {
-        console.error('Could not find .container-recipe-1');
+        console.error('could not find .container-recipe-all');
     }
 }
 
 
-
-
-
-
-
-// Function to initialize/edit functionality for a recipe (newly created or existing)
+// initialize edit mode for specific recipe container
 function initEditMode(recipeContainer) {
     const editButton = recipeContainer.querySelector('#edit-button');
     if (editButton) {
         editButton.addEventListener('click', function () {
+            // turn off edit mode for all recipes
+            document.querySelectorAll('.container-recipe-2').forEach(recipe => resetEditMode(recipe));
+
+            // enable edit mode only for the clicked recipe
             const editText = recipeContainer.querySelector('#edit-text');
-            
-            // Toggle the text between 'edit recipe' and 'editing ON'
-            if (editText) {
-                if (editText.innerText === 'edit recipe') {
-                    editText.innerText = 'editing ON';
-                } else {
-                    editText.innerText = 'edit recipe';
-                }
-            }
+            if (editText) editText.innerText = 'editing current recipe';
 
-            const containerServ = recipeContainer.querySelector('#container-serv');
-            const containerCal = recipeContainer.querySelector('#container-cal');
-            const servingNum = recipeContainer.querySelector('#serving-num');
-            const servingCals = recipeContainer.querySelector('#serving-cals');
-            containerServ.classList.toggle('highlight-green');
-            containerCal.classList.toggle('highlight-green');
-            servingNum.classList.toggle('edit-box');
-            servingCals.classList.toggle('edit-box');
-
-            const contIng = recipeContainer.querySelector('#container-recipe-ingredients');
-            contIng.classList.toggle('highlight-border');
-
-            const ings = recipeContainer.querySelectorAll('.recipe-list-container .recipe-ingredient-list li');
-
-            // Add the remove icon and handle functionality
-            ings.forEach(item => {
-                item.classList.toggle('ing-highlight');
-
-                // Handle the replace icon
-                if (item.classList.contains('ing-highlight')) {
-                    if (!item.querySelector('.replace-icon')) {
-                        const icon = document.createElement('img');
-                        icon.src = 'images/replace-icon.png'; // Replace with your icon's path
-                        icon.alt = 'replace icon';
-                        icon.className = 'replace-icon';
-                        item.appendChild(icon);
-                    }
-                } else {
-                    const icon = item.querySelector('.replace-icon');
-                    if (icon) {
-                        item.removeChild(icon);
-                    }
-                }
-
-                // Handle the delete icon (removes or adds based on edit mode)
-                if (!item.querySelector('.delete-icon') && editText.innerText === 'editing ON') {
-                    const deleteIcon = document.createElement('img');
-                    deleteIcon.src = 'images/delete-icon.svg'; // Replace with your icon's path
-                    deleteIcon.alt = 'delete icon';
-                    deleteIcon.className = 'delete-icon';
-                    item.appendChild(deleteIcon);
-
-                    // Add the click event listener to remove the ingredient in the new recipe
-                    deleteIcon.addEventListener('click', function () {
-                        duplicateUpdatedRecipe(item); // Pass the clicked ingredient to the function
-                    });
-                } else {
-                    const icon = item.querySelector('.delete-icon');
-                    if (icon && editText.innerText !== 'editing ON') {
-                        item.removeChild(icon);
-                    }
-                }
-            });
+            toggleEditModeFeatures(recipeContainer);
         });
     }
+} 
+
+
+// array to store bookmarked recipes
+let bookmarkedRecipes = JSON.parse(localStorage.getItem('bookmarkedRecipes')) || [];
+
+function saveRecipeToBookmarks() {
+    // select the most recent recipe container (the last .container-recipe-2 on the page)
+    const latestRecipeContainer = document.querySelector('.container-recipe-2:last-child');
+
+    if (latestRecipeContainer) {
+        const recipeName = latestRecipeContainer.querySelector('h1.search-text').innerText;
+
+        // ingredients and instructions from the latest recipe
+        const ingredients = Array.from(latestRecipeContainer.querySelectorAll('.recipe-ingredient-list li')).map(item => item.innerText);
+        const instructions = Array.from(latestRecipeContainer.querySelectorAll('.recipe-instruction-list li')).map(item => item.innerText);
+
+        const recipeData = {
+            name: recipeName,
+            ingredients: ingredients,
+            instructions: instructions
+        };
+
+        console.log(recipeData); // debugging
+
+        const notification = document.getElementById('saved-notification');
+        const notificationContent = notification.querySelector('.saved-notification-content');
+
+        // check if the recipe is already bookmarked
+        if (!bookmarkedRecipes.some(recipe => recipe.name === recipeData.name)) {
+            bookmarkedRecipes.push(recipeData);
+            localStorage.setItem('bookmarkedRecipes', JSON.stringify(bookmarkedRecipes));
+            console.log(`recipe "${recipeName}" saved to bookmarks!`);
+
+            notificationContent.innerText = `recipe "${recipeName}" saved to bookmarks!`;
+        } else {
+            // if the recipe is already bookmarked
+            console.log(`recipe "${recipeName}" is already bookmarked.`);
+            notificationContent.innerText = `recipe "${recipeName}" is already bookmarked!`;
+        }
+
+        console.log(bookmarkedRecipes);
+
+        // show the notification
+        notification.style.display = 'flex';
+
+        // hide the notification after 3 seconds
+        setTimeout(function () {
+            notification.style.display = 'none';
+        }, 2000);
+    } else {
+        console.error('no recipe found to save.');
+    }
 }
+
+
+// Add event listener to bookmark button
+document.getElementById('bookmark-button').addEventListener('click', function() {
+    const recipeContainer = document.querySelector('.container-recipe-2'); // or use another selector to target the specific recipe container
+    if (recipeContainer) {
+        saveRecipeToBookmarks(recipeContainer);
+    } else {
+        console.log('No recipe found to bookmark.');
+    }
+});
 

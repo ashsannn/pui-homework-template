@@ -1,25 +1,3 @@
-// Scroll Detection and Search Box Visibility
-document.addEventListener('DOMContentLoaded', () => {
-  let lastScrollTop = 0;
-  const searchBoxContainer = document.getElementById('container-query');
-
-  if (searchBoxContainer) {
-      window.addEventListener('scroll', () => {
-          let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-          if (currentScroll > lastScrollTop) {
-              // User scrolling down - hide the search box
-              searchBoxContainer.style.transform = 'translateY(100%)';
-          } else {
-              // User scrolling up - show the search box
-              searchBoxContainer.style.transform = 'translateY(0)';
-          }
-
-          lastScrollTop = Math.max(currentScroll, 0);
-      });
-  }
-});
-
 // Menu Toggle Functionality
 function toggleMenu() {
     // Toggle 'active' class for both the menu and overlay
@@ -41,7 +19,7 @@ document.addEventListener('click', function(event) {
     const overlay = document.getElementById('overlay');
     const hamburgerIcon = document.getElementById('hamburger-icon');
     
-    // Only close if click happens outside the menu and hamburger icon
+    // Close if click happens outside the menu and hamburger icon
     if (
       menu && overlay &&
       !menu.contains(event.target) &&
@@ -51,7 +29,7 @@ document.addEventListener('click', function(event) {
       menu.classList.remove('active');
       overlay.classList.remove('active');
       
-      // Reset ARIA attributes for accessibility
+      //ARIA attributes for accessibility
       hamburgerIcon.setAttribute('aria-expanded', 'false');
     }
 });
@@ -62,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     buttons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const targetUrl = event.target.dataset.redirect || 'recipe1.html'; // Default redirect
+            const targetUrl = event.target.dataset.redirect || 'recipe1.html'; 
             window.location.href = `loading.html?redirect=${encodeURIComponent(targetUrl)}`;
         });
     });
@@ -72,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchButton) {
         // Function to handle navigation
         const navigateToLoading = () => {
-            window.location.href = 'recipe1.html'; // Replace with your desired navigation logic
+            window.location.href = 'recipe1.html';
         };
 
         // Add click event listener
@@ -81,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add keydown event listener for keyboard accessibility
         searchButton.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault(); // Prevent default scrolling for space
+                event.preventDefault();
                 navigateToLoading();
             }
         });
