@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Web App</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/recipe.css">
-    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 
@@ -14,107 +12,164 @@
 <body>
     <div class="body-recipe-menu">
 
-    <div class="nav-recipe">
-
+    <div class="nav-recipe" role="navigation">
+        
+                
         <!-- Hamburger Icon -->
-        <div class="hamburger-icon" onclick="toggleMenu()">
-            &#9776; <!-- Unicode character for hamburger menu -->
-        </div>
+        <button 
+            id="hamburger-icon" 
+            onclick="toggleMenu()" 
+            aria-expanded="false" 
+            aria-controls="hamburger-menu" 
+            aria-label="Open navigation menu">
+            &#9776; <!-- Hamburger icon -->
+        </button>
 
         <!-- Logo -->
         <div class="container-logo">
-            <a onclick="location.href='index.html'"> <img src="images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo"> </a>       
+            <a href="index.html">
+                <img src="images/sabor-logo0.png" alt="Sabor Logo" id="sabor-logo">
+            </a>
         </div>
 
-        <div class="hamburger-menu-content" id="hamburger-menu">
+        <!-- Menu Content -->
+        <div class="hamburger-menu-content" id="hamburger-menu" role="navigation" aria-hidden="true">
+            <button id="close-menu" onclick="toggleMenu()" aria-label="Close menu">
+                &#10005; 
+            </button>
             <ul>
-                <li><a href="#"><span class="menu-text">home</span></a></li>
-                <li><a href="#"><span class="menu-text">saved recipes</span></a></li>
+                <li><a href="index.html"><span class="menu-text">Home</span></a></li>
+                <li><a href="index.html"><span class="menu-text">Saved Recipes - Coming Soon!</span></a></li>
             </ul>
         </div>
-        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>    
 
-    </div>
+        <div class="overlay" id="overlay" onclick="toggleMenu()" aria-hidden="true"></div>
+  
+</div>
+
 
 <div class="body-recipe">
 <div class="search-box">
-    <img src="images/icon.png" alt="profile image" id="profile-icon">    
-    <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
+    <img src="images/icon.png" alt="profile icon" id="profile-icon">    
+    <h1 class="search-text" id="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
 </div>
 
 <div class="container-recipe-1">
-
+    <!-- Utilities are fixed across recipes -->
     <div class="recipe-utilities">
-        <img src="images/icon.png" alt="profile image" id="sabor-profile">    
-        <div>
-            <img src="images/bookmark.svg" id="bookmark-button" alt="bookmark" class="recipe-utilities-icons">    
+        <img src="images/icon.png" alt="profile icon" id="sabor-profile">    
+        <div class="container-utility">
+            <img src="images/bookmark.svg" id="bookmark-button" alt="bookmark icon" class="recipe-utilities-icons">    
             <p class="icon-text" id="save-text"> save recipe</p>
         </div>
-        <div>
-            <img src="images/edit-button.svg" id="edit-button"  alt="edit" class="recipe-utilities-icons">    
+        <div class="container-utility">
+            <img src="images/edit-button.svg" id="edit-button" alt="edit icon" class="recipe-utilities-icons">    
             <p class="icon-text" id="edit-text"> edit recipe</p>
         </div>
     </div>
 
-    <div class="container-recipe-2">
-
-        <div class="container-recipe-q">
-            <p class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
-        </div>
-
-        <div class="container-recipe-stats">
-            <div class="container-serv-cal">
-                <div id="container-serv" id="serv"> <p class="search-text"> <Span id="serving-num"> 3 </Span>servings</p></div>
-                <div id="container-cal" id="cal"> <p class="search-text"> <Span id="serving-cals"> 300 </Span>calories/serving</p></div>
+    <div class="container-recipe-all">
+        <!-- Recipe Content gets updated -->
+        <div class="container-recipe-2">
+            <div class="container-recipe-q">
+                <h1 class="search-text"> Ecuadorian Lentil Soup with 30g Protein</p>
             </div>
-            <div id="container-serving-size-quantity"> <p class="search-text"> serving size: <Span id="serving-cals"> 1 cup </Span> </p></div>
-            <div id="container-time"> 
-                <p class="search-text" id="time-total"> 50 mins | prep: <Span id="prep=time"> 15 mins </Span> 
-                <span id="cook=time"> cook: 15 mins</span>
-                </p>
+
+            <div id="container-recipe-stats">
+                <div id="container-serv-cal">
+                    <div id="container-serv"> <p class="search-text"><span id="serving-num">3</span> servings</p></div>
+                    <div id="container-cal"> <p class="search-text"><span id="serving-cals">300</span> calories/serving</p></div>
+                </div>
+                <div id="container-serving-size-quantity">
+                    <p class="search-text"> serving size: <span id="serving-size">1 cup</span> </p>
+                </div>
+                <div id="container-time">
+                    <p class="search-text" id="time-total">
+                        50 mins | prep: <span id="prep-time">15 mins</span>
+                        <span id="cook-time"> cook: 15 mins</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="container-recipe-ingredients">
+                <p class="search-text" id="recipe-header">Ingredients:</p>
+                <div class="recipe-list-container">
+                    <ul class="recipe-ingredient-list">
+                        <li><span class="ingredient">1 cup water</span></li>
+                        <li><span class="ingredient">1 onion, chopped</span></li>
+                        <li><span class="ingredient">2 tomatoes, diced</span></li>
+                        <li><span class="ingredient">3 bell peppers, diced</span></li>
+                        <li><span class="ingredient">2 tsp cumin</span></li>
+                        <li><span class="ingredient">4 tsp paprika</span></li>
+                        <li><span class="ingredient">2 tbsp olive oil</span></li>
+                        <li><span class="ingredient">fresh cilantro, chopped (for garnish)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="container-recipe-instructions">
+                <p class="search-text" id="recipe-header">Instructions:</p>
+                <div class="recipe-list-container">
+                    <ol class="recipe-instruction-list">
+                        <li class="search-text">Rinse lentils thoroughly under running water.</li>
+                        <li class="search-text">In a large pot, heat the olive oil over medium heat.</li>
+                        <li class="search-text">Add the chopped onion and minced garlic to the pot and sauté until translucent.</li>
+                        <li class="search-text">Add the diced carrots, celery, bell pepper, and tomato to the pot. Sauté until softened.</li>
+                        <li class="search-text">Sprinkle cumin and paprika, stirring well to coat evenly.</li>
+                        <li class="search-text">Add rinsed lentils and vegetable broth to the pot.</li>
+                        <li class="search-text">Bring to a boil, then reduce heat to low and simmer for 30-40 minutes until lentils are tender.</li>
+                        <li class="search-text">Season with salt and pepper to taste.</li>
+                        <li class="search-text">Serve hot, garnished with fresh cilantro.</li>
+                    </ol>
+                </div>
             </div>
         </div>
-
-        <div class="container-recipe-ingredients">
-            <p class="search-text" id="recipe-header"> Ingredients:</p>
-            <div class="recipe-list-container">
-            <ul class="recipe-ingredient-list">
-                <li><span class="ingredient">1 cup water</span></li>
-                <li><span class="ingredient">1 onion, chopped</span></li>
-                <li><span class="ingredient">2 tomatoes, diced</span></li>
-                <li><span class="ingredient">3 bell pepper, diced</span></li>
-                <li><span class="ingredient">2 tsp cumin</span></li>
-                <li><span class="ingredient">4 tsp paprika</span></li>
-                <li><span class="ingredient">2 tbsp olive oil</span></li>
-                <li><span class="ingredient">fresh cilantro, chopped (for garnish)</span></li>
-            </ul>
-            </div>
-        </div>
-
-        <div class="container-recipe-instructions">
-            <p class="search-text" id="recipe-header"> Instructions:</p>
-            <div class="recipe-list-container">
-                <ul class="recipe-instruction-list">
-                    <li><span class="instruction">Rinse lentils thoroughly under running water.</span></li>
-                    <li><span class="instruction">In a large pot, heat the olive oil over medium heat.</span></li>
-                    <li><span class="instruction">Add the chopped onion and minced garlic to the pot and sauté until they become translucent and fragrant.</span></li>
-                    <li><span class="instruction">Add the diced carrots, celery, bell pepper, and tomato to the pot. Sauté for a few minutes until the vegetables begin to soften.</span></li>
-                    <li><span class="instruction">Sprinkle the cumin powder and paprika over the vegetables and stir well to coat them evenly.</span></li>
-                    <li><span class="instruction">Add the rinsed lentils to the pot, followed by the vegetable broth.</span></li>
-                    <li><span class="instruction">Bring the soup to a boil, then reduce the heat to low and let it simmer for about 30-40 minutes, or until the lentils are tender.</span></li>
-                    <li><span class="instruction">Serve the lentil soup hot, garnished with fresh cilantro if desired.</span></li>
-                </ul>
-            </div>
-        </div>
-
     </div>
 </div>
 
+<!-- Replace Modal -->
+<div id="replace-modal" class="modal">
+    <div class="modal-content">
+        <h2 id="modal-text" class="search-text">Want to replace this ingredient?</h2>
+        <div>
+            <button id="replace-modal-confirm" class="button"> <span class="search-text">Yes, give me options</span></button>
+            <button id="replace-modal-cancel" class="button"><span class="search-text">No</span></button>
+        </div>
+    </div>
+ </div>
+ 
+
+<!-- Remove Modal -->
+<div id="remove-modal" class="modal">
+    <div class="modal-content">
+        <h2 id="modal-text" class="search-text">Want to remove this ingredient?</h2>
+        <div>
+            <button id="delete-modal-confirm" class="button"> <span class="search-text">Yes, give me new recipe without</span></button>
+            <button id="delete-modal-cancel" class="button"><span class="search-text">No</span></button>
+        </div>
+    </div>
+ </div>
+</div>
+
+<div id="saved-notification" class="saved-notification">
+    <div class="saved-notification-content"></div> <p class="search-text"> </p>  <!-- notification message here -->
+</div>
+
+
 <div class="container-query" id="container-query">
+    <label for="search-box-query" class="visually-hidden">Search Box</label>
     <input type="text" id="search-box-query" class="search-box-query" placeholder="Ask away...">
     <div class="container-button">
-        <img id="search-button" src="images/search-button.png" onclick="location.href='recipe1.html'" />
-      </div>
+        <a href="recipe1.html" id="search-button-link" tabindex="0">
+            <img 
+                id="search-button" 
+                src="images/search-button.png" 
+                alt="Search button" 
+            />
+        </a>
+    </div>
+</div>
+
 </div>
 
 </body>

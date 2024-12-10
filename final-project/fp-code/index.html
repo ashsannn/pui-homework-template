@@ -5,110 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Web App</title>
 
-     <!-- Link to external stylesheet -->
-     <link rel="stylesheet" href="css/landing.css">
-     <link rel="stylesheet" href="css/base.css">
-     <link rel="stylesheet" href="css/nav.css">
-
-
-    
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-  <div class="nav-landing">
-
-      <!-- Hamburger Icon -->
-      <div class="hamburger-icon" onclick="toggleMenu()">
-        &#9776; <!-- Unicode character for hamburger menu -->
-      </div>
-
-      <div class="hamburger-menu-content" id="hamburger-menu">
-        <ul>
-            <li><a href="#"><span class="menu-text">home</span></a></li>
-            <li><a href="#"><span class="menu-text">saved recipes</span></a></li>
-        </ul>
-    </div>
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
-  </div>
-
+  <nav class="nav-landing">
+    <!-- Hamburger Icon -->
+    <button 
+      id="hamburger-icon" 
+      onclick="toggleMenu()" 
+      aria-expanded="false" 
+      aria-controls="hamburger-menu" 
+      aria-label="Open menu">
+      &#9776;
+    </button>
   
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu-content" id="hamburger-menu">
+      <button id="close-menu" onclick="toggleMenu()" aria-label="Close menu">
+       &#10005; <!-- Closing icon -->
+      </button>
+      <ul>
+        <li><a href="index.html"><span class="menu-text">home</span></a></li>
+        <li><a href="index.html"><span class="menu-text">saved - coming soon!</span></a></li>
+      </ul>
+    </div>
+  
+    <!-- Overlay for the menu background -->
+    <div class="overlay" id="overlay"></div>
+  </nav>
+  
+
   <!-- Main content -->
   <div class="landing">
 
-    <header>
-        <div class="container-header">
-          <div class="container-logo">
-              <img src="images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo">        
-          </div>
-          <div class="sub-header">
-            <p class="sub-text">Recipes made for you, with you</p>
-            <p class="sub-text-soft">Using the power of Chat GPT-3</p>
-         </div>
-    </header>
-
-
-      <div class="container-one">
-        
+    <header class="container-header">
+      <h1 div class="container-logo">
+          <img src="images/sabor-logo0.png" alt="Sabor.ai Logo" id="sabor-logo">        
+      </h1>
+      <div class="sub-header">
+        <p class="sub-text">Recipes made for you, with you</p>
+        <p class="sub-text-soft">Using the power of Chat GPT-3</p>
+      </div>
+    <div class="container-one">
         <label for="recipe-input">
           <span class="text-instruction"> 1. Start with a recipe</span>
         </label>
 
         <div class="container-input">
-    
           <input type="recipe" id="recipe-input">
-          
-          <div class="container-button">
-            <img id="search-button" src="images/search-button.png" onclick="location.href='recipe1.html'" />
-          </div>
-
+          <img id="search-button" src="images/search-button.png" alt="Search icon" aria-label="Search"
+          data-redirect="recipe1.html" tabindex="0">
         </div>
+    </div>
 
-      </div>
+    <div class="container-instruction">
+        <p class="text-instruction">You can say something like...</p>
 
-
-      <div class="container-instruction">
-          <p class="text-instruction">You can say something like...</p>
-
-
-          <button class="button-main" data-redirect="recipe1.html">
+        <button class="button-main" data-redirect="recipe1.html">
             Ecuadorian Lentil Soup With 30g Protein
-            <img id="go-arrow" src="images/arrow.svg" />
+            <img id="go-arrow" src="images/arrow.svg" alt="arrow icon" />
         </button>
 
-          <button class="button-main">Indian inspired meal, dairy free, under 500 calories 
-            <img id="go-arrow" src="images/arrow.svg"/>
+        <button class="button-main">Indian inspired meal, dairy free, under 500 calories 
+            <img id="go-arrow" src="images/arrow.svg" alt="arrow icon"/>
         </button>
 
         <button class="button-main">Gluten-free banana bread
-          <img id="go-arrow" src="images/arrow.svg"/>
-      </button>
+          <img id="go-arrow" src="images/arrow.svg" alt="arrow icon"/>
+        </button>
+    </div>
 
-
-      </div>
-
-
-
-      <div class="container-instruction">
+    <div class="container-instruction">
         <p class="text-instruction"> 2. Then, tweak!</p>
-
         <p class="text-instruction">Make your perfect recipe with the ability to:</p>
         <div id="container-instruction-details">
-          <p class="text-instruction"> Interact with Ingredients</p>
-          <p class="text-instruction">Modify serving size</p>
-          <p class="text-instruction">Visualize nutrition facts</p>
-      </div>
+            <p class="text-instruction"> Interact with Ingredients</p>
+            <p class="text-instruction">Modify serving size</p>
+            <p class="text-instruction">Visualize nutrition facts</p>
+        </div>
 
-      <div class="container-instruction-3">
-        <p class="text-instruction">3. Save!</p>
-
-        <p class="text-instruction">Save your recipe and come back to it whenever you’d like for even more tweaking.</p>
-       
-      </div>
-
+        <div class="container-instruction-3">
+            <p class="text-instruction">3. Save!</p>
+            <p class="text-instruction">Save your recipe and come back to it whenever you’d like for even more tweaking.</p>
+        </div>
     </div>
-    
+
   <script src="js/home.js"></script>
 
-  </body>
-  </html>
+</body>
+</html>
