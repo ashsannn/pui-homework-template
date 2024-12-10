@@ -260,7 +260,7 @@ function saveRecipeToBookmarks() {
 
 // Add event listener to bookmark button
 document.getElementById('bookmark-button').addEventListener('click', function() {
-    const recipeContainer = document.querySelector('.container-recipe-2'); // or use another selector to target the specific recipe container
+    const recipeContainer = document.querySelector('.container-recipe-2'); 
     if (recipeContainer) {
         saveRecipeToBookmarks(recipeContainer);
     } else {

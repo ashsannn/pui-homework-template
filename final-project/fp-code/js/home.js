@@ -1,25 +1,25 @@
-// Menu Toggle Functionality
+// menu toggle functionality
 function toggleMenu() {
-    // Toggle 'active' class for both the menu and overlay
+    // toggle 'active' class for both the menu and overlay
     const menu = document.getElementById('hamburger-menu');
     const overlay = document.getElementById('overlay');
     
     menu.classList.toggle('active');
     overlay.classList.toggle('active');
     
-    // Update ARIA attributes for accessibility
+    // update aria attributes for accessibility
     const hamburgerIcon = document.getElementById('hamburger-icon');
     const isExpanded = hamburgerIcon.getAttribute('aria-expanded') === 'true';
     hamburgerIcon.setAttribute('aria-expanded', !isExpanded);
 }
 
-// Close menu when clicking outside
+// close menu when clicking outside
 document.addEventListener('click', function(event) {
     const menu = document.getElementById('hamburger-menu');
     const overlay = document.getElementById('overlay');
     const hamburgerIcon = document.getElementById('hamburger-icon');
     
-    // Close if click happens outside the menu and hamburger icon
+    // close if click happens outside the menu and hamburger icon
     if (
       menu && overlay &&
       !menu.contains(event.target) &&
@@ -29,12 +29,12 @@ document.addEventListener('click', function(event) {
       menu.classList.remove('active');
       overlay.classList.remove('active');
       
-      //ARIA attributes for accessibility
+      // aria attributes for accessibility
       hamburgerIcon.setAttribute('aria-expanded', 'false');
     }
 });
 
-// Redirect to the loading page with a target URL
+// redirect to the loading page with a target url
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.button-main');
   
@@ -48,15 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('search-button');
 
     if (searchButton) {
-        // Function to handle navigation
+        // function to handle navigation
         const navigateToLoading = () => {
             window.location.href = 'recipe1.html';
         };
 
-        // Add click event listener
+        // add click event listener
         searchButton.addEventListener('click', () => navigateToLoading());
 
-        // Add keydown event listener for keyboard accessibility
+        // add keydown event listener for keyboard accessibility
         searchButton.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
@@ -64,4 +64,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-  });
+});
