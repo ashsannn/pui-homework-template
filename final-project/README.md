@@ -1,5 +1,22 @@
 # **FP4 \- Final Project Writeup**
 
+## Details
+
+Final Project Details
+Screen sizes to test: 390x840 (iPhone 12Pro) and 768 x 840 (tablet)
+
+Accessibility checks
+note: redundant links were incorporated intentionally to show that a page will be created in the future
+
+ ![Summary: Landing page](/final-project/fp-readme-images/Summary-Landing.png)
+
+ ![Details: Landing page](/final-project/fp-readme-images/Details-Landing.png)
+
+ ![Summary: Recipe page](/final-project/fp-readme-images/Summary-Recipe.png)
+
+ ![Details: Recipe page](/final-project/fp-readme-images/Details-recipe.png)
+
+
 ## Part 1: Website Description
 
 * What is the purpose of your website?   
@@ -144,6 +161,9 @@ Document the usage logs (prompts and chat history links) for the GenAI tools you
 4. https://chatgpt.com/c/675310f5-87b0-800a-8110-0fb7a16356b3 // Help with responsive design
 5. https://chatgpt.com/c/675790a8-4db4-800a-aa40-025dc06d5b55 // Help with accessible design
 6. https://chatgpt.com/c/67579118-baa8-800a-966a-d26a532bb5cf // Help with coding an edit state with JS, HTMl, CSS
+
+
+
 
 
 # **FP2 \- Evaluation of the Final project**
